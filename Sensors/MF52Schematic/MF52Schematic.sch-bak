@@ -1,0 +1,72 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr User 5906 5906
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L Device:R R2
+U 1 1 5F3BA920
+P 3900 3150
+F 0 "R2" V 3693 3150 50  0000 C CNN
+F 1 "10k" V 3784 3150 50  0000 C CNN
+F 2 "" V 3830 3150 50  0001 C CNN
+F 3 "~" H 3900 3150 50  0001 C CNN
+	1    3900 3150
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:Thermistor_NTC TH1
+U 1 1 5F3BBAAA
+P 3000 3150
+F 0 "TH1" V 2710 3150 50  0000 C CNN
+F 1 "MF52 NTC Thermistor" V 2801 3150 50  0000 C CNN
+F 2 "" H 3000 3200 50  0001 C CNN
+F 3 "~" H 3000 3200 50  0001 C CNN
+	1    3000 3150
+	0    -1   -1   0   
+$EndComp
+$Comp
+L MCU_Module:Arduino_UNO_R3 A?
+U 1 1 5F3C2FF7
+P 3200 2300
+F 0 "A?" H 3200 1019 50  0001 C CNN
+F 1 "Arduino Uno" V 3200 2550 50  0000 R CNN
+F 2 "Module:Arduino_UNO_R3" H 3200 2300 50  0001 C CIN
+F 3 "https://www.arduino.cc/en/Main/arduinoBoardUno" H 3200 2300 50  0001 C CNN
+	1    3200 2300
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	4300 2400 4300 3150
+Wire Wire Line
+	4300 3150 4050 3150
+Wire Wire Line
+	2800 3150 2850 3150
+Wire Wire Line
+	2800 2800 2800 3150
+Wire Wire Line
+	3550 3150 3550 3500
+Wire Wire Line
+	3550 3500 4600 3500
+Wire Wire Line
+	4600 3500 4600 1650
+Wire Wire Line
+	4600 1650 3200 1650
+Wire Wire Line
+	3200 1650 3200 1800
+Wire Wire Line
+	3150 3150 3550 3150
+Connection ~ 3550 3150
+Wire Wire Line
+	3550 3150 3750 3150
+$EndSCHEMATC

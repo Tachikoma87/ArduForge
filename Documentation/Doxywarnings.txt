@@ -1,0 +1,1 @@
+warning: source C:\Users\Tinkerer\Documents\ArduForge\MF52\Examples is not a readable file or directory... skipping.
