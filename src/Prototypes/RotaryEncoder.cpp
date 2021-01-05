@@ -5,26 +5,26 @@ namespace ArduForge{
     RotaryEncoder::RotaryEncoder(void){
         m_Clk = -1;
         m_Dt = -1;
-        m_Button = -1;
+        m_Switch = -1;
         m_LastState = 0;
 
         m_RotaryPosition = 0;
         m_Dir = -1; // 0 for CW and 1 for CCW
-        m_ButtonState = false;
+        m_SwitchState = false;
     }//Constructor
 
     RotaryEncoder::~RotaryEncoder(void){
 
     }//Destructor
 
-    void RotaryEncoder::begin(int8_t ClkPin, int8_t DtPin, int8_t ButtonPin){
+    void RotaryEncoder::begin(int8_t ClkPin, int8_t DtPin, int8_t SwitchPin){
         m_Clk = ClkPin;
         m_Dt = DtPin,
-        m_Button = ButtonPin;
+        m_Switch = SwitchPin;
 
         pinMode(m_Clk, INPUT);
         pinMode(m_Dt, INPUT);
-        pinMode(m_Button, INPUT_PULLUP); // pullup for switch
+        pinMode(m_Switch, INPUT_PULLUP); // pullup for switch
 
         m_RotaryPosition = 0;
         m_LastState = digitalRead(m_Clk);
@@ -34,16 +34,16 @@ namespace ArduForge{
     void RotaryEncoder::end(void){
         m_Clk = -1;
         m_Dt = -1;
-        m_Button = -1;
+        m_Switch = -1;
         m_LastState = 0;
 
         m_RotaryPosition = 0;
         m_Dir = -1; // 0 for CW and 1 for CCW
-        m_ButtonState = false;
+        m_SwitchState = false;
     }//end
 
     void RotaryEncoder::update(void){
-        m_ButtonState = (digitalRead(m_Button) == LOW) ? true : false;
+        m_SwitchState = (digitalRead(m_Switch) == LOW) ? true : false;
 
         int8_t State = digitalRead(m_Clk);
         if(m_LastState != State){
@@ -52,20 +52,20 @@ namespace ArduForge{
             // determine direction of turn
             if(Dt == State){
                 // rotary encoder turned CCW
-                m_Dir = DIR_CCW; 
-                if(m_LastState == LOW && Dt == HIGH) m_RotaryPosition++;
+                m_Dir = DIR_CW; 
+                if(m_LastState == LOW && Dt == HIGH) m_RotaryPosition--;
             } 
             else{
                 // rotary encoder turned CW
-                m_Dir = DIR_CW;
-                if(m_LastState == HIGH && Dt == HIGH) m_RotaryPosition--;
+                m_Dir = DIR_CCW;
+                if(m_LastState == HIGH && Dt == HIGH) m_RotaryPosition++;
             }
         }   
          m_LastState = State;   
     }//update
 
     bool RotaryEncoder::buttonState(void)const{
-        return m_ButtonState;
+        return m_SwitchState;
     }//buttonState 
 
     int8_t RotaryEncoder::direction(void)const{
@@ -77,7 +77,9 @@ namespace ArduForge{
     }//position 
 
     int32_t RotaryEncoder::resetPosition(void){
+        const int32_t Rval = m_RotaryPosition;
         m_RotaryPosition = 0;
+        return Rval;
     }//resetPosition
 
 }//name space

@@ -1,6 +1,6 @@
 /*****************************************************************************\
 *                                                                           *
-* File(s): Ex01_BasicUSage.ino                                              *
+* File(s): BasicReadTemperature.ino                                         *
 *                                                                           *
 * Content: Example sketch that shows basic usage of the MF52 Thermistor     *
 *          library.                                                         *
@@ -27,8 +27,8 @@ ArduForge::MF52 Thermistor;
 * I experienced more than 0.5°C of self-heating effect. Try yourself, the sketch also works by connecting to a constant voltage source.
 * Connect the Arduino an thermistor according to the provided schematic.
 */
-const int8_t SupplyPin = 2; // swe use digital pin 2 to supply power
-const int8_t ReadPin = 0; // we use analog pin 0 to read the data
+const int8_t SupplyPin = 2; // We use digital pin 2 to supply power.
+const int8_t ReadPin = 0; // We use analog pin 0 to read the data.
 
 void setup(void){
     // initialize serial connection so we can print our measurements

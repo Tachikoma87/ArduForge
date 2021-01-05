@@ -1,9 +1,9 @@
 /*****************************************************************************\
 *                                                                           *
-* File(s): RotaryEncoder.h and RotaryEncoder.cpp                            *
+* File(s): SUtilities.hpp                                                   *
 *                                                                           *
-* Content: Class to handle input of an incremental rotary encoder.          *
-*                                                  *
+* Content: SIngleton class which contains valuable utility methods.         *
+*                                                                           *
 *                                                                           *
 *                                                                           *
 * Author(s): Tom Uhlmann                                                    *
@@ -16,41 +16,43 @@
 *                                                                           *
 \****************************************************************************/
 
-#ifndef ARDUFORGE_ROTARYENCODER_H
-#define ARDUFORGE_ROTARYENCODER_H 
+#ifndef ARDUFORGE_SUTILITIES_H
+#define ARDUFORGE_SUTILITIES_H
 
 #include <inttypes.h>
 
 namespace ArduForge{
-    class RotaryEncoder{
+
+    /**
+     * \brief This class defines a number of handy utility functions.
+     */
+    class SUtilities{
     public:
-        static const int8_t DIR_CW = 0;
-        static const int8_t DIR_CCW = 1;
+        /**
+         * \brief Computes the available random access memory on an arduino board.
+         * \return Size of the available ram in bytes.
+         */
+        static int16_t freeMemory(void);
 
-        RotaryEncoder(void);
-        ~RotaryEncoder(void);
+    protected:
+        /**
+         * \brief Constructor
+         */
+        SUtilities(void){
 
-        void begin(int8_t ClkPin, int8_t DtPin, int8_t ButtonPin);
-        void end(void);
-        void update(void);
+        }//constructor
 
-        bool buttonState(void)const;
-        int8_t direction(void)const;
-        int32_t position(void)const;
-        int32_t resetPosition(void);
+        /**
+         * \brief Destructor 
+         */
+        ~SUtilities(void){
 
+        }//Destructor
     private:
-        int8_t m_Clk;
-        int8_t m_Dt;
-        int8_t m_Button;
-        int8_t m_LastState;
 
-        int32_t m_RotaryPosition;
-        int8_t m_Dir; // 0 for CW and 1 for CCW
-        bool m_ButtonState;
-    };//RotaryEncoder
+    };//SUtilities
 
+    typedef SUtilities Utilities;
 }//name space
-
 
 #endif

@@ -1,0 +1,13 @@
+
+
+# Doxygen
+doc/Doxygen.cmd
+doc/Doxywarnings.txt
+
+# Excluded main stuff
+platformio.ini
+arduforge.code-workspace
+# Excluded directories
+.pio
+.vscode
+

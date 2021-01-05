@@ -110,7 +110,7 @@ namespace ArduForge{
             int32_t m_R2; ///< Second resistor of the voltage divider.
             int16_t m_Beta; ///< Beta value of the Thermistor.
             int32_t m_R25; ///< Resistance of the Thermistor at Room Temperature (25°C).
-            int16_t m_CalibrationOffset; ///< Calibration offset in Ohm. Use to mitigate hardwares tolerance. 
+            int16_t m_CalibrationOffset; ///< Calibration offset in Ohm. Use to mitigate hardware tolerance. 
     };//MF52
 
 }//name-space
