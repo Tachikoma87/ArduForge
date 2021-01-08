@@ -24,7 +24,7 @@ ArduForge::CC1101 Transceiver;
  * You will need two devices. To test the code compile and upload it for the master and then for the slave device. 
  */
 
-const bool Master = false; // change this to compile either the master or the slave sketch
+const bool Master = true; // change this to compile either the master or the slave sketch
 
 const uint8_t MasterAddr = 0x01; // master device address
 const uint8_t SlaveAddr = 0x07; // slave device address

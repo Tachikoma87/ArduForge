@@ -19,7 +19,7 @@ namespace ArduForge{
         end();
     }//Destructor
 
-    void CC1101::begin(uint8_t DeviceAddr, uint8_t Mosi, uint8_t Miso, uint8_t Csn, uint8_t Sck, uint8_t Gdo0, uint8_t Gdo2, uint8_t MaxPackageSize){
+    void CC1101::begin(uint8_t DeviceAddr, uint8_t Gdo0, uint8_t Freq, uint8_t Gdo2, uint8_t Csn,  uint8_t Mosi, uint8_t Miso, uint8_t Sck){
         end();
         m_Mosi = Mosi;
         m_Miso = Miso;
@@ -33,15 +33,14 @@ namespace ArduForge{
         
         spiInit();  // spi initialization
         pinMode(m_Gdo0, INPUT);
-        pinMode(m_Gdo2, INPUT);
+        //pinMode(m_Gdo2, INPUT); // currently unused
         digitalWrite(m_Csn, HIGH);
         digitalWrite(m_Sck, HIGH);
         digitalWrite(m_Mosi, LOW);
         reset(); // reset device
-        regConfigSettings(Frequency::F_433); // CC1101 register config
+        regConfigSettings(Freq); // CC1101 register config
         spiWriteRegBurst(Reg::PATABLE, PaTable, 8); // CC1101 PATABLE configuration
         deviceAddress(DeviceAddr); // set device address
-        spiWriteReg(Config::PKTLEN, MaxPackageSize); // set maximum length of a single package
         outputPowerLevel(0); // 0 dBm output power level default
     }//begin
 
@@ -57,16 +56,17 @@ namespace ArduForge{
     }//end
 
     void CC1101::broadcast(uint8_t *pData, uint8_t Size){
-        sendData(BroadcastAdr, pData, Size, false);
+        sendData(BroadcastAdr, pData, Size);
     }//sendData 
 
-    void CC1101::sendData(uint8_t Receiver, uint8_t *pData, uint8_t Size, bool RequestAck){
+    void CC1101::sendData(uint8_t Receiver, uint8_t *pData, uint8_t Size){
         // put in idle 
         spiStrobe(CmdStrobes::SIDLE);
         delayMicroseconds(10);  
-        spiWriteReg(Reg::TXFIFO, Size + 2); // number of bytes to send (payload size + receiver address  + sender address)
+        spiWriteReg(Reg::TXFIFO, Size + 3); // number of bytes to send (payload size + receiver address  + sender address)     
         spiWriteReg(Reg::TXFIFO, Receiver);
         spiWriteReg(Reg::TXFIFO, deviceAddress());
+        spiWriteReg(Reg::TXFIFO, Size); // byte count of payload
         spiWriteRegBurst(Reg::TXFIFO, pData, Size);
         spiStrobe(CmdStrobes::STX);
         while(!digitalRead(m_Gdo0));
@@ -82,22 +82,24 @@ namespace ArduForge{
     uint8_t CC1101::dataAvailable(void){
         if(digitalRead(m_Gdo0)){
             while(digitalRead(m_Gdo0));     
-            if(spiReadStatus(Reg::RXBYTES) & Fifo::BYTES_IN_RXFIFO) m_AvailableData = spiReadReg(Reg::RXFIFO);
+            if(spiReadStatus(Reg::RXBYTES) & Fifo::BYTES_IN_RXFIFO) m_AvailableData = spiReadReg(Reg::RXFIFO) & 0x7F;
         }
-        return (m_AvailableData > 0) ? m_AvailableData - 2 : 0;
+        return m_AvailableData;
     }//checkReceiveFlag 
 
-    uint8_t CC1101::receiveData(uint8_t *pData, uint8_t *pReceiver, uint8_t *pSender, int8_t *pRSSI){
-        uint8_t PkgInfo[2];
+    uint8_t CC1101::receiveData(uint8_t *pData, uint8_t *pReceiver, uint8_t *pSender, int8_t *pRSSI){     
         uint8_t Rval = 0;
 
         if(m_AvailableData > 0){
-            spiReadRegBurst(Reg::RXFIFO, PkgInfo, 2); // read sender and receiver
-            spiReadRegBurst(Reg::RXFIFO, pData, m_AvailableData - 2); // read payload
-            if(nullptr != pReceiver) (*pReceiver) = PkgInfo[0];
-            if(nullptr != pSender) (*pSender) = PkgInfo[1];
-            if(nullptr != pRSSI) (*pRSSI) = rssiConvert(spiReadReg(Reg::RXFIFO)); // first byte after payload is rssi value
-            Rval = m_AvailableData - 2;
+            uint8_t PkgHeader[3];
+
+            spiReadRegBurst(Reg::RXFIFO, PkgHeader, 3); // read package header
+            if(nullptr != pReceiver) (*pReceiver) = PkgHeader[0];
+            if(nullptr != pSender) (*pSender) = PkgHeader[1];
+            Rval = PkgHeader[2];
+            spiReadRegBurst(Reg::RXFIFO, pData, Rval); // read payload
+            if(nullptr != pRSSI) (*pRSSI) = rssiConvert(spiReadReg(Reg::RXFIFO));
+
             m_AvailableData = 0;
         }
 
@@ -198,14 +200,9 @@ namespace ArduForge{
     }//spiEnd
 
     void CC1101::spiMode(uint8_t Config){
-        uint8_t Tmp;
-
         // enable SPI master with configuration specified by Config byte
         SPCR = 0;
         SPCR = (Config & 0x7F) | (1<<SPE) | (1<<MSTR);
-        Tmp = SPSR;
-        Tmp = SPDR;
-
     }//spiMode 
 
     uint8_t CC1101::spiTransfer(uint8_t Value)const{ 
@@ -282,11 +279,11 @@ namespace ArduForge{
         return Rval;
     }//spiReadStatus 
 
-    void CC1101::regConfigSettings(uint8_t Cfg){
+    void CC1101::regConfigSettings(uint8_t Freq){
         spiWriteReg(Config::FSCTRL1, 0x08);
         spiWriteReg(Config::FSCTRL0, 0x00);
 
-        switch(Cfg){
+        switch(Freq){
             case Frequency::F_868:
                 spiWriteReg(Config::FREQ2, Frequency::F2_868);
                 spiWriteReg(Config::FREQ1, Frequency::F1_868);
@@ -337,15 +334,11 @@ namespace ArduForge{
         spiWriteReg(Config::PKTCTRL1, 0b00000111); // two status bytes will be appended to the payload of the packet, including LQI and CRC OK, Address check and (0x00 & 0xFF Broadcast)
         spiWriteReg(Config::PKTCTRL0, 0x05); // whitening off, CRC enable variable length packets, packet length configured by the first byte after sync word 
         spiWriteReg(Config::ADDR, 0x00); // address used for packet filtration, set default to broadcast address 0x00
-        spiWriteReg(Config::PKTLEN, 64); // 64 bytes max length (payload), default length
+      //  spiWriteReg(Config::PKTLEN, 64); // 64 bytes max length (payload), default length | we use variable packet length and don't use this field
 
     }//regConfigSettings
 
     int8_t CC1101::rssi(void){
-        // int16_t RssiDec = spiReadReg(Reg::RSSI); // from unsigned to signed 
-        // if(RssiDec >= 128) RssiDec -= 256;
-        // int8_t RssiDbm = (RssiDec/2) - 74; // 74 is offset value for all data rates and frequency according to datasheet
-        // return RssiDbm;
         return rssiConvert(spiReadReg(Reg::RSSI));
     }//rssi 
 
@@ -359,4 +352,16 @@ namespace ArduForge{
     uint8_t CC1101::lqi(void){
         return (spiReadReg(Reg::LQI) & 0x7F);
     }//lqi
+
+    uint8_t CC1101::partNumber(void)const{
+        return spiReadReg(Reg::PARTNUM);
+    }//partNumber
+
+    uint8_t CC1101::version(void)const{
+        return spiReadReg(Reg::VERSION);
+    }//version
+
+
+
+
 }//name space

@@ -29,7 +29,7 @@ namespace ArduForge{
     class SUtilities{
     public:
         /**
-         * \brief Computes the available random access memory on an arduino board.
+         * \brief Computes the available random access memory on an Arduino board.
          * \return Size of the available ram in bytes.
          */
         static int16_t freeMemory(void);
