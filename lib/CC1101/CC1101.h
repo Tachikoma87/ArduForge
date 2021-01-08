@@ -29,6 +29,7 @@ namespace ArduForge{
      * The implementation has been inspired by SpaceTeddy's (https://github.com/SpaceTeddy/CC1101) and simonmonk's (https://github.com/simonmonk/CC1101_arduino) CC1101 implementations. They where a great help so thanks for sharing.
      * \warning Don't forget that the CC1101 requires 3.3V input and you will nee a a logic converter or voltage dividers in case you connect from a higher voltage device such as the Arduino. There are tutorials mentioning that it is possible to connect directly, but I fried one breakout board with direct connection, so better be save than sorry. You can use 220ohm/470ohm voltage dividers to connect from a 5V device. 
      * \remarks The class was mainly tested using 433 MHz. Only small package sizes are allowed since larger package sizes require elaborate syncing of sender and receiver. I was able to send 59 bytes of payload data in single packages without problems.
+     * \image html CC1101Wiring.png
      */
     class CC1101{
     public:

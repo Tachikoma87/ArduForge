@@ -1,0 +1,1177 @@
+\hypertarget{class_ardu_forge_1_1_c_c1101}{}\doxysection{Ardu\+Forge\+::C\+C1101 Class Reference}
+\label{class_ardu_forge_1_1_c_c1101}\index{ArduForge::CC1101@{ArduForge::CC1101}}
+
+
+This class implements data transmitting and receiving for devices with a \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101}{C\+C1101}} transceiver chip.  
+
+
+
+
+{\ttfamily \#include $<$C\+C1101.\+h$>$}
+
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0}{Config}} \+: uint8\+\_\+t \{ \newline
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a2a7b7cfc69ab213cd90c01337cb7b559}{I\+O\+C\+F\+G2}} = 0x00, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a9daeb0afd930e06b3a4d5087c5d5b740}{I\+O\+C\+F\+G1}} = 0x01, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a62f582cf569b9b9cc1c04bae56b605b0}{I\+O\+C\+F\+G0}} = 0x02, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0ae28ece93f8e8ec5e7a4c176df312eca3}{F\+I\+F\+O\+T\+HR}} = 0x03, 
+\newline
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a84efe79725376d6d9f24bfc6d990dd31}{S\+Y\+N\+C1}} = 0x04, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a9be36cc24d9fdd574a4c62c61540cece}{S\+Y\+N\+C0}} = 0x05, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a289a9a3b95d23011aaa12b9c87b52de7}{P\+K\+T\+L\+EN}} = 0x06, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a3d64adc5db6d56f5fc3e00f5f1c91ec7}{P\+K\+T\+C\+T\+R\+L1}} = 0x07, 
+\newline
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a2d61c413ad086bdf74b7bdfb18ce8f17}{P\+K\+T\+C\+T\+R\+L0}} = 0x08, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0ace6e03444e23255d89422d944b703737}{A\+D\+DR}} = 0x09, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0ad8aca99ef2e14c6255ee7d128dc451ff}{C\+H\+A\+N\+NR}} = 0x0A, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a161e4912b63966ff357440c7f1ed8896}{F\+S\+C\+T\+R\+L1}} = 0x0B, 
+\newline
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a7cd74684ea8f90a8b7622265e139d854}{F\+S\+C\+T\+R\+L0}} = 0x0C, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a676609c34d8a02d4e8cd049d2f14a9f8}{F\+R\+E\+Q2}} = 0x0D, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0af86cff8a218a5955db6e96632135c6b5}{F\+R\+E\+Q1}} = 0x0E, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a680784ce4ac759c2e29588844c85b0c0}{F\+R\+E\+Q0}} = 0x0F, 
+\newline
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a5dbb3d5c999acdcb07deae145f3cf9da}{M\+D\+M\+C\+F\+G4}} = 0x10, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0ad62cb9b95400a4a62498ee24649e97b4}{M\+D\+M\+C\+F\+G3}} = 0x11, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0ad01e5deade4b6f1ebaa7759434772ab2}{M\+D\+M\+C\+F\+G2}} = 0x12, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a82a373c5744daf77144057acff69eacb}{M\+D\+M\+C\+F\+G1}} = 0x13, 
+\newline
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0af30144d7c8745090af6960fa52b66f68}{M\+D\+M\+C\+F\+G0}} = 0x14, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a41036387131d1808b37117a7a88845d6}{D\+E\+V\+I\+A\+TN}} = 0x15, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0afff1d88eb4802521d1c3174c074838ce}{M\+C\+S\+M2}} = 0x16, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a63420d4a709d7976b0eab604a57764e0}{M\+C\+S\+M1}} = 0x17, 
+\newline
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a5cf7914177770c9a6120258e6288c638}{M\+C\+S\+M0}} = 0x18, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a6981e2db3b2231b83cb281d60e318b30}{F\+O\+C\+C\+FG}} = 0x19, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0ab662865ee75fc5e4c07d2d58a221e85d}{B\+S\+C\+FG}} = 0x1A, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a2af6a4fc1fe85e1a484026f8113c3642}{A\+G\+C\+C\+T\+R\+L2}} = 0x1B, 
+\newline
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0aabc3cd4a529ca61681406bdf7fc8f84f}{A\+G\+C\+C\+T\+R\+L1}} = 0x1C, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0ac23694285afa8d2494820fe7671df67a}{A\+G\+C\+C\+T\+R\+L0}} = 0x1D, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a56c8027ba97ac12d5e0db46540d05240}{W\+O\+R\+E\+V\+T1}} = 0x1E, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0ae9b8aac08d992c83d1e1db9da1eacb5c}{W\+O\+R\+E\+V\+T0}} = 0x1F, 
+\newline
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0aa26873fa64fdf04aee34efbea41290bb}{W\+O\+R\+C\+T\+RL}} = 0x20, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a136d23e5658fd8e4f9230ac4526eaea4}{F\+R\+E\+N\+D1}} = 0x21, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0ade4c32ea45040c4a486a806b099fb478}{F\+R\+E\+N\+D0}} = 0x22, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0af6610dafcb935411873f532cf5bca582}{F\+S\+C\+A\+L3}} = 0x23, 
+\newline
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a3b269731ce9da68245f37d5bd59cfd66}{F\+S\+C\+A\+L2}} = 0x24, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0acceb434a33033fe598705e9fdbda9dff}{F\+S\+C\+A\+L1}} = 0x25, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a9211a1bf2db9e5ddc9cf3c702c4db02d}{F\+S\+C\+A\+L0}} = 0x26, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a0890bbd8cfb77966cfafc5a04640c40b}{R\+C\+C\+T\+R\+L1}} = 0x27, 
+\newline
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a31edcb92307f118dd4d3c84893f907ab}{R\+C\+C\+T\+R\+L0}} = 0x28, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a4d508345de08db0d35f457359f9ba8e9}{F\+S\+T\+E\+ST}} = 0x29, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0ae35b66c777b3e124f415ab0dfda8d670}{P\+T\+E\+St}} = 0x2A, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a4441c78b188e4d302188a1ba9a70a6dc}{A\+G\+C\+T\+E\+ST}} = 0x2B, 
+\newline
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0ade19d0b614d1100ab4d759913b957d02}{T\+E\+S\+T2}} = 0x2C, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0aa0a5c0510b86181fb32dfc95460cac92}{T\+E\+S\+T1}} = 0x2D, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a8f95f15cc742f1b2933d1cf14dc0aaa6}{T\+E\+S\+T0}} = 0x2E
+ \}
+\begin{DoxyCompactList}\small\item\em Enumeration of the \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101}{C\+C1101}}\textquotesingle{}s config registers. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_aea807d714536af0eec312a20ced3bd64}{Frequency}} \+: uint8\+\_\+t \{ \newline
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_aea807d714536af0eec312a20ced3bd64ab30f1aed529f7a92128648fdb0118a97}{F\+\_\+915}} = 0x00, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_aea807d714536af0eec312a20ced3bd64ae50f5fdb0c7e623d22243ab10363bbd7}{F\+\_\+433}} = 0x01, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_aea807d714536af0eec312a20ced3bd64a3d642c9654ae57f6435a33c40cc5c204}{F\+\_\+868}} = 0x02, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_aea807d714536af0eec312a20ced3bd64a997606a60916ce56593fd51743ab826b}{F2\+\_\+868}} = 0x21, 
+\newline
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_aea807d714536af0eec312a20ced3bd64a12f39dc0b246b05fefc115e87b89ffef}{F1\+\_\+868}} = 0x62, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_aea807d714536af0eec312a20ced3bd64a6fefe026ce8a155a69e9608fdda20cd2}{F0\+\_\+868}} = 0x76, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_aea807d714536af0eec312a20ced3bd64ac54a88ba449e411b692cb0f915576276}{F2\+\_\+915}} = 0x22, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_aea807d714536af0eec312a20ced3bd64a31b7586c0f86c27ba24e6b1b7b3afc65}{F1\+\_\+915}} = 0x\+B1, 
+\newline
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_aea807d714536af0eec312a20ced3bd64a3733a919ec31d59147c315c17447e7ad}{F0\+\_\+915}} = 0x3B, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_aea807d714536af0eec312a20ced3bd64a892edeb43d5f17c1e643ce8aaf15d629}{F2\+\_\+433}} = 0x10, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_aea807d714536af0eec312a20ced3bd64aaabd3d59469e12cb9b6a9d5d32054930}{F1\+\_\+433}} = 0x\+A7, 
+{\bfseries F0\+\_\+433} = 0x62
+ \}
+\begin{DoxyCompactList}\small\item\em Frequency control enumerates. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_afbec2b2af6a5cd42f012bf047a584079}{Cmd\+Strobes}} \+: uint8\+\_\+t \{ \newline
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_afbec2b2af6a5cd42f012bf047a584079a089d370ecb3e7b4e43074c77117dd189}{S\+R\+ES}} = 0x30, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_afbec2b2af6a5cd42f012bf047a584079a845710e98fc6248688a3a747b9bcd44d}{S\+F\+S\+T\+X\+ON}} = 0x31, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_afbec2b2af6a5cd42f012bf047a584079a144f09049b5e624ba69e2027230fe258}{S\+X\+O\+FF}} = 0x32, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_afbec2b2af6a5cd42f012bf047a584079aeb5736d5046cce61c24293845d575a98}{S\+C\+AL}} = 0x33, 
+\newline
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_afbec2b2af6a5cd42f012bf047a584079ad1a37209356a2a2e3ab0ad89e02ed07b}{S\+RX}} = 0x34, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_afbec2b2af6a5cd42f012bf047a584079a5154824fe9880450a6422c57a49e2ad5}{S\+TX}} = 0x35, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_afbec2b2af6a5cd42f012bf047a584079a61d4eefc6229b8a6fba4460b97dce28d}{S\+I\+D\+LE}} = 0x36, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_afbec2b2af6a5cd42f012bf047a584079ae614086eb335bde9792b0cf87d2fbc41}{S\+A\+FC}} = 0x37, 
+\newline
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_afbec2b2af6a5cd42f012bf047a584079a3234c367a6aa2d2db81524bf918c7921}{S\+W\+OR}} = 0x38, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_afbec2b2af6a5cd42f012bf047a584079abbfba12b618748fdccb9cc21ea6273c8}{S\+P\+WD}} = 0x39, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_afbec2b2af6a5cd42f012bf047a584079a2667f7627aac202b2cfc1fcbfb6cface}{S\+F\+RX}} = 0x3A, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_afbec2b2af6a5cd42f012bf047a584079a7706b0a2c875d46c411480dea95deb86}{S\+F\+TX}} = 0x3B, 
+\newline
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_afbec2b2af6a5cd42f012bf047a584079a39ac595a6811085d49b87ddc8d496bfa}{S\+W\+O\+R\+R\+ST}} = 0x3C, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_afbec2b2af6a5cd42f012bf047a584079ac8d1f66efd01df40b51468afbf5af166}{S\+N\+OP}} = 0x3D
+ \}
+\item 
+enum \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_afcb259f3a3c5649d5da46fa5b4ee97fc}{Reg}} \+: uint8\+\_\+t \{ \newline
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_afcb259f3a3c5649d5da46fa5b4ee97fca82c4e72bea7e6207ac39e1b03c3770d5}{P\+A\+R\+T\+N\+UM}} = 0x30, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_afcb259f3a3c5649d5da46fa5b4ee97fca80ba8d7dfdf22eed4df84da600945ad2}{V\+E\+R\+S\+I\+ON}} = 0x31, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_afcb259f3a3c5649d5da46fa5b4ee97fca366dfc640e96363025303d5354450d26}{F\+R\+E\+Q\+E\+ST}} = 0x32, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_afcb259f3a3c5649d5da46fa5b4ee97fca3500b24544bd3bb2d690b18ab170ba85}{L\+QI}} = 0x33, 
+\newline
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_afcb259f3a3c5649d5da46fa5b4ee97fca19c15b739f03bf9258fb08df67b310b6}{R\+S\+SI}} = 0x34, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_afcb259f3a3c5649d5da46fa5b4ee97fca9ffe0b65360ffe763379e73c981a862a}{M\+A\+R\+C\+S\+T\+A\+TE}} = 0x35, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_afcb259f3a3c5649d5da46fa5b4ee97fca9cc7d20e89ce82fd0091c89b4871cc7c}{W\+O\+R\+T\+I\+M\+E1}} = 0x36, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_afcb259f3a3c5649d5da46fa5b4ee97fca2b29bc6027ac31abc855b9d7b99d3779}{W\+O\+R\+T\+I\+M\+E0}} = 0x37, 
+\newline
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_afcb259f3a3c5649d5da46fa5b4ee97fcae65921cc680ed6630f7ab179f727949a}{P\+K\+T\+S\+T\+A\+T\+US}} = 0x38, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_afcb259f3a3c5649d5da46fa5b4ee97fca207774f709533debf458bdce34b82629}{V\+C\+O\+\_\+\+V\+C\+\_\+\+D\+AC}} = 0x39, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_afcb259f3a3c5649d5da46fa5b4ee97fcafc02e81cd696344c4010fd847ca6178e}{T\+X\+B\+Y\+T\+ES}} = 0x3A, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_afcb259f3a3c5649d5da46fa5b4ee97fcad02bbe8da20e760aa646f1162439fd4b}{R\+X\+B\+Y\+T\+ES}} = 0x3B, 
+\newline
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_afcb259f3a3c5649d5da46fa5b4ee97fca01632d2134828d65e53134d0f2e26386}{R\+C\+C\+T\+R\+L1\+\_\+\+S\+T\+A\+T\+US}} = 0x3C, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_afcb259f3a3c5649d5da46fa5b4ee97fca161d012d40994a57963fa5906a652477}{R\+C\+C\+T\+R\+L0\+\_\+\+S\+T\+A\+T\+US}} = 0x3D, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_afcb259f3a3c5649d5da46fa5b4ee97fcad29c4146028cd151dda88cb547e98eb1}{P\+A\+T\+A\+B\+LE}} = 0x3E, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_afcb259f3a3c5649d5da46fa5b4ee97fcab8e7fe2b9db6f14515097045bfa5a438}{T\+X\+F\+I\+FO}} = 0x3F, 
+\newline
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_afcb259f3a3c5649d5da46fa5b4ee97fca137b36a213a10175c3956b84975234d2}{R\+X\+F\+I\+FO}} = 0x3F
+ \}
+\begin{DoxyCompactList}\small\item\em Register definitions. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_af926039bbcd26b1e138a147ff73ab4e3}{Fifo}} \+: uint8\+\_\+t \{ \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_af926039bbcd26b1e138a147ff73ab4e3ad4ca6669f1bcabfa737c7aa7668346af}{W\+R\+I\+T\+E\+\_\+\+B\+U\+R\+ST}} = 0x40, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_af926039bbcd26b1e138a147ff73ab4e3af99be65c8f8bc9ac296ec8e205ce6e8a}{R\+E\+A\+D\+\_\+\+S\+I\+N\+G\+LE}} = 0x80, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_af926039bbcd26b1e138a147ff73ab4e3a90e7941dccd205c31e62cdb7bbcea1d6}{R\+E\+A\+D\+\_\+\+B\+U\+R\+ST}} = 0x\+C0, 
+{\bfseries B\+Y\+T\+E\+S\+\_\+\+I\+N\+\_\+\+R\+X\+F\+I\+FO} = 0x7F
+ \}
+\begin{DoxyCompactList}\small\item\em F\+I\+FO access definitions (single or burst) \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a0a53f2f1e66fbe0736706749aeb1fc6a}{Error}} \+: uint8\+\_\+t \{ \newline
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a0a53f2f1e66fbe0736706749aeb1fc6aadb823de5588b494efe775940f94c50fe}{N\+O\+\_\+\+E\+R\+R\+OR}} = 0x00, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a0a53f2f1e66fbe0736706749aeb1fc6aa59ca2bb19a3f52d3c72c82ffb88caa7b}{I\+N\+V\+A\+L\+I\+D\+\_\+\+D\+E\+V\+I\+C\+E\+\_\+\+A\+DR}} = 0x01, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a0a53f2f1e66fbe0736706749aeb1fc6aa4dd00079cf14bede528dea534b04731a}{V\+A\+L\+U\+E\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+B\+O\+U\+N\+DS}} = 0x02, 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a0a53f2f1e66fbe0736706749aeb1fc6aaf97dbcdec82be4170a506478507ec711}{N\+U\+L\+L\+P\+T\+R\+\_\+\+E\+R\+R\+OR}} = 0x03, 
+\newline
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a0a53f2f1e66fbe0736706749aeb1fc6aa2128219ffdfb3a2ebb22c0b102947780}{R\+E\+C\+E\+I\+V\+E\+D\+\_\+\+O\+V\+E\+R\+S\+I\+Z\+E\+D\+\_\+\+P\+A\+C\+K\+A\+GE}} = 0x04
+ \}
+\begin{DoxyCompactList}\small\item\em Definition of errors that may occur. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a39a158f3ed57b1b4a171e3ad2c523455}\label{class_ardu_forge_1_1_c_c1101_a39a158f3ed57b1b4a171e3ad2c523455}} 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a39a158f3ed57b1b4a171e3ad2c523455}{C\+C1101}} (void)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_ab609e8777247c952359cc51e5e838fe6}\label{class_ardu_forge_1_1_c_c1101_ab609e8777247c952359cc51e5e838fe6}} 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_ab609e8777247c952359cc51e5e838fe6}{$\sim$\+C\+C1101}} (void)
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a2816afc3b1ec4d3b2c9ef2afa6ce5968}{begin}} (uint8\+\_\+t Device\+Addr, uint8\+\_\+t Gdo0=2, uint8\+\_\+t Freq=\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_aea807d714536af0eec312a20ced3bd64ae50f5fdb0c7e623d22243ab10363bbd7}{F\+\_\+433}}, uint8\+\_\+t Gdo2=0x0, uint8\+\_\+t Csn=10, uint8\+\_\+t Mosi=11, uint8\+\_\+t Miso=12, uint8\+\_\+t Sck=13)
+\begin{DoxyCompactList}\small\item\em Starts communication with the \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101}{C\+C1101}} device. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_aa7f204505bcd8b1f33d9ba1c7c803a85}\label{class_ardu_forge_1_1_c_c1101_aa7f204505bcd8b1f33d9ba1c7c803a85}} 
+void \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_aa7f204505bcd8b1f33d9ba1c7c803a85}{end}} (void)
+\begin{DoxyCompactList}\small\item\em End communication with the \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101}{C\+C1101}} device. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a4a834906730205063690d9fb90d3c3b0}{broadcast}} (uint8\+\_\+t $\ast$p\+Data, uint8\+\_\+t Size)
+\begin{DoxyCompactList}\small\item\em Sends out a broadcast message. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_ac8abbac67af31f8a8aff2110485f192f}{send\+Data}} (uint8\+\_\+t Receiver, uint8\+\_\+t $\ast$p\+Data, uint8\+\_\+t Size)
+\begin{DoxyCompactList}\small\item\em Send a data package to a particular device or use 0x00/0x\+FF for a broadcast message. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a095b1a542ae0969442f384dc7b9c37b2}\label{class_ardu_forge_1_1_c_c1101_a095b1a542ae0969442f384dc7b9c37b2}} 
+void \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a095b1a542ae0969442f384dc7b9c37b2}{receive\+Mode}} (void)
+\begin{DoxyCompactList}\small\item\em Puts the device in receive mode. Data can be received only after this method was called. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a21c0de9e877d6d1a4e678b8d6b14d2c5}{data\+Available}} (void)
+\begin{DoxyCompactList}\small\item\em Returns number of bytes that have been received by the radio device. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_ad38dd9319f4deb39f85c886307a4cc90}{receive\+Data}} (uint8\+\_\+t $\ast$p\+Data, uint8\+\_\+t $\ast$p\+Receiver, uint8\+\_\+t $\ast$p\+Sender, int8\+\_\+t $\ast$p\+R\+S\+SI)
+\begin{DoxyCompactList}\small\item\em Read received data. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a0a53f2f1e66fbe0736706749aeb1fc6a}{Error}} \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a57f5be8b6fb624d6cf440e1229f8f033}{last\+Error}} (bool Clear=true)
+\begin{DoxyCompactList}\small\item\em Returns last occurred error. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a78aba8c3418e148480778479299c7fd1}{device\+Address}} (uint8\+\_\+t Addr)
+\begin{DoxyCompactList}\small\item\em Set a new device address. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_aa52d39a58e6499aecafc0610ec6bcb57}{device\+Address}} (void) const
+\begin{DoxyCompactList}\small\item\em Returns current device address. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a4e5106925723cdef083ca584554b549c}{channel}} (uint8\+\_\+t Channel)
+\begin{DoxyCompactList}\small\item\em Set device to new Channel. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_aa094653ec9ab506791cc9cebcbc2a4aa}{channel}} (void)
+\begin{DoxyCompactList}\small\item\em Returns current channel number. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a2cd3a0af5ea0b3ae6cc42f3896c2cbaa}{output\+Power\+Level}} (int8\+\_\+t d\+Bm)
+\begin{DoxyCompactList}\small\item\em Set new output power level. Can be used to amplify or reduce radio strength. Valid values are in range -\/30 to 10. Unit is d\+Bm. Default is 0. \end{DoxyCompactList}\item 
+int8\+\_\+t \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_adb3d31304ab45b9f0b71a96996c9e955}{output\+Power\+Level}} (void)
+\begin{DoxyCompactList}\small\item\em Returns current output power amplification/reduction in d\+Bm. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a5ed7825ea12557282b92c97b1c041456}\label{class_ardu_forge_1_1_c_c1101_a5ed7825ea12557282b92c97b1c041456}} 
+void \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a5ed7825ea12557282b92c97b1c041456}{power\+Down}} (void)
+\begin{DoxyCompactList}\small\item\em Device will enter power down state to reduce energy consumption. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_ac5c271a873d9afe490b0438d00641fbe}\label{class_ardu_forge_1_1_c_c1101_ac5c271a873d9afe490b0438d00641fbe}} 
+void \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_ac5c271a873d9afe490b0438d00641fbe}{wake\+Up}} (void)
+\begin{DoxyCompactList}\small\item\em Wake device from powered down state. \end{DoxyCompactList}\item 
+int8\+\_\+t \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_ab11e2140ef4107a477fdc405b1cf7d93}{rssi}} (void)
+\begin{DoxyCompactList}\small\item\em Returns receiver strength indicator read from the respective register and converted to d\+Bm. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_ab2515570a645b1a5993c11c9fc090517}{lqi}} (void)
+\begin{DoxyCompactList}\small\item\em Returns link quality indicator read from the respective register. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_ae7cd7a001c2af60bc76e3a9213a47cc5}{part\+Number}} (void) const
+\begin{DoxyCompactList}\small\item\em Returns the chip part number. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_ade3fc780ddb7979df6e1f93b58980b2c}{version}} (void) const
+\begin{DoxyCompactList}\small\item\em Returns chip version number. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a18cc5f3bbd1517e5f464a8d457b4c813}\label{class_ardu_forge_1_1_c_c1101_a18cc5f3bbd1517e5f464a8d457b4c813}} 
+static const uint8\+\_\+t \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a18cc5f3bbd1517e5f464a8d457b4c813}{Broadcast\+Adr}} = 0x00
+\begin{DoxyCompactList}\small\item\em Default broadcast address. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a9690158b0d413816eaffbd61edd47391}\label{class_ardu_forge_1_1_c_c1101_a9690158b0d413816eaffbd61edd47391}} 
+static const uint8\+\_\+t \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a9690158b0d413816eaffbd61edd47391}{Braodcast\+Adr\+Alt}} = 0x\+FF
+\begin{DoxyCompactList}\small\item\em Alternative broadcast address. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a132e68d82affa4de337a01f7bad178d6}\label{class_ardu_forge_1_1_c_c1101_a132e68d82affa4de337a01f7bad178d6}} 
+void \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a132e68d82affa4de337a01f7bad178d6}{spi\+Init}} (void)
+\begin{DoxyCompactList}\small\item\em Initialize S\+PI communication with the radio device. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a9a18cd7e05be3b155326ff77a5e8ee0d}\label{class_ardu_forge_1_1_c_c1101_a9a18cd7e05be3b155326ff77a5e8ee0d}} 
+void \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a9a18cd7e05be3b155326ff77a5e8ee0d}{spi\+End}} (void)
+\begin{DoxyCompactList}\small\item\em Ends S\+PI communication with the radio device. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a1dbb63bb4af1af4de7d8f8f1738444b0}\label{class_ardu_forge_1_1_c_c1101_a1dbb63bb4af1af4de7d8f8f1738444b0}} 
+void \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a1dbb63bb4af1af4de7d8f8f1738444b0}{spi\+Mode}} (uint8\+\_\+t \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0}{Config}})
+\begin{DoxyCompactList}\small\item\em S\+PI mode configuration. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a142f7afc72764d11231f9efc47ed9a6f}{spi\+Transfer}} (uint8\+\_\+t Value) const
+\begin{DoxyCompactList}\small\item\em Transfers a single byte via S\+PI and returns received byte. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a80c0e929d2ab9b83f9c4ab8b00e4269c}\label{class_ardu_forge_1_1_c_c1101_a80c0e929d2ab9b83f9c4ab8b00e4269c}} 
+void \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a80c0e929d2ab9b83f9c4ab8b00e4269c}{reset}} (void)
+\begin{DoxyCompactList}\small\item\em Resets the device. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a88299899660e797630809e283924b2b2}{spi\+Write\+Reg}} (uint8\+\_\+t \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_afcb259f3a3c5649d5da46fa5b4ee97fc}{Reg}}, uint8\+\_\+t Value)
+\begin{DoxyCompactList}\small\item\em Writes a register via S\+PI. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a3ee9277355128fb6854d208a230caf60}{spi\+Write\+Reg\+Burst}} (uint8\+\_\+t \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_afcb259f3a3c5649d5da46fa5b4ee97fc}{Reg}}, uint8\+\_\+t $\ast$p\+Data, uint8\+\_\+t Count)
+\begin{DoxyCompactList}\small\item\em Writes a series of bytes to a register. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_acfc72b7381d7cb45cf770c9495e16506}{spi\+Strobe}} (uint8\+\_\+t Cmd)
+\begin{DoxyCompactList}\small\item\em Sends a strobe command to the device. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a835881588fc646b6d0cb9bbbcc9f90b7}{spi\+Read\+Reg}} (uint8\+\_\+t \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_afcb259f3a3c5649d5da46fa5b4ee97fc}{Reg}}) const
+\begin{DoxyCompactList}\small\item\em Read a single byte from a register. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_ab7009ccc86a03d934f3c039d424be1a1}{spi\+Read\+Reg\+Burst}} (uint8\+\_\+t \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_afcb259f3a3c5649d5da46fa5b4ee97fc}{Reg}}, uint8\+\_\+t $\ast$p\+Data, uint8\+\_\+t Count)
+\begin{DoxyCompactList}\small\item\em Read values from a register in burst mode. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a799324dc2173d98e54ee84a495b8ab5a}{spi\+Read\+Status}} (uint8\+\_\+t Addr)
+\begin{DoxyCompactList}\small\item\em Helper method to read F\+I\+FO status. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a318d86b4c56d4604bcd55a4abbf6083a}{reg\+Config\+Settings}} (uint8\+\_\+t Freq)
+\begin{DoxyCompactList}\small\item\em Initializes chip configuration for a particular frequency. \end{DoxyCompactList}\item 
+int8\+\_\+t \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_ac9a43736d4f21ed0b577e7acd43478f0}{rssi\+Convert}} (uint8\+\_\+t Rssi\+Value\+Dec)
+\begin{DoxyCompactList}\small\item\em Converts Receiver signal strength indicator (R\+S\+SI) from decimal value (from register) to d\+Bm. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_ad2011eef1625c952945ccf306cb17e04}\label{class_ardu_forge_1_1_c_c1101_ad2011eef1625c952945ccf306cb17e04}} 
+uint8\+\_\+t \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_ad2011eef1625c952945ccf306cb17e04}{m\+\_\+\+Miso}}
+\begin{DoxyCompactList}\small\item\em Miso Pin. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_af5228559be916e7dcd97136432d7fcd2}\label{class_ardu_forge_1_1_c_c1101_af5228559be916e7dcd97136432d7fcd2}} 
+uint8\+\_\+t \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_af5228559be916e7dcd97136432d7fcd2}{m\+\_\+\+Mosi}}
+\begin{DoxyCompactList}\small\item\em Mosi Pin. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a896ffe5c9d69f809b35c8a87117c3a33}\label{class_ardu_forge_1_1_c_c1101_a896ffe5c9d69f809b35c8a87117c3a33}} 
+uint8\+\_\+t \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a896ffe5c9d69f809b35c8a87117c3a33}{m\+\_\+\+Csn}}
+\begin{DoxyCompactList}\small\item\em C\+Sn pin (aka SS pin) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a5e0c06ebe184ecef738a574bdd73244f}\label{class_ardu_forge_1_1_c_c1101_a5e0c06ebe184ecef738a574bdd73244f}} 
+uint8\+\_\+t \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a5e0c06ebe184ecef738a574bdd73244f}{m\+\_\+\+Sck}}
+\begin{DoxyCompactList}\small\item\em Sck (clock) pin. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_ab1fbcd7eb39ee113604f37d371caf90a}\label{class_ardu_forge_1_1_c_c1101_ab1fbcd7eb39ee113604f37d371caf90a}} 
+uint8\+\_\+t \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_ab1fbcd7eb39ee113604f37d371caf90a}{m\+\_\+\+Gdo0}}
+\begin{DoxyCompactList}\small\item\em G\+Do0 pin. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a913d145ec5b5ddd8f059b396dab7ff3a}\label{class_ardu_forge_1_1_c_c1101_a913d145ec5b5ddd8f059b396dab7ff3a}} 
+uint8\+\_\+t \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a913d145ec5b5ddd8f059b396dab7ff3a}{m\+\_\+\+Gdo2}}
+\begin{DoxyCompactList}\small\item\em G\+Do2 pin. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_abb8a764fa6398e2b99691fd4ff25a1e3}\label{class_ardu_forge_1_1_c_c1101_abb8a764fa6398e2b99691fd4ff25a1e3}} 
+uint8\+\_\+t \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_abb8a764fa6398e2b99691fd4ff25a1e3}{m\+\_\+\+Available\+Data}}
+\begin{DoxyCompactList}\small\item\em Bytes available in RX buffer after receiving a package. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a889ad05aec89651f75d79cb93e6b6474}\label{class_ardu_forge_1_1_c_c1101_a889ad05aec89651f75d79cb93e6b6474}} 
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a0a53f2f1e66fbe0736706749aeb1fc6a}{Error}} \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a889ad05aec89651f75d79cb93e6b6474}{m\+\_\+\+Last\+Error}}
+\begin{DoxyCompactList}\small\item\em Last error that occurred during execution. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class implements data transmitting and receiving for devices with a \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101}{C\+C1101}} transceiver chip. 
+
+You are free to configure the pins of the device on any available digital pins. Specify the pin assignment in the \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a2816afc3b1ec4d3b2c9ef2afa6ce5968}{C\+C1101\+::begin}} method. The implementation has been inspired by Space\+Teddy\textquotesingle{}s (\href{https://github.com/SpaceTeddy/CC1101}{\texttt{ https\+://github.\+com/\+Space\+Teddy/\+C\+C1101}}) and simonmonk\textquotesingle{}s (\href{https://github.com/simonmonk/CC1101_arduino}{\texttt{ https\+://github.\+com/simonmonk/\+C\+C1101\+\_\+arduino}}) \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101}{C\+C1101}} implementations. They where a great help so thanks for sharing. \begin{DoxyWarning}{Warning}
+Don\textquotesingle{}t forget that the \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101}{C\+C1101}} requires 3.\+3V input and you will nee a a logic converter or voltage dividers in case you connect from a higher voltage device such as the Arduino. There are tutorials mentioning that it is possible to connect directly, but I fried one breakout board with direct connection, so better be save than sorry. You can use 220ohm/470ohm voltage dividers to connect from a 5V device. 
+\end{DoxyWarning}
+\begin{DoxyRemark}{Remarks}
+The class was mainly tested using 433 M\+Hz. Only small package sizes are allowed since larger package sizes require elaborate syncing of sender and receiver. I was able to send 59 bytes of payload data in single packages without problems.  
+\end{DoxyRemark}
+
+
+\doxysubsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_afbec2b2af6a5cd42f012bf047a584079}\label{class_ardu_forge_1_1_c_c1101_afbec2b2af6a5cd42f012bf047a584079}} 
+\index{ArduForge::CC1101@{ArduForge::CC1101}!CmdStrobes@{CmdStrobes}}
+\index{CmdStrobes@{CmdStrobes}!ArduForge::CC1101@{ArduForge::CC1101}}
+\doxysubsubsection{\texorpdfstring{CmdStrobes}{CmdStrobes}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_afbec2b2af6a5cd42f012bf047a584079}{Ardu\+Forge\+::\+C\+C1101\+::\+Cmd\+Strobes}} \+: uint8\+\_\+t}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SRES@{SRES}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!SRES@{SRES}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_afbec2b2af6a5cd42f012bf047a584079a089d370ecb3e7b4e43074c77117dd189}\label{class_ardu_forge_1_1_c_c1101_afbec2b2af6a5cd42f012bf047a584079a089d370ecb3e7b4e43074c77117dd189}} 
+S\+R\+ES&Reset chip. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SFSTXON@{SFSTXON}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!SFSTXON@{SFSTXON}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_afbec2b2af6a5cd42f012bf047a584079a845710e98fc6248688a3a747b9bcd44d}\label{class_ardu_forge_1_1_c_c1101_afbec2b2af6a5cd42f012bf047a584079a845710e98fc6248688a3a747b9bcd44d}} 
+S\+F\+S\+T\+X\+ON&Enable and calibrate frequency synthesizer (if M\+C\+S\+M0.\+F\+S\+\_\+\+A\+U\+T\+O\+C\+AL=1). \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SXOFF@{SXOFF}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!SXOFF@{SXOFF}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_afbec2b2af6a5cd42f012bf047a584079a144f09049b5e624ba69e2027230fe258}\label{class_ardu_forge_1_1_c_c1101_afbec2b2af6a5cd42f012bf047a584079a144f09049b5e624ba69e2027230fe258}} 
+S\+X\+O\+FF&Turn off crystal oscillator. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SCAL@{SCAL}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!SCAL@{SCAL}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_afbec2b2af6a5cd42f012bf047a584079aeb5736d5046cce61c24293845d575a98}\label{class_ardu_forge_1_1_c_c1101_afbec2b2af6a5cd42f012bf047a584079aeb5736d5046cce61c24293845d575a98}} 
+S\+C\+AL&Calibrate frequency synthesizer and turn it off (enables quick start). \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SRX@{SRX}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!SRX@{SRX}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_afbec2b2af6a5cd42f012bf047a584079ad1a37209356a2a2e3ab0ad89e02ed07b}\label{class_ardu_forge_1_1_c_c1101_afbec2b2af6a5cd42f012bf047a584079ad1a37209356a2a2e3ab0ad89e02ed07b}} 
+S\+RX&Enable RX. Perform calibration first if coming from I\+D\+LE and M\+C\+S\+M0.\+F\+S\+\_\+\+A\+U\+T\+O\+C\+A\+L01. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{STX@{STX}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!STX@{STX}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_afbec2b2af6a5cd42f012bf047a584079a5154824fe9880450a6422c57a49e2ad5}\label{class_ardu_forge_1_1_c_c1101_afbec2b2af6a5cd42f012bf047a584079a5154824fe9880450a6422c57a49e2ad5}} 
+S\+TX&In I\+D\+LE state\+: Enable TX. Perform calibration first if M\+C\+S\+M0.\+F\+S\+\_\+\+A\+U\+T\+O\+C\+A\+L01. If in RX state and C\+CA is enabled\+: Only go to TX if channel is clear. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SIDLE@{SIDLE}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!SIDLE@{SIDLE}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_afbec2b2af6a5cd42f012bf047a584079a61d4eefc6229b8a6fba4460b97dce28d}\label{class_ardu_forge_1_1_c_c1101_afbec2b2af6a5cd42f012bf047a584079a61d4eefc6229b8a6fba4460b97dce28d}} 
+S\+I\+D\+LE&Exit R\+X/\+TX, turn off frequency synthesizer and exit Wake-\/\+On-\/\+Radio mode if applicable. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SAFC@{SAFC}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!SAFC@{SAFC}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_afbec2b2af6a5cd42f012bf047a584079ae614086eb335bde9792b0cf87d2fbc41}\label{class_ardu_forge_1_1_c_c1101_afbec2b2af6a5cd42f012bf047a584079ae614086eb335bde9792b0cf87d2fbc41}} 
+S\+A\+FC&Perform A\+FC adjustment of the frequency synthesizer. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SWOR@{SWOR}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!SWOR@{SWOR}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_afbec2b2af6a5cd42f012bf047a584079a3234c367a6aa2d2db81524bf918c7921}\label{class_ardu_forge_1_1_c_c1101_afbec2b2af6a5cd42f012bf047a584079a3234c367a6aa2d2db81524bf918c7921}} 
+S\+W\+OR&Start automatic RX polling sequence (Wake-\/on-\/\+Radio) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SPWD@{SPWD}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!SPWD@{SPWD}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_afbec2b2af6a5cd42f012bf047a584079abbfba12b618748fdccb9cc21ea6273c8}\label{class_ardu_forge_1_1_c_c1101_afbec2b2af6a5cd42f012bf047a584079abbfba12b618748fdccb9cc21ea6273c8}} 
+S\+P\+WD&Enter power down mode when Csn goes high. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SFRX@{SFRX}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!SFRX@{SFRX}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_afbec2b2af6a5cd42f012bf047a584079a2667f7627aac202b2cfc1fcbfb6cface}\label{class_ardu_forge_1_1_c_c1101_afbec2b2af6a5cd42f012bf047a584079a2667f7627aac202b2cfc1fcbfb6cface}} 
+S\+F\+RX&Flush the RX F\+I\+FO buffer. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SFTX@{SFTX}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!SFTX@{SFTX}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_afbec2b2af6a5cd42f012bf047a584079a7706b0a2c875d46c411480dea95deb86}\label{class_ardu_forge_1_1_c_c1101_afbec2b2af6a5cd42f012bf047a584079a7706b0a2c875d46c411480dea95deb86}} 
+S\+F\+TX&Flush the TX F\+I\+FO buffer. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SWORRST@{SWORRST}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!SWORRST@{SWORRST}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_afbec2b2af6a5cd42f012bf047a584079a39ac595a6811085d49b87ddc8d496bfa}\label{class_ardu_forge_1_1_c_c1101_afbec2b2af6a5cd42f012bf047a584079a39ac595a6811085d49b87ddc8d496bfa}} 
+S\+W\+O\+R\+R\+ST&Reset real time clock. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SNOP@{SNOP}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!SNOP@{SNOP}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_afbec2b2af6a5cd42f012bf047a584079ac8d1f66efd01df40b51468afbf5af166}\label{class_ardu_forge_1_1_c_c1101_afbec2b2af6a5cd42f012bf047a584079ac8d1f66efd01df40b51468afbf5af166}} 
+S\+N\+OP&No operation. May be used to pad strobe commands to two I\+N\+T8\+Us for simpler software. \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0}\label{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0}} 
+\index{ArduForge::CC1101@{ArduForge::CC1101}!Config@{Config}}
+\index{Config@{Config}!ArduForge::CC1101@{ArduForge::CC1101}}
+\doxysubsubsection{\texorpdfstring{Config}{Config}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0}{Ardu\+Forge\+::\+C\+C1101\+::\+Config}} \+: uint8\+\_\+t}
+
+
+
+Enumeration of the \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101}{C\+C1101}}\textquotesingle{}s config registers. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{IOCFG2@{IOCFG2}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!IOCFG2@{IOCFG2}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a2a7b7cfc69ab213cd90c01337cb7b559}\label{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a2a7b7cfc69ab213cd90c01337cb7b559}} 
+I\+O\+C\+F\+G2&G\+D\+O2 output pin configuration. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{IOCFG1@{IOCFG1}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!IOCFG1@{IOCFG1}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a9daeb0afd930e06b3a4d5087c5d5b740}\label{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a9daeb0afd930e06b3a4d5087c5d5b740}} 
+I\+O\+C\+F\+G1&G\+D\+O1 output pin configuration. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{IOCFG0@{IOCFG0}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!IOCFG0@{IOCFG0}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a62f582cf569b9b9cc1c04bae56b605b0}\label{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a62f582cf569b9b9cc1c04bae56b605b0}} 
+I\+O\+C\+F\+G0&G\+D\+O2 output pin configuration. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FIFOTHR@{FIFOTHR}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!FIFOTHR@{FIFOTHR}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0ae28ece93f8e8ec5e7a4c176df312eca3}\label{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0ae28ece93f8e8ec5e7a4c176df312eca3}} 
+F\+I\+F\+O\+T\+HR&RX F\+I\+FO and TX F\+I\+FO threshold. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SYNC1@{SYNC1}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!SYNC1@{SYNC1}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a84efe79725376d6d9f24bfc6d990dd31}\label{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a84efe79725376d6d9f24bfc6d990dd31}} 
+S\+Y\+N\+C1&Sync word, high I\+N\+T8U. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SYNC0@{SYNC0}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!SYNC0@{SYNC0}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a9be36cc24d9fdd574a4c62c61540cece}\label{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a9be36cc24d9fdd574a4c62c61540cece}} 
+S\+Y\+N\+C0&Sync word, low I\+N\+T8U. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PKTLEN@{PKTLEN}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!PKTLEN@{PKTLEN}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a289a9a3b95d23011aaa12b9c87b52de7}\label{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a289a9a3b95d23011aaa12b9c87b52de7}} 
+P\+K\+T\+L\+EN&Packet length. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PKTCTRL1@{PKTCTRL1}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!PKTCTRL1@{PKTCTRL1}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a3d64adc5db6d56f5fc3e00f5f1c91ec7}\label{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a3d64adc5db6d56f5fc3e00f5f1c91ec7}} 
+P\+K\+T\+C\+T\+R\+L1&Packet automation control. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PKTCTRL0@{PKTCTRL0}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!PKTCTRL0@{PKTCTRL0}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a2d61c413ad086bdf74b7bdfb18ce8f17}\label{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a2d61c413ad086bdf74b7bdfb18ce8f17}} 
+P\+K\+T\+C\+T\+R\+L0&Packet automation control. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ADDR@{ADDR}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!ADDR@{ADDR}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0ace6e03444e23255d89422d944b703737}\label{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0ace6e03444e23255d89422d944b703737}} 
+A\+D\+DR&Device Address. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CHANNR@{CHANNR}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!CHANNR@{CHANNR}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0ad8aca99ef2e14c6255ee7d128dc451ff}\label{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0ad8aca99ef2e14c6255ee7d128dc451ff}} 
+C\+H\+A\+N\+NR&Channel number. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FSCTRL1@{FSCTRL1}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!FSCTRL1@{FSCTRL1}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a161e4912b63966ff357440c7f1ed8896}\label{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a161e4912b63966ff357440c7f1ed8896}} 
+F\+S\+C\+T\+R\+L1&Frequency synthesizer control. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FSCTRL0@{FSCTRL0}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!FSCTRL0@{FSCTRL0}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a7cd74684ea8f90a8b7622265e139d854}\label{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a7cd74684ea8f90a8b7622265e139d854}} 
+F\+S\+C\+T\+R\+L0&Frequency synthesizer control. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FREQ2@{FREQ2}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!FREQ2@{FREQ2}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a676609c34d8a02d4e8cd049d2f14a9f8}\label{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a676609c34d8a02d4e8cd049d2f14a9f8}} 
+F\+R\+E\+Q2&Frequency control word, high I\+N\+T8U. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FREQ1@{FREQ1}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!FREQ1@{FREQ1}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0af86cff8a218a5955db6e96632135c6b5}\label{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0af86cff8a218a5955db6e96632135c6b5}} 
+F\+R\+E\+Q1&Frequency control word, middle I\+N\+T8U. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FREQ0@{FREQ0}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!FREQ0@{FREQ0}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a680784ce4ac759c2e29588844c85b0c0}\label{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a680784ce4ac759c2e29588844c85b0c0}} 
+F\+R\+E\+Q0&Frequency control word, low I\+N\+T8U. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MDMCFG4@{MDMCFG4}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!MDMCFG4@{MDMCFG4}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a5dbb3d5c999acdcb07deae145f3cf9da}\label{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a5dbb3d5c999acdcb07deae145f3cf9da}} 
+M\+D\+M\+C\+F\+G4&Modem configuration. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MDMCFG3@{MDMCFG3}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!MDMCFG3@{MDMCFG3}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0ad62cb9b95400a4a62498ee24649e97b4}\label{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0ad62cb9b95400a4a62498ee24649e97b4}} 
+M\+D\+M\+C\+F\+G3&Modem configuration. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MDMCFG2@{MDMCFG2}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!MDMCFG2@{MDMCFG2}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0ad01e5deade4b6f1ebaa7759434772ab2}\label{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0ad01e5deade4b6f1ebaa7759434772ab2}} 
+M\+D\+M\+C\+F\+G2&Modem configuration. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MDMCFG1@{MDMCFG1}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!MDMCFG1@{MDMCFG1}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a82a373c5744daf77144057acff69eacb}\label{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a82a373c5744daf77144057acff69eacb}} 
+M\+D\+M\+C\+F\+G1&Modem configuration. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MDMCFG0@{MDMCFG0}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!MDMCFG0@{MDMCFG0}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0af30144d7c8745090af6960fa52b66f68}\label{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0af30144d7c8745090af6960fa52b66f68}} 
+M\+D\+M\+C\+F\+G0&Modem configuration. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DEVIATN@{DEVIATN}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!DEVIATN@{DEVIATN}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a41036387131d1808b37117a7a88845d6}\label{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a41036387131d1808b37117a7a88845d6}} 
+D\+E\+V\+I\+A\+TN&Modem deviation setting. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MCSM2@{MCSM2}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!MCSM2@{MCSM2}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0afff1d88eb4802521d1c3174c074838ce}\label{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0afff1d88eb4802521d1c3174c074838ce}} 
+M\+C\+S\+M2&Main radio Control State Machine configuration. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MCSM1@{MCSM1}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!MCSM1@{MCSM1}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a63420d4a709d7976b0eab604a57764e0}\label{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a63420d4a709d7976b0eab604a57764e0}} 
+M\+C\+S\+M1&Main Radio Control State Machine configuration. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MCSM0@{MCSM0}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!MCSM0@{MCSM0}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a5cf7914177770c9a6120258e6288c638}\label{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a5cf7914177770c9a6120258e6288c638}} 
+M\+C\+S\+M0&Main Radio Control State machine configuration. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FOCCFG@{FOCCFG}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!FOCCFG@{FOCCFG}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a6981e2db3b2231b83cb281d60e318b30}\label{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a6981e2db3b2231b83cb281d60e318b30}} 
+F\+O\+C\+C\+FG&Frequency Offset Compensation configuration. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BSCFG@{BSCFG}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!BSCFG@{BSCFG}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0ab662865ee75fc5e4c07d2d58a221e85d}\label{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0ab662865ee75fc5e4c07d2d58a221e85d}} 
+B\+S\+C\+FG&Bit Synchronization configuration. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AGCCTRL2@{AGCCTRL2}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!AGCCTRL2@{AGCCTRL2}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a2af6a4fc1fe85e1a484026f8113c3642}\label{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a2af6a4fc1fe85e1a484026f8113c3642}} 
+A\+G\+C\+C\+T\+R\+L2&A\+GC control. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AGCCTRL1@{AGCCTRL1}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!AGCCTRL1@{AGCCTRL1}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0aabc3cd4a529ca61681406bdf7fc8f84f}\label{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0aabc3cd4a529ca61681406bdf7fc8f84f}} 
+A\+G\+C\+C\+T\+R\+L1&A\+GC control. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AGCCTRL0@{AGCCTRL0}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!AGCCTRL0@{AGCCTRL0}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0ac23694285afa8d2494820fe7671df67a}\label{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0ac23694285afa8d2494820fe7671df67a}} 
+A\+G\+C\+C\+T\+R\+L0&A\+GC control. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{WOREVT1@{WOREVT1}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!WOREVT1@{WOREVT1}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a56c8027ba97ac12d5e0db46540d05240}\label{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a56c8027ba97ac12d5e0db46540d05240}} 
+W\+O\+R\+E\+V\+T1&High I\+N\+T8U Event 0 timeout. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{WOREVT0@{WOREVT0}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!WOREVT0@{WOREVT0}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0ae9b8aac08d992c83d1e1db9da1eacb5c}\label{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0ae9b8aac08d992c83d1e1db9da1eacb5c}} 
+W\+O\+R\+E\+V\+T0&Low I\+N\+T8U Event 0 timeout. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{WORCTRL@{WORCTRL}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!WORCTRL@{WORCTRL}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0aa26873fa64fdf04aee34efbea41290bb}\label{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0aa26873fa64fdf04aee34efbea41290bb}} 
+W\+O\+R\+C\+T\+RL&Wake On Radio Control. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FREND1@{FREND1}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!FREND1@{FREND1}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a136d23e5658fd8e4f9230ac4526eaea4}\label{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a136d23e5658fd8e4f9230ac4526eaea4}} 
+F\+R\+E\+N\+D1&Front end RX configuration. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FREND0@{FREND0}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!FREND0@{FREND0}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0ade4c32ea45040c4a486a806b099fb478}\label{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0ade4c32ea45040c4a486a806b099fb478}} 
+F\+R\+E\+N\+D0&Front end TX configuration. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FSCAL3@{FSCAL3}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!FSCAL3@{FSCAL3}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0af6610dafcb935411873f532cf5bca582}\label{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0af6610dafcb935411873f532cf5bca582}} 
+F\+S\+C\+A\+L3&Frequency synthesizer calibration. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FSCAL2@{FSCAL2}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!FSCAL2@{FSCAL2}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a3b269731ce9da68245f37d5bd59cfd66}\label{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a3b269731ce9da68245f37d5bd59cfd66}} 
+F\+S\+C\+A\+L2&Frequency synthesizer calibration. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FSCAL1@{FSCAL1}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!FSCAL1@{FSCAL1}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0acceb434a33033fe598705e9fdbda9dff}\label{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0acceb434a33033fe598705e9fdbda9dff}} 
+F\+S\+C\+A\+L1&Frequency synthesizer calibration. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FSCAL0@{FSCAL0}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!FSCAL0@{FSCAL0}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a9211a1bf2db9e5ddc9cf3c702c4db02d}\label{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a9211a1bf2db9e5ddc9cf3c702c4db02d}} 
+F\+S\+C\+A\+L0&Frequency synthesizer calibration. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RCCTRL1@{RCCTRL1}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!RCCTRL1@{RCCTRL1}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a0890bbd8cfb77966cfafc5a04640c40b}\label{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a0890bbd8cfb77966cfafc5a04640c40b}} 
+R\+C\+C\+T\+R\+L1&RC oscillator configuration. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RCCTRL0@{RCCTRL0}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!RCCTRL0@{RCCTRL0}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a31edcb92307f118dd4d3c84893f907ab}\label{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a31edcb92307f118dd4d3c84893f907ab}} 
+R\+C\+C\+T\+R\+L0&RC oscillator configuration. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FSTEST@{FSTEST}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!FSTEST@{FSTEST}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a4d508345de08db0d35f457359f9ba8e9}\label{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a4d508345de08db0d35f457359f9ba8e9}} 
+F\+S\+T\+E\+ST&Frequency synthesizer calibration control. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PTESt@{PTESt}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!PTESt@{PTESt}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0ae35b66c777b3e124f415ab0dfda8d670}\label{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0ae35b66c777b3e124f415ab0dfda8d670}} 
+P\+T\+E\+St&Production test. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AGCTEST@{AGCTEST}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!AGCTEST@{AGCTEST}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a4441c78b188e4d302188a1ba9a70a6dc}\label{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a4441c78b188e4d302188a1ba9a70a6dc}} 
+A\+G\+C\+T\+E\+ST&A\+GC test. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TEST2@{TEST2}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!TEST2@{TEST2}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0ade19d0b614d1100ab4d759913b957d02}\label{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0ade19d0b614d1100ab4d759913b957d02}} 
+T\+E\+S\+T2&Various test settings. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TEST1@{TEST1}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!TEST1@{TEST1}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0aa0a5c0510b86181fb32dfc95460cac92}\label{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0aa0a5c0510b86181fb32dfc95460cac92}} 
+T\+E\+S\+T1&Various test settings. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TEST0@{TEST0}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!TEST0@{TEST0}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a8f95f15cc742f1b2933d1cf14dc0aaa6}\label{class_ardu_forge_1_1_c_c1101_a9ad1acc89783bdbe131be8599e3833d0a8f95f15cc742f1b2933d1cf14dc0aaa6}} 
+T\+E\+S\+T0&Various test settings. \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a0a53f2f1e66fbe0736706749aeb1fc6a}\label{class_ardu_forge_1_1_c_c1101_a0a53f2f1e66fbe0736706749aeb1fc6a}} 
+\index{ArduForge::CC1101@{ArduForge::CC1101}!Error@{Error}}
+\index{Error@{Error}!ArduForge::CC1101@{ArduForge::CC1101}}
+\doxysubsubsection{\texorpdfstring{Error}{Error}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a0a53f2f1e66fbe0736706749aeb1fc6a}{Ardu\+Forge\+::\+C\+C1101\+::\+Error}} \+: uint8\+\_\+t}
+
+
+
+Definition of errors that may occur. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NO\_ERROR@{NO\_ERROR}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!NO\_ERROR@{NO\_ERROR}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a0a53f2f1e66fbe0736706749aeb1fc6aadb823de5588b494efe775940f94c50fe}\label{class_ardu_forge_1_1_c_c1101_a0a53f2f1e66fbe0736706749aeb1fc6aadb823de5588b494efe775940f94c50fe}} 
+N\+O\+\_\+\+E\+R\+R\+OR&No error occurred. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{INVALID\_DEVICE\_ADR@{INVALID\_DEVICE\_ADR}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!INVALID\_DEVICE\_ADR@{INVALID\_DEVICE\_ADR}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a0a53f2f1e66fbe0736706749aeb1fc6aa59ca2bb19a3f52d3c72c82ffb88caa7b}\label{class_ardu_forge_1_1_c_c1101_a0a53f2f1e66fbe0736706749aeb1fc6aa59ca2bb19a3f52d3c72c82ffb88caa7b}} 
+I\+N\+V\+A\+L\+I\+D\+\_\+\+D\+E\+V\+I\+C\+E\+\_\+\+A\+DR&Device address invalid (0x00 and 0x\+FF reserved for broadcast) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VALUE\_OUT\_OF\_BOUNDS@{VALUE\_OUT\_OF\_BOUNDS}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!VALUE\_OUT\_OF\_BOUNDS@{VALUE\_OUT\_OF\_BOUNDS}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a0a53f2f1e66fbe0736706749aeb1fc6aa4dd00079cf14bede528dea534b04731a}\label{class_ardu_forge_1_1_c_c1101_a0a53f2f1e66fbe0736706749aeb1fc6aa4dd00079cf14bede528dea534b04731a}} 
+V\+A\+L\+U\+E\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+B\+O\+U\+N\+DS&Invalid value specified. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NULLPTR\_ERROR@{NULLPTR\_ERROR}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!NULLPTR\_ERROR@{NULLPTR\_ERROR}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a0a53f2f1e66fbe0736706749aeb1fc6aaf97dbcdec82be4170a506478507ec711}\label{class_ardu_forge_1_1_c_c1101_a0a53f2f1e66fbe0736706749aeb1fc6aaf97dbcdec82be4170a506478507ec711}} 
+N\+U\+L\+L\+P\+T\+R\+\_\+\+E\+R\+R\+OR&Nullpointer error. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RECEIVED\_OVERSIZED\_PACKAGE@{RECEIVED\_OVERSIZED\_PACKAGE}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!RECEIVED\_OVERSIZED\_PACKAGE@{RECEIVED\_OVERSIZED\_PACKAGE}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a0a53f2f1e66fbe0736706749aeb1fc6aa2128219ffdfb3a2ebb22c0b102947780}\label{class_ardu_forge_1_1_c_c1101_a0a53f2f1e66fbe0736706749aeb1fc6aa2128219ffdfb3a2ebb22c0b102947780}} 
+R\+E\+C\+E\+I\+V\+E\+D\+\_\+\+O\+V\+E\+R\+S\+I\+Z\+E\+D\+\_\+\+P\+A\+C\+K\+A\+GE&Received package size exceeds configuration. \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_af926039bbcd26b1e138a147ff73ab4e3}\label{class_ardu_forge_1_1_c_c1101_af926039bbcd26b1e138a147ff73ab4e3}} 
+\index{ArduForge::CC1101@{ArduForge::CC1101}!Fifo@{Fifo}}
+\index{Fifo@{Fifo}!ArduForge::CC1101@{ArduForge::CC1101}}
+\doxysubsubsection{\texorpdfstring{Fifo}{Fifo}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_af926039bbcd26b1e138a147ff73ab4e3}{Ardu\+Forge\+::\+C\+C1101\+::\+Fifo}} \+: uint8\+\_\+t}
+
+
+
+F\+I\+FO access definitions (single or burst) 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{WRITE\_BURST@{WRITE\_BURST}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!WRITE\_BURST@{WRITE\_BURST}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_af926039bbcd26b1e138a147ff73ab4e3ad4ca6669f1bcabfa737c7aa7668346af}\label{class_ardu_forge_1_1_c_c1101_af926039bbcd26b1e138a147ff73ab4e3ad4ca6669f1bcabfa737c7aa7668346af}} 
+W\+R\+I\+T\+E\+\_\+\+B\+U\+R\+ST&burst write \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{READ\_SINGLE@{READ\_SINGLE}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!READ\_SINGLE@{READ\_SINGLE}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_af926039bbcd26b1e138a147ff73ab4e3af99be65c8f8bc9ac296ec8e205ce6e8a}\label{class_ardu_forge_1_1_c_c1101_af926039bbcd26b1e138a147ff73ab4e3af99be65c8f8bc9ac296ec8e205ce6e8a}} 
+R\+E\+A\+D\+\_\+\+S\+I\+N\+G\+LE&single byte read \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{READ\_BURST@{READ\_BURST}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!READ\_BURST@{READ\_BURST}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_af926039bbcd26b1e138a147ff73ab4e3a90e7941dccd205c31e62cdb7bbcea1d6}\label{class_ardu_forge_1_1_c_c1101_af926039bbcd26b1e138a147ff73ab4e3a90e7941dccd205c31e62cdb7bbcea1d6}} 
+R\+E\+A\+D\+\_\+\+B\+U\+R\+ST&burst read \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_aea807d714536af0eec312a20ced3bd64}\label{class_ardu_forge_1_1_c_c1101_aea807d714536af0eec312a20ced3bd64}} 
+\index{ArduForge::CC1101@{ArduForge::CC1101}!Frequency@{Frequency}}
+\index{Frequency@{Frequency}!ArduForge::CC1101@{ArduForge::CC1101}}
+\doxysubsubsection{\texorpdfstring{Frequency}{Frequency}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_aea807d714536af0eec312a20ced3bd64}{Ardu\+Forge\+::\+C\+C1101\+::\+Frequency}} \+: uint8\+\_\+t}
+
+
+
+Frequency control enumerates. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{F\_915@{F\_915}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!F\_915@{F\_915}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_aea807d714536af0eec312a20ced3bd64ab30f1aed529f7a92128648fdb0118a97}\label{class_ardu_forge_1_1_c_c1101_aea807d714536af0eec312a20ced3bd64ab30f1aed529f7a92128648fdb0118a97}} 
+F\+\_\+915&Frequency 915 M\+Hz. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{F\_433@{F\_433}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!F\_433@{F\_433}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_aea807d714536af0eec312a20ced3bd64ae50f5fdb0c7e623d22243ab10363bbd7}\label{class_ardu_forge_1_1_c_c1101_aea807d714536af0eec312a20ced3bd64ae50f5fdb0c7e623d22243ab10363bbd7}} 
+F\+\_\+433&Frequency 433 M\+Hz. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{F\_868@{F\_868}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!F\_868@{F\_868}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_aea807d714536af0eec312a20ced3bd64a3d642c9654ae57f6435a33c40cc5c204}\label{class_ardu_forge_1_1_c_c1101_aea807d714536af0eec312a20ced3bd64a3d642c9654ae57f6435a33c40cc5c204}} 
+F\+\_\+868&Frequency 868 M\+Hz. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{F2\_868@{F2\_868}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!F2\_868@{F2\_868}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_aea807d714536af0eec312a20ced3bd64a997606a60916ce56593fd51743ab826b}\label{class_ardu_forge_1_1_c_c1101_aea807d714536af0eec312a20ced3bd64a997606a60916ce56593fd51743ab826b}} 
+F2\+\_\+868&F2 config for 868 M\+Hz. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{F1\_868@{F1\_868}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!F1\_868@{F1\_868}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_aea807d714536af0eec312a20ced3bd64a12f39dc0b246b05fefc115e87b89ffef}\label{class_ardu_forge_1_1_c_c1101_aea807d714536af0eec312a20ced3bd64a12f39dc0b246b05fefc115e87b89ffef}} 
+F1\+\_\+868&F1 config for 868 M\+Hz. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{F0\_868@{F0\_868}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!F0\_868@{F0\_868}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_aea807d714536af0eec312a20ced3bd64a6fefe026ce8a155a69e9608fdda20cd2}\label{class_ardu_forge_1_1_c_c1101_aea807d714536af0eec312a20ced3bd64a6fefe026ce8a155a69e9608fdda20cd2}} 
+F0\+\_\+868&F0 config for 868 M\+Hz. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{F2\_915@{F2\_915}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!F2\_915@{F2\_915}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_aea807d714536af0eec312a20ced3bd64ac54a88ba449e411b692cb0f915576276}\label{class_ardu_forge_1_1_c_c1101_aea807d714536af0eec312a20ced3bd64ac54a88ba449e411b692cb0f915576276}} 
+F2\+\_\+915&F2 config for 915 M\+Hz. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{F1\_915@{F1\_915}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!F1\_915@{F1\_915}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_aea807d714536af0eec312a20ced3bd64a31b7586c0f86c27ba24e6b1b7b3afc65}\label{class_ardu_forge_1_1_c_c1101_aea807d714536af0eec312a20ced3bd64a31b7586c0f86c27ba24e6b1b7b3afc65}} 
+F1\+\_\+915&F1 config for 915 M\+Hz. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{F0\_915@{F0\_915}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!F0\_915@{F0\_915}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_aea807d714536af0eec312a20ced3bd64a3733a919ec31d59147c315c17447e7ad}\label{class_ardu_forge_1_1_c_c1101_aea807d714536af0eec312a20ced3bd64a3733a919ec31d59147c315c17447e7ad}} 
+F0\+\_\+915&F0 config for 915 M\+Hz. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{F2\_433@{F2\_433}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!F2\_433@{F2\_433}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_aea807d714536af0eec312a20ced3bd64a892edeb43d5f17c1e643ce8aaf15d629}\label{class_ardu_forge_1_1_c_c1101_aea807d714536af0eec312a20ced3bd64a892edeb43d5f17c1e643ce8aaf15d629}} 
+F2\+\_\+433&F2 config for 433 M\+Hz. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{F1\_433@{F1\_433}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!F1\_433@{F1\_433}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_aea807d714536af0eec312a20ced3bd64aaabd3d59469e12cb9b6a9d5d32054930}\label{class_ardu_forge_1_1_c_c1101_aea807d714536af0eec312a20ced3bd64aaabd3d59469e12cb9b6a9d5d32054930}} 
+F1\+\_\+433&F1 config for 433 M\+Hz. \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_afcb259f3a3c5649d5da46fa5b4ee97fc}\label{class_ardu_forge_1_1_c_c1101_afcb259f3a3c5649d5da46fa5b4ee97fc}} 
+\index{ArduForge::CC1101@{ArduForge::CC1101}!Reg@{Reg}}
+\index{Reg@{Reg}!ArduForge::CC1101@{ArduForge::CC1101}}
+\doxysubsubsection{\texorpdfstring{Reg}{Reg}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_afcb259f3a3c5649d5da46fa5b4ee97fc}{Ardu\+Forge\+::\+C\+C1101\+::\+Reg}} \+: uint8\+\_\+t}
+
+
+
+Register definitions. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PARTNUM@{PARTNUM}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!PARTNUM@{PARTNUM}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_afcb259f3a3c5649d5da46fa5b4ee97fca82c4e72bea7e6207ac39e1b03c3770d5}\label{class_ardu_forge_1_1_c_c1101_afcb259f3a3c5649d5da46fa5b4ee97fca82c4e72bea7e6207ac39e1b03c3770d5}} 
+P\+A\+R\+T\+N\+UM&Part number for \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101}{C\+C1101}}. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VERSION@{VERSION}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!VERSION@{VERSION}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_afcb259f3a3c5649d5da46fa5b4ee97fca80ba8d7dfdf22eed4df84da600945ad2}\label{class_ardu_forge_1_1_c_c1101_afcb259f3a3c5649d5da46fa5b4ee97fca80ba8d7dfdf22eed4df84da600945ad2}} 
+V\+E\+R\+S\+I\+ON&Current version number. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FREQEST@{FREQEST}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!FREQEST@{FREQEST}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_afcb259f3a3c5649d5da46fa5b4ee97fca366dfc640e96363025303d5354450d26}\label{class_ardu_forge_1_1_c_c1101_afcb259f3a3c5649d5da46fa5b4ee97fca366dfc640e96363025303d5354450d26}} 
+F\+R\+E\+Q\+E\+ST&Frequency offset estimate. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LQI@{LQI}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!LQI@{LQI}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_afcb259f3a3c5649d5da46fa5b4ee97fca3500b24544bd3bb2d690b18ab170ba85}\label{class_ardu_forge_1_1_c_c1101_afcb259f3a3c5649d5da46fa5b4ee97fca3500b24544bd3bb2d690b18ab170ba85}} 
+L\+QI&Demodulator estimate for Link Quality. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RSSI@{RSSI}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!RSSI@{RSSI}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_afcb259f3a3c5649d5da46fa5b4ee97fca19c15b739f03bf9258fb08df67b310b6}\label{class_ardu_forge_1_1_c_c1101_afcb259f3a3c5649d5da46fa5b4ee97fca19c15b739f03bf9258fb08df67b310b6}} 
+R\+S\+SI&Received signal strength indication. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MARCSTATE@{MARCSTATE}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!MARCSTATE@{MARCSTATE}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_afcb259f3a3c5649d5da46fa5b4ee97fca9ffe0b65360ffe763379e73c981a862a}\label{class_ardu_forge_1_1_c_c1101_afcb259f3a3c5649d5da46fa5b4ee97fca9ffe0b65360ffe763379e73c981a862a}} 
+M\+A\+R\+C\+S\+T\+A\+TE&Control state machine state (Register used primarily for test purposes) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{WORTIME1@{WORTIME1}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!WORTIME1@{WORTIME1}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_afcb259f3a3c5649d5da46fa5b4ee97fca9cc7d20e89ce82fd0091c89b4871cc7c}\label{class_ardu_forge_1_1_c_c1101_afcb259f3a3c5649d5da46fa5b4ee97fca9cc7d20e89ce82fd0091c89b4871cc7c}} 
+W\+O\+R\+T\+I\+M\+E1&wake-\/on-\/radio (W\+OR) time (High byte) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{WORTIME0@{WORTIME0}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!WORTIME0@{WORTIME0}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_afcb259f3a3c5649d5da46fa5b4ee97fca2b29bc6027ac31abc855b9d7b99d3779}\label{class_ardu_forge_1_1_c_c1101_afcb259f3a3c5649d5da46fa5b4ee97fca2b29bc6027ac31abc855b9d7b99d3779}} 
+W\+O\+R\+T\+I\+M\+E0&wake on radio (W\+OR) time (Low byte) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PKTSTATUS@{PKTSTATUS}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!PKTSTATUS@{PKTSTATUS}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_afcb259f3a3c5649d5da46fa5b4ee97fcae65921cc680ed6630f7ab179f727949a}\label{class_ardu_forge_1_1_c_c1101_afcb259f3a3c5649d5da46fa5b4ee97fcae65921cc680ed6630f7ab179f727949a}} 
+P\+K\+T\+S\+T\+A\+T\+US&Current GD=x status and packet status. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VCO\_VC\_DAC@{VCO\_VC\_DAC}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!VCO\_VC\_DAC@{VCO\_VC\_DAC}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_afcb259f3a3c5649d5da46fa5b4ee97fca207774f709533debf458bdce34b82629}\label{class_ardu_forge_1_1_c_c1101_afcb259f3a3c5649d5da46fa5b4ee97fca207774f709533debf458bdce34b82629}} 
+V\+C\+O\+\_\+\+V\+C\+\_\+\+D\+AC&Current setting from P\+LL calibration module. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TXBYTES@{TXBYTES}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!TXBYTES@{TXBYTES}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_afcb259f3a3c5649d5da46fa5b4ee97fcafc02e81cd696344c4010fd847ca6178e}\label{class_ardu_forge_1_1_c_c1101_afcb259f3a3c5649d5da46fa5b4ee97fcafc02e81cd696344c4010fd847ca6178e}} 
+T\+X\+B\+Y\+T\+ES&Underflow and number of bytes in the TX F\+I\+FO. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RXBYTES@{RXBYTES}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!RXBYTES@{RXBYTES}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_afcb259f3a3c5649d5da46fa5b4ee97fcad02bbe8da20e760aa646f1162439fd4b}\label{class_ardu_forge_1_1_c_c1101_afcb259f3a3c5649d5da46fa5b4ee97fcad02bbe8da20e760aa646f1162439fd4b}} 
+R\+X\+B\+Y\+T\+ES&Overflow and number of bytes in the RX F\+I\+FO. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RCCTRL1\_STATUS@{RCCTRL1\_STATUS}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!RCCTRL1\_STATUS@{RCCTRL1\_STATUS}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_afcb259f3a3c5649d5da46fa5b4ee97fca01632d2134828d65e53134d0f2e26386}\label{class_ardu_forge_1_1_c_c1101_afcb259f3a3c5649d5da46fa5b4ee97fca01632d2134828d65e53134d0f2e26386}} 
+R\+C\+C\+T\+R\+L1\+\_\+\+S\+T\+A\+T\+US&Last RC oscillator calibration result. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RCCTRL0\_STATUS@{RCCTRL0\_STATUS}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!RCCTRL0\_STATUS@{RCCTRL0\_STATUS}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_afcb259f3a3c5649d5da46fa5b4ee97fca161d012d40994a57963fa5906a652477}\label{class_ardu_forge_1_1_c_c1101_afcb259f3a3c5649d5da46fa5b4ee97fca161d012d40994a57963fa5906a652477}} 
+R\+C\+C\+T\+R\+L0\+\_\+\+S\+T\+A\+T\+US&Last RC oscillator calibration result. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PATABLE@{PATABLE}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!PATABLE@{PATABLE}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_afcb259f3a3c5649d5da46fa5b4ee97fcad29c4146028cd151dda88cb547e98eb1}\label{class_ardu_forge_1_1_c_c1101_afcb259f3a3c5649d5da46fa5b4ee97fcad29c4146028cd151dda88cb547e98eb1}} 
+P\+A\+T\+A\+B\+LE&Power control selection (Index into P\+A-\/\+Table) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TXFIFO@{TXFIFO}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!TXFIFO@{TXFIFO}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_afcb259f3a3c5649d5da46fa5b4ee97fcab8e7fe2b9db6f14515097045bfa5a438}\label{class_ardu_forge_1_1_c_c1101_afcb259f3a3c5649d5da46fa5b4ee97fcab8e7fe2b9db6f14515097045bfa5a438}} 
+T\+X\+F\+I\+FO&F\+I\+FO access. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RXFIFO@{RXFIFO}!ArduForge::CC1101@{ArduForge::CC1101}}\index{ArduForge::CC1101@{ArduForge::CC1101}!RXFIFO@{RXFIFO}}}\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_afcb259f3a3c5649d5da46fa5b4ee97fca137b36a213a10175c3956b84975234d2}\label{class_ardu_forge_1_1_c_c1101_afcb259f3a3c5649d5da46fa5b4ee97fca137b36a213a10175c3956b84975234d2}} 
+R\+X\+F\+I\+FO&F\+I\+FO access. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a2816afc3b1ec4d3b2c9ef2afa6ce5968}\label{class_ardu_forge_1_1_c_c1101_a2816afc3b1ec4d3b2c9ef2afa6ce5968}} 
+\index{ArduForge::CC1101@{ArduForge::CC1101}!begin@{begin}}
+\index{begin@{begin}!ArduForge::CC1101@{ArduForge::CC1101}}
+\doxysubsubsection{\texorpdfstring{begin()}{begin()}}
+{\footnotesize\ttfamily void Ardu\+Forge\+::\+C\+C1101\+::begin (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{Device\+Addr,  }\item[{uint8\+\_\+t}]{Gdo0 = {\ttfamily 2},  }\item[{uint8\+\_\+t}]{Freq = {\ttfamily \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_aea807d714536af0eec312a20ced3bd64ae50f5fdb0c7e623d22243ab10363bbd7}{F\+\_\+433}}},  }\item[{uint8\+\_\+t}]{Gdo2 = {\ttfamily 0x0},  }\item[{uint8\+\_\+t}]{Csn = {\ttfamily 10},  }\item[{uint8\+\_\+t}]{Mosi = {\ttfamily 11},  }\item[{uint8\+\_\+t}]{Miso = {\ttfamily 12},  }\item[{uint8\+\_\+t}]{Sck = {\ttfamily 13} }\end{DoxyParamCaption})}
+
+
+
+Starts communication with the \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101}{C\+C1101}} device. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Device\+Addr} & Address of the device use for package filtration. 0x00 and 0x\+FF are reserved for broadcasts. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Gdo0} & Gdo0 pin \\
+\hline
+\mbox{\texttt{ in}}  & {\em Freq} & Frequency to use. \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_aea807d714536af0eec312a20ced3bd64}{C\+C1101\+::\+Frequency}} 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Gdo2} & Gdo2 pin (not used in current implementation, set to 0) \\
+\hline
+\mbox{\texttt{ in}}  & {\em Csn} & Csn (aka SS) pin \\
+\hline
+\mbox{\texttt{ in}}  & {\em Mosi} & Master\textquotesingle{}s mosi (master output slave input) pin \\
+\hline
+\mbox{\texttt{ in}}  & {\em Miso} & Master\textquotesingle{}s miso (master input slave output) pin \\
+\hline
+\mbox{\texttt{ in}}  & {\em Sck} & Sck (clock) pin \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRemark}{Remarks}
+miso, mosi, sck and Csn (SS) pin are usually hardware specific. Make sure pin wiring matches your device. Default values are valid for Arduino. 
+\end{DoxyRemark}
+\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a4a834906730205063690d9fb90d3c3b0}\label{class_ardu_forge_1_1_c_c1101_a4a834906730205063690d9fb90d3c3b0}} 
+\index{ArduForge::CC1101@{ArduForge::CC1101}!broadcast@{broadcast}}
+\index{broadcast@{broadcast}!ArduForge::CC1101@{ArduForge::CC1101}}
+\doxysubsubsection{\texorpdfstring{broadcast()}{broadcast()}}
+{\footnotesize\ttfamily void Ardu\+Forge\+::\+C\+C1101\+::broadcast (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{p\+Data,  }\item[{uint8\+\_\+t}]{Size }\end{DoxyParamCaption})}
+
+
+
+Sends out a broadcast message. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em p\+Data} & Data to send. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Size} & Number of bytes to send. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a4e5106925723cdef083ca584554b549c}\label{class_ardu_forge_1_1_c_c1101_a4e5106925723cdef083ca584554b549c}} 
+\index{ArduForge::CC1101@{ArduForge::CC1101}!channel@{channel}}
+\index{channel@{channel}!ArduForge::CC1101@{ArduForge::CC1101}}
+\doxysubsubsection{\texorpdfstring{channel()}{channel()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Ardu\+Forge\+::\+C\+C1101\+::channel (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{Channel }\end{DoxyParamCaption})}
+
+
+
+Set device to new Channel. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Channel} & New channel number \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_aa094653ec9ab506791cc9cebcbc2a4aa}\label{class_ardu_forge_1_1_c_c1101_aa094653ec9ab506791cc9cebcbc2a4aa}} 
+\index{ArduForge::CC1101@{ArduForge::CC1101}!channel@{channel}}
+\index{channel@{channel}!ArduForge::CC1101@{ArduForge::CC1101}}
+\doxysubsubsection{\texorpdfstring{channel()}{channel()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily uint8\+\_\+t Ardu\+Forge\+::\+C\+C1101\+::channel (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Returns current channel number. 
+
+\begin{DoxyReturn}{Returns}
+Current channel number 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a21c0de9e877d6d1a4e678b8d6b14d2c5}\label{class_ardu_forge_1_1_c_c1101_a21c0de9e877d6d1a4e678b8d6b14d2c5}} 
+\index{ArduForge::CC1101@{ArduForge::CC1101}!dataAvailable@{dataAvailable}}
+\index{dataAvailable@{dataAvailable}!ArduForge::CC1101@{ArduForge::CC1101}}
+\doxysubsubsection{\texorpdfstring{dataAvailable()}{dataAvailable()}}
+{\footnotesize\ttfamily uint8\+\_\+t Ardu\+Forge\+::\+C\+C1101\+::data\+Available (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Returns number of bytes that have been received by the radio device. 
+
+\begin{DoxyReturn}{Returns}
+Number of bytes available 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a78aba8c3418e148480778479299c7fd1}\label{class_ardu_forge_1_1_c_c1101_a78aba8c3418e148480778479299c7fd1}} 
+\index{ArduForge::CC1101@{ArduForge::CC1101}!deviceAddress@{deviceAddress}}
+\index{deviceAddress@{deviceAddress}!ArduForge::CC1101@{ArduForge::CC1101}}
+\doxysubsubsection{\texorpdfstring{deviceAddress()}{deviceAddress()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Ardu\+Forge\+::\+C\+C1101\+::device\+Address (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{Addr }\end{DoxyParamCaption})}
+
+
+
+Set a new device address. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Addr} & New address. Must be in range from 0x01 to 0x\+FE \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_aa52d39a58e6499aecafc0610ec6bcb57}\label{class_ardu_forge_1_1_c_c1101_aa52d39a58e6499aecafc0610ec6bcb57}} 
+\index{ArduForge::CC1101@{ArduForge::CC1101}!deviceAddress@{deviceAddress}}
+\index{deviceAddress@{deviceAddress}!ArduForge::CC1101@{ArduForge::CC1101}}
+\doxysubsubsection{\texorpdfstring{deviceAddress()}{deviceAddress()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily uint8\+\_\+t Ardu\+Forge\+::\+C\+C1101\+::device\+Address (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns current device address. 
+
+\begin{DoxyReturn}{Returns}
+Current device address 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a57f5be8b6fb624d6cf440e1229f8f033}\label{class_ardu_forge_1_1_c_c1101_a57f5be8b6fb624d6cf440e1229f8f033}} 
+\index{ArduForge::CC1101@{ArduForge::CC1101}!lastError@{lastError}}
+\index{lastError@{lastError}!ArduForge::CC1101@{ArduForge::CC1101}}
+\doxysubsubsection{\texorpdfstring{lastError()}{lastError()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a0a53f2f1e66fbe0736706749aeb1fc6a}{C\+C1101\+::\+Error}} Ardu\+Forge\+::\+C\+C1101\+::last\+Error (\begin{DoxyParamCaption}\item[{bool}]{Clear = {\ttfamily true} }\end{DoxyParamCaption})}
+
+
+
+Returns last occurred error. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Clear} & Clear error after read? \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Last occurred error. 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_a0a53f2f1e66fbe0736706749aeb1fc6a}{C\+C1101\+::\+Error}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_ab2515570a645b1a5993c11c9fc090517}\label{class_ardu_forge_1_1_c_c1101_ab2515570a645b1a5993c11c9fc090517}} 
+\index{ArduForge::CC1101@{ArduForge::CC1101}!lqi@{lqi}}
+\index{lqi@{lqi}!ArduForge::CC1101@{ArduForge::CC1101}}
+\doxysubsubsection{\texorpdfstring{lqi()}{lqi()}}
+{\footnotesize\ttfamily uint8\+\_\+t Ardu\+Forge\+::\+C\+C1101\+::lqi (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Returns link quality indicator read from the respective register. 
+
+\begin{DoxyReturn}{Returns}
+Link quality indicator read from the respective register. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a2cd3a0af5ea0b3ae6cc42f3896c2cbaa}\label{class_ardu_forge_1_1_c_c1101_a2cd3a0af5ea0b3ae6cc42f3896c2cbaa}} 
+\index{ArduForge::CC1101@{ArduForge::CC1101}!outputPowerLevel@{outputPowerLevel}}
+\index{outputPowerLevel@{outputPowerLevel}!ArduForge::CC1101@{ArduForge::CC1101}}
+\doxysubsubsection{\texorpdfstring{outputPowerLevel()}{outputPowerLevel()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Ardu\+Forge\+::\+C\+C1101\+::output\+Power\+Level (\begin{DoxyParamCaption}\item[{int8\+\_\+t}]{d\+Bm }\end{DoxyParamCaption})}
+
+
+
+Set new output power level. Can be used to amplify or reduce radio strength. Valid values are in range -\/30 to 10. Unit is d\+Bm. Default is 0. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em d\+Bm} & Power amplification/reduction in d\+Bm. Valid range is -\/30 to 10. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_adb3d31304ab45b9f0b71a96996c9e955}\label{class_ardu_forge_1_1_c_c1101_adb3d31304ab45b9f0b71a96996c9e955}} 
+\index{ArduForge::CC1101@{ArduForge::CC1101}!outputPowerLevel@{outputPowerLevel}}
+\index{outputPowerLevel@{outputPowerLevel}!ArduForge::CC1101@{ArduForge::CC1101}}
+\doxysubsubsection{\texorpdfstring{outputPowerLevel()}{outputPowerLevel()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily int8\+\_\+t Ardu\+Forge\+::\+C\+C1101\+::output\+Power\+Level (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Returns current output power amplification/reduction in d\+Bm. 
+
+\begin{DoxyReturn}{Returns}
+Current output power amplification/reduction in d\+Bm 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_ae7cd7a001c2af60bc76e3a9213a47cc5}\label{class_ardu_forge_1_1_c_c1101_ae7cd7a001c2af60bc76e3a9213a47cc5}} 
+\index{ArduForge::CC1101@{ArduForge::CC1101}!partNumber@{partNumber}}
+\index{partNumber@{partNumber}!ArduForge::CC1101@{ArduForge::CC1101}}
+\doxysubsubsection{\texorpdfstring{partNumber()}{partNumber()}}
+{\footnotesize\ttfamily uint8\+\_\+t Ardu\+Forge\+::\+C\+C1101\+::part\+Number (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns the chip part number. 
+
+\begin{DoxyReturn}{Returns}
+Chip part number 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_ad38dd9319f4deb39f85c886307a4cc90}\label{class_ardu_forge_1_1_c_c1101_ad38dd9319f4deb39f85c886307a4cc90}} 
+\index{ArduForge::CC1101@{ArduForge::CC1101}!receiveData@{receiveData}}
+\index{receiveData@{receiveData}!ArduForge::CC1101@{ArduForge::CC1101}}
+\doxysubsubsection{\texorpdfstring{receiveData()}{receiveData()}}
+{\footnotesize\ttfamily uint8\+\_\+t Ardu\+Forge\+::\+C\+C1101\+::receive\+Data (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{p\+Data,  }\item[{uint8\+\_\+t $\ast$}]{p\+Receiver,  }\item[{uint8\+\_\+t $\ast$}]{p\+Sender,  }\item[{int8\+\_\+t $\ast$}]{p\+R\+S\+SI }\end{DoxyParamCaption})}
+
+
+
+Read received data. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em p\+Data} & Buffer which will store the data. Must not be nullptr. \\
+\hline
+\mbox{\texttt{ out}}  & {\em p\+Receiver} & Will store target address of the package. Can be nullptr. \\
+\hline
+\mbox{\texttt{ out}}  & {\em p\+Sender} & Will store address of the package\textquotesingle{}s originator. Can be nullptr. \\
+\hline
+\mbox{\texttt{ out}}  & {\em p\+R\+S\+SI} & Will store receiver signal strength indicator (R\+S\+SI) in d\+Bm for the received package. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of bytes read. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a318d86b4c56d4604bcd55a4abbf6083a}\label{class_ardu_forge_1_1_c_c1101_a318d86b4c56d4604bcd55a4abbf6083a}} 
+\index{ArduForge::CC1101@{ArduForge::CC1101}!regConfigSettings@{regConfigSettings}}
+\index{regConfigSettings@{regConfigSettings}!ArduForge::CC1101@{ArduForge::CC1101}}
+\doxysubsubsection{\texorpdfstring{regConfigSettings()}{regConfigSettings()}}
+{\footnotesize\ttfamily void Ardu\+Forge\+::\+C\+C1101\+::reg\+Config\+Settings (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{Freq }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Initializes chip configuration for a particular frequency. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Freq} & Frequency that will be used. Can Be Frequency\+::\+F\+\_\+915, Frequency\+::\+F433, or Frequency\+::\+F\+\_\+868 \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_ab11e2140ef4107a477fdc405b1cf7d93}\label{class_ardu_forge_1_1_c_c1101_ab11e2140ef4107a477fdc405b1cf7d93}} 
+\index{ArduForge::CC1101@{ArduForge::CC1101}!rssi@{rssi}}
+\index{rssi@{rssi}!ArduForge::CC1101@{ArduForge::CC1101}}
+\doxysubsubsection{\texorpdfstring{rssi()}{rssi()}}
+{\footnotesize\ttfamily int8\+\_\+t Ardu\+Forge\+::\+C\+C1101\+::rssi (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Returns receiver strength indicator read from the respective register and converted to d\+Bm. 
+
+\begin{DoxyReturn}{Returns}
+Current R\+S\+SI value in d\+Bm 
+\end{DoxyReturn}
+\begin{DoxyRemark}{Remarks}
+Reading from the register seems to be not very reliable. Better use the R\+S\+SI value returned by the C1101\+::receive\+Data method. 
+\end{DoxyRemark}
+\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_ac9a43736d4f21ed0b577e7acd43478f0}\label{class_ardu_forge_1_1_c_c1101_ac9a43736d4f21ed0b577e7acd43478f0}} 
+\index{ArduForge::CC1101@{ArduForge::CC1101}!rssiConvert@{rssiConvert}}
+\index{rssiConvert@{rssiConvert}!ArduForge::CC1101@{ArduForge::CC1101}}
+\doxysubsubsection{\texorpdfstring{rssiConvert()}{rssiConvert()}}
+{\footnotesize\ttfamily int8\+\_\+t Ardu\+Forge\+::\+C\+C1101\+::rssi\+Convert (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{Rssi\+Value\+Dec }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Converts Receiver signal strength indicator (R\+S\+SI) from decimal value (from register) to d\+Bm. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Rssi\+Value\+Dec} & Decimal R\+S\+SI value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+R\+S\+SI value in d\+Bm 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_ac8abbac67af31f8a8aff2110485f192f}\label{class_ardu_forge_1_1_c_c1101_ac8abbac67af31f8a8aff2110485f192f}} 
+\index{ArduForge::CC1101@{ArduForge::CC1101}!sendData@{sendData}}
+\index{sendData@{sendData}!ArduForge::CC1101@{ArduForge::CC1101}}
+\doxysubsubsection{\texorpdfstring{sendData()}{sendData()}}
+{\footnotesize\ttfamily void Ardu\+Forge\+::\+C\+C1101\+::send\+Data (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{Receiver,  }\item[{uint8\+\_\+t $\ast$}]{p\+Data,  }\item[{uint8\+\_\+t}]{Size }\end{DoxyParamCaption})}
+
+
+
+Send a data package to a particular device or use 0x00/0x\+FF for a broadcast message. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Receiver} & Address of receiving device \\
+\hline
+\mbox{\texttt{ in}}  & {\em p\+Data} & Data to send \\
+\hline
+\mbox{\texttt{ in}}  & {\em Size} & Number of bytes to send \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a835881588fc646b6d0cb9bbbcc9f90b7}\label{class_ardu_forge_1_1_c_c1101_a835881588fc646b6d0cb9bbbcc9f90b7}} 
+\index{ArduForge::CC1101@{ArduForge::CC1101}!spiReadReg@{spiReadReg}}
+\index{spiReadReg@{spiReadReg}!ArduForge::CC1101@{ArduForge::CC1101}}
+\doxysubsubsection{\texorpdfstring{spiReadReg()}{spiReadReg()}}
+{\footnotesize\ttfamily uint8\+\_\+t Ardu\+Forge\+::\+C\+C1101\+::spi\+Read\+Reg (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{Reg }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Read a single byte from a register. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Reg} & Register address. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Byte value of the specified register 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_ab7009ccc86a03d934f3c039d424be1a1}\label{class_ardu_forge_1_1_c_c1101_ab7009ccc86a03d934f3c039d424be1a1}} 
+\index{ArduForge::CC1101@{ArduForge::CC1101}!spiReadRegBurst@{spiReadRegBurst}}
+\index{spiReadRegBurst@{spiReadRegBurst}!ArduForge::CC1101@{ArduForge::CC1101}}
+\doxysubsubsection{\texorpdfstring{spiReadRegBurst()}{spiReadRegBurst()}}
+{\footnotesize\ttfamily void Ardu\+Forge\+::\+C\+C1101\+::spi\+Read\+Reg\+Burst (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{Reg,  }\item[{uint8\+\_\+t $\ast$}]{p\+Data,  }\item[{uint8\+\_\+t}]{Count }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Read values from a register in burst mode. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Reg} & Register address \\
+\hline
+\mbox{\texttt{ out}}  & {\em p\+Data} & Buffer where values will be stored. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Count} & Number of bytes to read \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a799324dc2173d98e54ee84a495b8ab5a}\label{class_ardu_forge_1_1_c_c1101_a799324dc2173d98e54ee84a495b8ab5a}} 
+\index{ArduForge::CC1101@{ArduForge::CC1101}!spiReadStatus@{spiReadStatus}}
+\index{spiReadStatus@{spiReadStatus}!ArduForge::CC1101@{ArduForge::CC1101}}
+\doxysubsubsection{\texorpdfstring{spiReadStatus()}{spiReadStatus()}}
+{\footnotesize\ttfamily uint8\+\_\+t Ardu\+Forge\+::\+C\+C1101\+::spi\+Read\+Status (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{Addr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Helper method to read F\+I\+FO status. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Addr} & F\+I\+FO address \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status value 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_acfc72b7381d7cb45cf770c9495e16506}\label{class_ardu_forge_1_1_c_c1101_acfc72b7381d7cb45cf770c9495e16506}} 
+\index{ArduForge::CC1101@{ArduForge::CC1101}!spiStrobe@{spiStrobe}}
+\index{spiStrobe@{spiStrobe}!ArduForge::CC1101@{ArduForge::CC1101}}
+\doxysubsubsection{\texorpdfstring{spiStrobe()}{spiStrobe()}}
+{\footnotesize\ttfamily void Ardu\+Forge\+::\+C\+C1101\+::spi\+Strobe (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{Cmd }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Sends a strobe command to the device. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Cmd} & Strobe command value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{class_ardu_forge_1_1_c_c1101_afbec2b2af6a5cd42f012bf047a584079}{C\+C1101\+::\+Cmd\+Strobes}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a142f7afc72764d11231f9efc47ed9a6f}\label{class_ardu_forge_1_1_c_c1101_a142f7afc72764d11231f9efc47ed9a6f}} 
+\index{ArduForge::CC1101@{ArduForge::CC1101}!spiTransfer@{spiTransfer}}
+\index{spiTransfer@{spiTransfer}!ArduForge::CC1101@{ArduForge::CC1101}}
+\doxysubsubsection{\texorpdfstring{spiTransfer()}{spiTransfer()}}
+{\footnotesize\ttfamily uint8\+\_\+t Ardu\+Forge\+::\+C\+C1101\+::spi\+Transfer (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{Value }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Transfers a single byte via S\+PI and returns received byte. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Value} & Byte to send. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Received byte 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a88299899660e797630809e283924b2b2}\label{class_ardu_forge_1_1_c_c1101_a88299899660e797630809e283924b2b2}} 
+\index{ArduForge::CC1101@{ArduForge::CC1101}!spiWriteReg@{spiWriteReg}}
+\index{spiWriteReg@{spiWriteReg}!ArduForge::CC1101@{ArduForge::CC1101}}
+\doxysubsubsection{\texorpdfstring{spiWriteReg()}{spiWriteReg()}}
+{\footnotesize\ttfamily void Ardu\+Forge\+::\+C\+C1101\+::spi\+Write\+Reg (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{Reg,  }\item[{uint8\+\_\+t}]{Value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Writes a register via S\+PI. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Reg} & Register address to write to. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Value} & Byte value that will be written in the register. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_a3ee9277355128fb6854d208a230caf60}\label{class_ardu_forge_1_1_c_c1101_a3ee9277355128fb6854d208a230caf60}} 
+\index{ArduForge::CC1101@{ArduForge::CC1101}!spiWriteRegBurst@{spiWriteRegBurst}}
+\index{spiWriteRegBurst@{spiWriteRegBurst}!ArduForge::CC1101@{ArduForge::CC1101}}
+\doxysubsubsection{\texorpdfstring{spiWriteRegBurst()}{spiWriteRegBurst()}}
+{\footnotesize\ttfamily void Ardu\+Forge\+::\+C\+C1101\+::spi\+Write\+Reg\+Burst (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{Reg,  }\item[{uint8\+\_\+t $\ast$}]{p\+Data,  }\item[{uint8\+\_\+t}]{Count }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Writes a series of bytes to a register. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Reg} & Register to write to. \\
+\hline
+\mbox{\texttt{ in}}  & {\em p\+Data} & Data bytes that will be send. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Count} & Number of bytes to send. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_ardu_forge_1_1_c_c1101_ade3fc780ddb7979df6e1f93b58980b2c}\label{class_ardu_forge_1_1_c_c1101_ade3fc780ddb7979df6e1f93b58980b2c}} 
+\index{ArduForge::CC1101@{ArduForge::CC1101}!version@{version}}
+\index{version@{version}!ArduForge::CC1101@{ArduForge::CC1101}}
+\doxysubsubsection{\texorpdfstring{version()}{version()}}
+{\footnotesize\ttfamily uint8\+\_\+t Ardu\+Forge\+::\+C\+C1101\+::version (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns chip version number. 
+
+\begin{DoxyReturn}{Returns}
+Chip version number 
+\end{DoxyReturn}

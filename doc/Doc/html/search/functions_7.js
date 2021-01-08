@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['read_28',['read',['../class_ardu_forge_1_1_m_f52.html#a3a3cd3e066c9c303f46eb5a20e206e5a',1,'ArduForge::MF52']]]
+  ['kelvintocelsius_229',['kelvinToCelsius',['../class_ardu_forge_1_1_m_f52.html#abf4ac71a8fac6fca8014e642685f94fd',1,'ArduForge::MF52']]]
 ];

@@ -1,0 +1,317 @@
+\hypertarget{class_ardu_forge_1_1_t_vector}{}\doxysection{Ardu\+Forge\+::T\+Vector$<$ T, Dim $>$ Class Template Reference}
+\label{class_ardu_forge_1_1_t_vector}\index{ArduForge::TVector$<$ T, Dim $>$@{ArduForge::TVector$<$ T, Dim $>$}}
+
+
+Template class for a mathematical vector of fixed dimension.  
+
+
+
+
+{\ttfamily \#include $<$T\+Vector.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ardu_forge_1_1_t_vector_aa8e280c552da942ba11546d644859f98}\label{class_ardu_forge_1_1_t_vector_aa8e280c552da942ba11546d644859f98}} 
+\mbox{\hyperlink{class_ardu_forge_1_1_t_vector_aa8e280c552da942ba11546d644859f98}{T\+Vector}} (void)
+\begin{DoxyCompactList}\small\item\em Constructor Initializes data with 0. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ardu_forge_1_1_t_vector_a785de04def3600a3f27cfb20faf6b3b8}\label{class_ardu_forge_1_1_t_vector_a785de04def3600a3f27cfb20faf6b3b8}} 
+\mbox{\hyperlink{class_ardu_forge_1_1_t_vector_a785de04def3600a3f27cfb20faf6b3b8}{$\sim$\+T\+Vector}} (void)
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ardu_forge_1_1_t_vector_a459651fd39e8a23afc333927269f7f94}\label{class_ardu_forge_1_1_t_vector_a459651fd39e8a23afc333927269f7f94}} 
+void \mbox{\hyperlink{class_ardu_forge_1_1_t_vector_a459651fd39e8a23afc333927269f7f94}{clear}} (void)
+\begin{DoxyCompactList}\small\item\em Resets the data to 0. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ardu_forge_1_1_t_vector_add3c7761bb429211d33547d1b6675867}{operator=}} (const \mbox{\hyperlink{class_ardu_forge_1_1_t_vector}{T\+Vector}}$<$ T, Dim $>$ \&Ref)
+\begin{DoxyCompactList}\small\item\em Assign operator. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename U $>$ }\\void \mbox{\hyperlink{class_ardu_forge_1_1_t_vector_a0a416f98d48c46411d6bd95e5e655243}{operator=}} (const \mbox{\hyperlink{class_ardu_forge_1_1_t_vector}{T\+Vector}}$<$ U, Dim $>$ \&Ref)
+\begin{DoxyCompactList}\small\item\em Assign and cast operator. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ardu_forge_1_1_t_vector_ae13903f1dbacec4a4c7269886312c5c1}{init}} (const T Default\+Val=(T) 0)
+\begin{DoxyCompactList}\small\item\em Initialization method. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ardu_forge_1_1_t_vector_aa28bd7b10c7c2b2ea76f54f601d0caeb}{init}} (const \mbox{\hyperlink{class_ardu_forge_1_1_t_vector}{T\+Vector}}$<$ T, Dim $>$ Ref)
+\begin{DoxyCompactList}\small\item\em Initialization method. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename U $>$ }\\void \mbox{\hyperlink{class_ardu_forge_1_1_t_vector_af4253c227bb1903d6c589a019fe627fb}{init}} (const \mbox{\hyperlink{class_ardu_forge_1_1_t_vector}{T\+Vector}}$<$ U, Dim $>$ Ref)
+\begin{DoxyCompactList}\small\item\em Initialization method. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_ardu_forge_1_1_t_vector}{T\+Vector}}$<$ T, Dim $>$ \mbox{\hyperlink{class_ardu_forge_1_1_t_vector_a9ba451520ae33646b16e9c67d4b2e405}{operator+}} (const \mbox{\hyperlink{class_ardu_forge_1_1_t_vector}{T\+Vector}}$<$ T, Dim $>$ \&Right) const
+\begin{DoxyCompactList}\small\item\em Addition operator. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_ardu_forge_1_1_t_vector}{T\+Vector}}$<$ T, Dim $>$ \mbox{\hyperlink{class_ardu_forge_1_1_t_vector_a2be35b8b0ed26439028423947f81fe04}{operator-\/}} (const \mbox{\hyperlink{class_ardu_forge_1_1_t_vector}{T\+Vector}}$<$ T, Dim $>$ \&Right) const
+\begin{DoxyCompactList}\small\item\em Subtraction operator. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ardu_forge_1_1_t_vector_a3974e37acad5f96df77faf01fdc760ce}{operator+=}} (const \mbox{\hyperlink{class_ardu_forge_1_1_t_vector}{T\+Vector}}$<$ T, Dim $>$ \&Right)
+\begin{DoxyCompactList}\small\item\em Addition-\/assign operator. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ardu_forge_1_1_t_vector_a3db568a9b305c71dec0016f712338cdc}{operator-\/=}} (const \mbox{\hyperlink{class_ardu_forge_1_1_t_vector}{T\+Vector}}$<$ T, Dim $>$ \&Right)
+\begin{DoxyCompactList}\small\item\em Subtraction-\/assign operator. \end{DoxyCompactList}\item 
+int16\+\_\+t \mbox{\hyperlink{class_ardu_forge_1_1_t_vector_ac7f009730033650cc3c935a5f0e28f29}{dimension}} (void) const
+\begin{DoxyCompactList}\small\item\em Returns dimension of the vector. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename U $>$ }\\U \mbox{\hyperlink{class_ardu_forge_1_1_t_vector_afc0215558742531761b6a8eae341714d}{length}} (void) const
+\begin{DoxyCompactList}\small\item\em Computes length of the vector. $ l = \sqrt(\sum_{i=1}^{Dim} v_i) $. \end{DoxyCompactList}\item 
+T \& \mbox{\hyperlink{class_ardu_forge_1_1_t_vector_adf92918fb6661eb0260272eca8e691e3}{operator\mbox{[}$\,$\mbox{]}}} (uint16\+\_\+t Index)
+\begin{DoxyCompactList}\small\item\em Access operator. \end{DoxyCompactList}\item 
+T \mbox{\hyperlink{class_ardu_forge_1_1_t_vector_a3ce370cb1df540692d2ea906160920d1}{operator\mbox{[}$\,$\mbox{]}}} (uint16\+\_\+t Index) const
+\begin{DoxyCompactList}\small\item\em Access operator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static T \mbox{\hyperlink{class_ardu_forge_1_1_t_vector_a45b160de18233be21c24bfbec8fba7d1}{dot}} (const \mbox{\hyperlink{class_ardu_forge_1_1_t_vector}{T\+Vector}}$<$ T, Dim $>$ Left, const \mbox{\hyperlink{class_ardu_forge_1_1_t_vector}{T\+Vector}}$<$ T, Dim $>$ Right)
+\begin{DoxyCompactList}\small\item\em Compute the dot product of two vectors. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ardu_forge_1_1_t_vector_ae5bc5fd299979434f621d1ff8edf25ce}\label{class_ardu_forge_1_1_t_vector_ae5bc5fd299979434f621d1ff8edf25ce}} 
+T \mbox{\hyperlink{class_ardu_forge_1_1_t_vector_ae5bc5fd299979434f621d1ff8edf25ce}{m\+\_\+\+Data}} \mbox{[}Dim\mbox{]}
+\begin{DoxyCompactList}\small\item\em Data buffer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename T, int16\+\_\+t Dim$>$\newline
+class Ardu\+Forge\+::\+T\+Vector$<$ T, Dim $>$}
+
+Template class for a mathematical vector of fixed dimension. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_ardu_forge_1_1_t_vector_ac7f009730033650cc3c935a5f0e28f29}\label{class_ardu_forge_1_1_t_vector_ac7f009730033650cc3c935a5f0e28f29}} 
+\index{ArduForge::TVector$<$ T, Dim $>$@{ArduForge::TVector$<$ T, Dim $>$}!dimension@{dimension}}
+\index{dimension@{dimension}!ArduForge::TVector$<$ T, Dim $>$@{ArduForge::TVector$<$ T, Dim $>$}}
+\doxysubsubsection{\texorpdfstring{dimension()}{dimension()}}
+{\footnotesize\ttfamily template$<$typename T , int16\+\_\+t Dim$>$ \\
+int16\+\_\+t \mbox{\hyperlink{class_ardu_forge_1_1_t_vector}{Ardu\+Forge\+::\+T\+Vector}}$<$ T, Dim $>$\+::dimension (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns dimension of the vector. 
+
+\begin{DoxyReturn}{Returns}
+Dimension of the vector. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_ardu_forge_1_1_t_vector_a45b160de18233be21c24bfbec8fba7d1}\label{class_ardu_forge_1_1_t_vector_a45b160de18233be21c24bfbec8fba7d1}} 
+\index{ArduForge::TVector$<$ T, Dim $>$@{ArduForge::TVector$<$ T, Dim $>$}!dot@{dot}}
+\index{dot@{dot}!ArduForge::TVector$<$ T, Dim $>$@{ArduForge::TVector$<$ T, Dim $>$}}
+\doxysubsubsection{\texorpdfstring{dot()}{dot()}}
+{\footnotesize\ttfamily template$<$typename T , int16\+\_\+t Dim$>$ \\
+static T \mbox{\hyperlink{class_ardu_forge_1_1_t_vector}{Ardu\+Forge\+::\+T\+Vector}}$<$ T, Dim $>$\+::dot (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_ardu_forge_1_1_t_vector}{T\+Vector}}$<$ T, Dim $>$}]{Left,  }\item[{const \mbox{\hyperlink{class_ardu_forge_1_1_t_vector}{T\+Vector}}$<$ T, Dim $>$}]{Right }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Compute the dot product of two vectors. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Left} & First operand. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Right} & Second operand. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Dot product value. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_ardu_forge_1_1_t_vector_ae13903f1dbacec4a4c7269886312c5c1}\label{class_ardu_forge_1_1_t_vector_ae13903f1dbacec4a4c7269886312c5c1}} 
+\index{ArduForge::TVector$<$ T, Dim $>$@{ArduForge::TVector$<$ T, Dim $>$}!init@{init}}
+\index{init@{init}!ArduForge::TVector$<$ T, Dim $>$@{ArduForge::TVector$<$ T, Dim $>$}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$typename T , int16\+\_\+t Dim$>$ \\
+void \mbox{\hyperlink{class_ardu_forge_1_1_t_vector}{Ardu\+Forge\+::\+T\+Vector}}$<$ T, Dim $>$\+::init (\begin{DoxyParamCaption}\item[{const T}]{Default\+Val = {\ttfamily (T)0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Initialization method. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Default\+Val} & Default value for all elements. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_ardu_forge_1_1_t_vector_aa28bd7b10c7c2b2ea76f54f601d0caeb}\label{class_ardu_forge_1_1_t_vector_aa28bd7b10c7c2b2ea76f54f601d0caeb}} 
+\index{ArduForge::TVector$<$ T, Dim $>$@{ArduForge::TVector$<$ T, Dim $>$}!init@{init}}
+\index{init@{init}!ArduForge::TVector$<$ T, Dim $>$@{ArduForge::TVector$<$ T, Dim $>$}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$typename T , int16\+\_\+t Dim$>$ \\
+void \mbox{\hyperlink{class_ardu_forge_1_1_t_vector}{Ardu\+Forge\+::\+T\+Vector}}$<$ T, Dim $>$\+::init (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_ardu_forge_1_1_t_vector}{T\+Vector}}$<$ T, Dim $>$}]{Ref }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Initialization method. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Ref} & Values to assign to this vector. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_ardu_forge_1_1_t_vector_af4253c227bb1903d6c589a019fe627fb}\label{class_ardu_forge_1_1_t_vector_af4253c227bb1903d6c589a019fe627fb}} 
+\index{ArduForge::TVector$<$ T, Dim $>$@{ArduForge::TVector$<$ T, Dim $>$}!init@{init}}
+\index{init@{init}!ArduForge::TVector$<$ T, Dim $>$@{ArduForge::TVector$<$ T, Dim $>$}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$typename T , int16\+\_\+t Dim$>$ \\
+template$<$typename U $>$ \\
+void \mbox{\hyperlink{class_ardu_forge_1_1_t_vector}{Ardu\+Forge\+::\+T\+Vector}}$<$ T, Dim $>$\+::init (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_ardu_forge_1_1_t_vector}{T\+Vector}}$<$ U, Dim $>$}]{Ref }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Initialization method. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Ref} & Values to assign from vector of different type. Individual values will be casted. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_ardu_forge_1_1_t_vector_afc0215558742531761b6a8eae341714d}\label{class_ardu_forge_1_1_t_vector_afc0215558742531761b6a8eae341714d}} 
+\index{ArduForge::TVector$<$ T, Dim $>$@{ArduForge::TVector$<$ T, Dim $>$}!length@{length}}
+\index{length@{length}!ArduForge::TVector$<$ T, Dim $>$@{ArduForge::TVector$<$ T, Dim $>$}}
+\doxysubsubsection{\texorpdfstring{length()}{length()}}
+{\footnotesize\ttfamily template$<$typename T , int16\+\_\+t Dim$>$ \\
+template$<$typename U $>$ \\
+U \mbox{\hyperlink{class_ardu_forge_1_1_t_vector}{Ardu\+Forge\+::\+T\+Vector}}$<$ T, Dim $>$\+::length (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Computes length of the vector. $ l = \sqrt(\sum_{i=1}^{Dim} v_i) $. 
+
+\begin{DoxyReturn}{Returns}
+Length of the vector. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_ardu_forge_1_1_t_vector_a9ba451520ae33646b16e9c67d4b2e405}\label{class_ardu_forge_1_1_t_vector_a9ba451520ae33646b16e9c67d4b2e405}} 
+\index{ArduForge::TVector$<$ T, Dim $>$@{ArduForge::TVector$<$ T, Dim $>$}!operator+@{operator+}}
+\index{operator+@{operator+}!ArduForge::TVector$<$ T, Dim $>$@{ArduForge::TVector$<$ T, Dim $>$}}
+\doxysubsubsection{\texorpdfstring{operator+()}{operator+()}}
+{\footnotesize\ttfamily template$<$typename T , int16\+\_\+t Dim$>$ \\
+\mbox{\hyperlink{class_ardu_forge_1_1_t_vector}{T\+Vector}}$<$T, Dim$>$ \mbox{\hyperlink{class_ardu_forge_1_1_t_vector}{Ardu\+Forge\+::\+T\+Vector}}$<$ T, Dim $>$\+::operator+ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_ardu_forge_1_1_t_vector}{T\+Vector}}$<$ T, Dim $>$ \&}]{Right }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Addition operator. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Right} & Second operand. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Resulting vector of the addition. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_ardu_forge_1_1_t_vector_a3974e37acad5f96df77faf01fdc760ce}\label{class_ardu_forge_1_1_t_vector_a3974e37acad5f96df77faf01fdc760ce}} 
+\index{ArduForge::TVector$<$ T, Dim $>$@{ArduForge::TVector$<$ T, Dim $>$}!operator+=@{operator+=}}
+\index{operator+=@{operator+=}!ArduForge::TVector$<$ T, Dim $>$@{ArduForge::TVector$<$ T, Dim $>$}}
+\doxysubsubsection{\texorpdfstring{operator+=()}{operator+=()}}
+{\footnotesize\ttfamily template$<$typename T , int16\+\_\+t Dim$>$ \\
+void \mbox{\hyperlink{class_ardu_forge_1_1_t_vector}{Ardu\+Forge\+::\+T\+Vector}}$<$ T, Dim $>$\+::operator+= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_ardu_forge_1_1_t_vector}{T\+Vector}}$<$ T, Dim $>$ \&}]{Right }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Addition-\/assign operator. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Second} & operand. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_ardu_forge_1_1_t_vector_a2be35b8b0ed26439028423947f81fe04}\label{class_ardu_forge_1_1_t_vector_a2be35b8b0ed26439028423947f81fe04}} 
+\index{ArduForge::TVector$<$ T, Dim $>$@{ArduForge::TVector$<$ T, Dim $>$}!operator-\/@{operator-\/}}
+\index{operator-\/@{operator-\/}!ArduForge::TVector$<$ T, Dim $>$@{ArduForge::TVector$<$ T, Dim $>$}}
+\doxysubsubsection{\texorpdfstring{operator-\/()}{operator-()}}
+{\footnotesize\ttfamily template$<$typename T , int16\+\_\+t Dim$>$ \\
+\mbox{\hyperlink{class_ardu_forge_1_1_t_vector}{T\+Vector}}$<$T, Dim$>$ \mbox{\hyperlink{class_ardu_forge_1_1_t_vector}{Ardu\+Forge\+::\+T\+Vector}}$<$ T, Dim $>$\+::operator-\/ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_ardu_forge_1_1_t_vector}{T\+Vector}}$<$ T, Dim $>$ \&}]{Right }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Subtraction operator. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Right} & Second operand. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Resulting vector of the subtraction. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_ardu_forge_1_1_t_vector_a3db568a9b305c71dec0016f712338cdc}\label{class_ardu_forge_1_1_t_vector_a3db568a9b305c71dec0016f712338cdc}} 
+\index{ArduForge::TVector$<$ T, Dim $>$@{ArduForge::TVector$<$ T, Dim $>$}!operator-\/=@{operator-\/=}}
+\index{operator-\/=@{operator-\/=}!ArduForge::TVector$<$ T, Dim $>$@{ArduForge::TVector$<$ T, Dim $>$}}
+\doxysubsubsection{\texorpdfstring{operator-\/=()}{operator-=()}}
+{\footnotesize\ttfamily template$<$typename T , int16\+\_\+t Dim$>$ \\
+void \mbox{\hyperlink{class_ardu_forge_1_1_t_vector}{Ardu\+Forge\+::\+T\+Vector}}$<$ T, Dim $>$\+::operator-\/= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_ardu_forge_1_1_t_vector}{T\+Vector}}$<$ T, Dim $>$ \&}]{Right }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Subtraction-\/assign operator. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Right} & Second operand. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_ardu_forge_1_1_t_vector_add3c7761bb429211d33547d1b6675867}\label{class_ardu_forge_1_1_t_vector_add3c7761bb429211d33547d1b6675867}} 
+\index{ArduForge::TVector$<$ T, Dim $>$@{ArduForge::TVector$<$ T, Dim $>$}!operator=@{operator=}}
+\index{operator=@{operator=}!ArduForge::TVector$<$ T, Dim $>$@{ArduForge::TVector$<$ T, Dim $>$}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T , int16\+\_\+t Dim$>$ \\
+void \mbox{\hyperlink{class_ardu_forge_1_1_t_vector}{Ardu\+Forge\+::\+T\+Vector}}$<$ T, Dim $>$\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_ardu_forge_1_1_t_vector}{T\+Vector}}$<$ T, Dim $>$ \&}]{Ref }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Assign operator. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Ref} & Vector to assign. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_ardu_forge_1_1_t_vector_a0a416f98d48c46411d6bd95e5e655243}\label{class_ardu_forge_1_1_t_vector_a0a416f98d48c46411d6bd95e5e655243}} 
+\index{ArduForge::TVector$<$ T, Dim $>$@{ArduForge::TVector$<$ T, Dim $>$}!operator=@{operator=}}
+\index{operator=@{operator=}!ArduForge::TVector$<$ T, Dim $>$@{ArduForge::TVector$<$ T, Dim $>$}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T , int16\+\_\+t Dim$>$ \\
+template$<$typename U $>$ \\
+void \mbox{\hyperlink{class_ardu_forge_1_1_t_vector}{Ardu\+Forge\+::\+T\+Vector}}$<$ T, Dim $>$\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_ardu_forge_1_1_t_vector}{T\+Vector}}$<$ U, Dim $>$ \&}]{Ref }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Assign and cast operator. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Ref} & Vector to assign. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_ardu_forge_1_1_t_vector_adf92918fb6661eb0260272eca8e691e3}\label{class_ardu_forge_1_1_t_vector_adf92918fb6661eb0260272eca8e691e3}} 
+\index{ArduForge::TVector$<$ T, Dim $>$@{ArduForge::TVector$<$ T, Dim $>$}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!ArduForge::TVector$<$ T, Dim $>$@{ArduForge::TVector$<$ T, Dim $>$}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T , int16\+\_\+t Dim$>$ \\
+T\& \mbox{\hyperlink{class_ardu_forge_1_1_t_vector}{Ardu\+Forge\+::\+T\+Vector}}$<$ T, Dim $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{Index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Access operator. 
+
+\begin{DoxyReturn}{Returns}
+Reference to requested element. 
+\end{DoxyReturn}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Index} & Index of the element. Must be $ \in [0, Dim) $ \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Index is not checked for validity. 
+\end{DoxyNote}
+\mbox{\Hypertarget{class_ardu_forge_1_1_t_vector_a3ce370cb1df540692d2ea906160920d1}\label{class_ardu_forge_1_1_t_vector_a3ce370cb1df540692d2ea906160920d1}} 
+\index{ArduForge::TVector$<$ T, Dim $>$@{ArduForge::TVector$<$ T, Dim $>$}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!ArduForge::TVector$<$ T, Dim $>$@{ArduForge::TVector$<$ T, Dim $>$}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T , int16\+\_\+t Dim$>$ \\
+T \mbox{\hyperlink{class_ardu_forge_1_1_t_vector}{Ardu\+Forge\+::\+T\+Vector}}$<$ T, Dim $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{Index }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Access operator. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Index} & Index of the element. Must be $ \in [0, Dim) $ \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Element at requested index. 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Index is not checked for validity. 
+\end{DoxyNote}

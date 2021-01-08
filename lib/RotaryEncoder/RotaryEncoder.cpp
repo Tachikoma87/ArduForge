@@ -17,14 +17,15 @@ namespace ArduForge{
 
     }//Destructor
 
-    void RotaryEncoder::begin(uint8_t ClkPin, uint8_t DtPin, uint8_t SwitchPin){
+    void RotaryEncoder::begin(uint8_t ClkPin, uint8_t DtPin, uint8_t SwitchPin, bool Pullup){
         m_Clk = ClkPin;
         m_Dt = DtPin,
         m_Switch = SwitchPin;
 
+        // configure pins
         pinMode(m_Clk, INPUT);
         pinMode(m_Dt, INPUT);
-        pinMode(m_Switch, INPUT_PULLUP); // pullup for switch
+        pinMode(m_Switch, (Pullup) ? INPUT_PULLUP : INPUT); 
 
         m_RotaryPosition = 0;
         m_LastState = digitalRead(m_Clk);
@@ -64,7 +65,7 @@ namespace ArduForge{
          m_LastState = State;   
     }//update
 
-    bool RotaryEncoder::buttonState(void)const{
+    bool RotaryEncoder::switchState(void)const{
         return m_SwitchState;
     }//buttonState 
 

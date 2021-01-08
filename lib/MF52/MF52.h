@@ -28,6 +28,7 @@ namespace ArduForge{
      * and the resistance at room temperature (R25). Use the part number or the datasheet 
      * (http://radio-hobby.org/uploads/datasheets/mf/mf52[1].pdf) to acquire the necessary information.
      * It is assumed that supply and reference voltage are the same.
+     * \image html MF52Wiring.png
     */
     class MF52{
         public:

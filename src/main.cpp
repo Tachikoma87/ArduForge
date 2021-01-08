@@ -1,9 +1,9 @@
 /*****************************************************************************\
 *                                                                           *
-* File(s): Ex01_Rotary_Encoder.ino                                          *
+* File(s):                                               *
 *                                                                           *
-* Content: Example sketch that shows how to use the RotaryEncoder class.    *
-*                                                                           *
+* Content:      *
+*                         *
 *                                                                           *
 *                                                                           *
 * Author(s): Tom Uhlmann                                                    *
@@ -16,36 +16,24 @@
 *                                                                           *
 \****************************************************************************/
 #include <Arduino.h>
-#include "Prototypes/RotaryEncoder.h"
 
-ArduForge::RotaryEncoder Encoder;
+
+
 /**
- * This example sketch shows how to use the rotary encoder class using a simple polling approach.
+ * This example sketch shows how to use the rotary encoder class using an interrupt attached to the clock signal.
  */
 
-unsigned long Timeout = 0; // save milliseconds to realize a timeout
+
 
 void setup() {
   // put your setup codes here, to run once
   Serial.begin(115200);
 
-  Encoder.begin(2, 3, 4);
-  Serial.print("Rotary encoder initialized and ready.\n"); 
+
 }
 
 void loop() {
-  // update the state of the encoder (polling)
-  Encoder.update();
-
-  // if the encoder's button is pressed we will reset the position
-  if(Encoder.buttonState()){
-    Encoder.resetPosition();
-  }
-
-  // every other second we will print the current state to the serial monitor
-  if(millis() - Timeout > 1000){
-    Serial.print("Encoder position: "); Serial.print(Encoder.position()); Serial.println();
-    Timeout = millis();
-  }
-
+ 
+  // In this example we can use delay since the interrupt will ensure that we don't miss a signal from the encoder.
+  delay(1000);
 }//loop

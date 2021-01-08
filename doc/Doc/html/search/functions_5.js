@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['kelvintocelsius_26',['kelvinToCelsius',['../class_ardu_forge_1_1_m_f52.html#abf4ac71a8fac6fca8014e642685f94fd',1,'ArduForge::MF52']]]
+  ['fahrenheittocelsius_225',['fahrenheitToCelsius',['../class_ardu_forge_1_1_m_f52.html#a9c29049753ce3f629c30c9958359c882',1,'ArduForge::MF52']]],
+  ['freememory_226',['freeMemory',['../class_ardu_forge_1_1_s_utilities.html#a4761cf1b2d56c74007b6a169e22e1c91',1,'ArduForge::SUtilities']]]
 ];

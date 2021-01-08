@@ -1,0 +1,78 @@
+\hypertarget{class_ardu_forge_1_1_binary_sensor}{}\doxysection{Ardu\+Forge\+::Binary\+Sensor Class Reference}
+\label{class_ardu_forge_1_1_binary_sensor}\index{ArduForge::BinarySensor@{ArduForge::BinarySensor}}
+
+
+This class reads a binary sensor and debounces its input.  
+
+
+
+
+{\ttfamily \#include $<$Binary\+Sensor.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ardu_forge_1_1_binary_sensor_a7ea7f4874544bac031371b0b03e4eeb6}\label{class_ardu_forge_1_1_binary_sensor_a7ea7f4874544bac031371b0b03e4eeb6}} 
+\mbox{\hyperlink{class_ardu_forge_1_1_binary_sensor_a7ea7f4874544bac031371b0b03e4eeb6}{Binary\+Sensor}} (void)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ardu_forge_1_1_binary_sensor_a54a7916aeb9506e7967e1587bb5cc950}\label{class_ardu_forge_1_1_binary_sensor_a54a7916aeb9506e7967e1587bb5cc950}} 
+\mbox{\hyperlink{class_ardu_forge_1_1_binary_sensor_a54a7916aeb9506e7967e1587bb5cc950}{$\sim$\+Binary\+Sensor}} (void)
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ardu_forge_1_1_binary_sensor_a1ae23053209e02f4df0e7cc3af2bf7c6}{begin}} (int8\+\_\+t Pin, bool Pullup=true, int8\+\_\+t Stable\+Readings\+Threshold=4)
+\begin{DoxyCompactList}\small\item\em Initializes communication with the sensor (set configuration details). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ardu_forge_1_1_binary_sensor_ad085b18a79e17ed6e4bcff2f3ed13db6}\label{class_ardu_forge_1_1_binary_sensor_ad085b18a79e17ed6e4bcff2f3ed13db6}} 
+void \mbox{\hyperlink{class_ardu_forge_1_1_binary_sensor_ad085b18a79e17ed6e4bcff2f3ed13db6}{end}} (void)
+\begin{DoxyCompactList}\small\item\em Ends communication with the sensor. \end{DoxyCompactList}\item 
+int8\+\_\+t \mbox{\hyperlink{class_ardu_forge_1_1_binary_sensor_a6def4045b79b8b809289ba004f059b6b}{read}} (const int8\+\_\+t Delay=5)
+\begin{DoxyCompactList}\small\item\em Reads the sensor\textquotesingle{}s state (debounced). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ardu_forge_1_1_binary_sensor_a6977b665a0a7fa47135c79191027a259}\label{class_ardu_forge_1_1_binary_sensor_a6977b665a0a7fa47135c79191027a259}} 
+int8\+\_\+t \mbox{\hyperlink{class_ardu_forge_1_1_binary_sensor_a6977b665a0a7fa47135c79191027a259}{m\+\_\+\+Sensor\+Pin}}
+\begin{DoxyCompactList}\small\item\em Digital pin to which the binary sensor is connected. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ardu_forge_1_1_binary_sensor_a0ecb40ac3723cc8541829c954905060a}\label{class_ardu_forge_1_1_binary_sensor_a0ecb40ac3723cc8541829c954905060a}} 
+int8\+\_\+t \mbox{\hyperlink{class_ardu_forge_1_1_binary_sensor_a0ecb40ac3723cc8541829c954905060a}{m\+\_\+\+Stable\+Reading\+Threshold}}
+\begin{DoxyCompactList}\small\item\em Number of equal readings that defines a stable signal. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class reads a binary sensor and debounces its input. 
+
+Binary sensors such as switches or reed sensors can have a L\+OW or H\+I\+GH state but can deliver a noisy signal when they switch states. Therefore the signal needs to be debounced. This class debounces the signal and returns L\+OW or H\+I\+GH only if the signal is stable (-\/1 in case of an unstable signal). A signal is considered stable if it does not change a certain number times with a delay between each read.  
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_ardu_forge_1_1_binary_sensor_a1ae23053209e02f4df0e7cc3af2bf7c6}\label{class_ardu_forge_1_1_binary_sensor_a1ae23053209e02f4df0e7cc3af2bf7c6}} 
+\index{ArduForge::BinarySensor@{ArduForge::BinarySensor}!begin@{begin}}
+\index{begin@{begin}!ArduForge::BinarySensor@{ArduForge::BinarySensor}}
+\doxysubsubsection{\texorpdfstring{begin()}{begin()}}
+{\footnotesize\ttfamily void Ardu\+Forge\+::\+Binary\+Sensor\+::begin (\begin{DoxyParamCaption}\item[{int8\+\_\+t}]{Pin,  }\item[{bool}]{Pullup = {\ttfamily true},  }\item[{int8\+\_\+t}]{Stable\+Readings\+Threshold = {\ttfamily 4} }\end{DoxyParamCaption})}
+
+
+
+Initializes communication with the sensor (set configuration details). 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Pin} & Digital pin where to read from. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Pullup} & Use pullup resistor? \\
+\hline
+\mbox{\texttt{ in}}  & {\em Stable\+Readings\+Threshold} & Defines number of equal readings so a signal can be considered stable. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_ardu_forge_1_1_binary_sensor_a6def4045b79b8b809289ba004f059b6b}\label{class_ardu_forge_1_1_binary_sensor_a6def4045b79b8b809289ba004f059b6b}} 
+\index{ArduForge::BinarySensor@{ArduForge::BinarySensor}!read@{read}}
+\index{read@{read}!ArduForge::BinarySensor@{ArduForge::BinarySensor}}
+\doxysubsubsection{\texorpdfstring{read()}{read()}}
+{\footnotesize\ttfamily int8\+\_\+t Ardu\+Forge\+::\+Binary\+Sensor\+::read (\begin{DoxyParamCaption}\item[{const int8\+\_\+t}]{Delay = {\ttfamily 5} }\end{DoxyParamCaption})}
+
+
+
+Reads the sensor\textquotesingle{}s state (debounced). 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Delay} & Delay in milliseconds between each read. \\
+\hline
+\end{DoxyParams}

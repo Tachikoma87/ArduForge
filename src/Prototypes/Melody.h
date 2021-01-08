@@ -18,19 +18,20 @@
 #ifndef ARDUFORGE_MELODY_H
 #define ARDUFORGE_MELODY_H
 
-
-#include <inttypes.h>
-
 #ifdef B0
 #undef B0
-#endif 
-#ifdef B1 
-#undef B1 
 #endif
+
+#ifdef B1
+#undef B1
+#endif
+
 #ifdef AS2
 #undef AS2
 #endif
 
+
+#include <inttypes.h>
 
 namespace ArduForge{
     class Melody{
