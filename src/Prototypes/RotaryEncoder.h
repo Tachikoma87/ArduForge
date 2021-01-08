@@ -2,7 +2,8 @@
 *                                                                           *
 * File(s): RotaryEncoder.h and RotaryEncoder.cpp                            *
 *                                                                           *
-* Content: Class to handle an incremental rotary encoder.                   *
+* Content: Class to handle communication with an incremental rotary         *
+*          encoder.                                                         *
 *                                                                           *
 *                                                                           *
 *                                                                           *
@@ -23,6 +24,10 @@
 
 namespace ArduForge{
     
+    /**
+     * 
+     * 
+     */
     class RotaryEncoder{
     public:
         static const uint8_t DIR_CW = 0;
