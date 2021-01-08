@@ -4,10 +4,9 @@
  * 
  * \section Introduction
  * 
+ * 
  * \section ToDo List
- * 
- * 
- * \todo add classes for devices: ESP32 Cam/BTLE/C1101/Stepper Motor/Linear Motor (PWM) with transistor
+ * \todo add classes for devices: ESP32 Cam/BTLE/Stepper Motor/Linear Motor (PWM) with transistor
  * \todo Try crypto library
  * 
  */

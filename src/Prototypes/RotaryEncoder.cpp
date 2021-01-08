@@ -17,7 +17,7 @@ namespace ArduForge{
 
     }//Destructor
 
-    void RotaryEncoder::begin(int8_t ClkPin, int8_t DtPin, int8_t SwitchPin){
+    void RotaryEncoder::begin(uint8_t ClkPin, uint8_t DtPin, uint8_t SwitchPin){
         m_Clk = ClkPin;
         m_Dt = DtPin,
         m_Switch = SwitchPin;
@@ -32,13 +32,13 @@ namespace ArduForge{
     }//begin 
 
     void RotaryEncoder::end(void){
-        m_Clk = -1;
-        m_Dt = -1;
-        m_Switch = -1;
+        m_Clk = 0;
+        m_Dt = 0;
+        m_Switch = 0;
         m_LastState = 0;
 
         m_RotaryPosition = 0;
-        m_Dir = -1; // 0 for CW and 1 for CCW
+        m_Dir = DIR_CCW; // 0 for CW and 1 for CCW
         m_SwitchState = false;
     }//end
 
@@ -68,7 +68,7 @@ namespace ArduForge{
         return m_SwitchState;
     }//buttonState 
 
-    int8_t RotaryEncoder::direction(void)const{
+    uint8_t RotaryEncoder::direction(void)const{
         return m_Dir;
     }//direction 
 
