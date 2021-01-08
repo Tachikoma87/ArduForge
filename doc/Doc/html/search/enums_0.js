@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['cmdstrobes_309',['CmdStrobes',['../class_ardu_forge_1_1_c_c1101.html#afbec2b2af6a5cd42f012bf047a584079',1,'ArduForge::CC1101']]],
-  ['config_310',['Config',['../class_ardu_forge_1_1_c_c1101.html#a9ad1acc89783bdbe131be8599e3833d0',1,'ArduForge::CC1101']]]
+  ['accelconfig_372',['AccelConfig',['../class_ardu_forge_1_1_m_p_u6050.html#aec48b2358ebb7d294a421e5fa4541e9c',1,'ArduForge::MPU6050']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['version_271',['version',['../class_ardu_forge_1_1_c_c1101.html#ade3fc780ddb7979df6e1f93b58980b2c',1,'ArduForge::CC1101']]]
+  ['update_319',['update',['../class_ardu_forge_1_1_rotary_encoder.html#a35c52ea39d46c1883ad7a27901357649',1,'ArduForge::RotaryEncoder']]]
 ];

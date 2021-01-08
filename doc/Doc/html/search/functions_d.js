@@ -1,17 +1,15 @@
 var searchData=
 [
-  ['senddata_254',['sendData',['../class_ardu_forge_1_1_c_c1101.html#ac8abbac67af31f8a8aff2110485f192f',1,'ArduForge::CC1101']]],
-  ['size_255',['size',['../class_ardu_forge_1_1_t_array.html#a231936c6ba5e7c75ed991227119e3416',1,'ArduForge::TArray']]],
-  ['spiend_256',['spiEnd',['../class_ardu_forge_1_1_c_c1101.html#a9a18cd7e05be3b155326ff77a5e8ee0d',1,'ArduForge::CC1101']]],
-  ['spiinit_257',['spiInit',['../class_ardu_forge_1_1_c_c1101.html#a132e68d82affa4de337a01f7bad178d6',1,'ArduForge::CC1101']]],
-  ['spimode_258',['spiMode',['../class_ardu_forge_1_1_c_c1101.html#a1dbb63bb4af1af4de7d8f8f1738444b0',1,'ArduForge::CC1101']]],
-  ['spireadreg_259',['spiReadReg',['../class_ardu_forge_1_1_c_c1101.html#a835881588fc646b6d0cb9bbbcc9f90b7',1,'ArduForge::CC1101']]],
-  ['spireadregburst_260',['spiReadRegBurst',['../class_ardu_forge_1_1_c_c1101.html#ab7009ccc86a03d934f3c039d424be1a1',1,'ArduForge::CC1101']]],
-  ['spireadstatus_261',['spiReadStatus',['../class_ardu_forge_1_1_c_c1101.html#a799324dc2173d98e54ee84a495b8ab5a',1,'ArduForge::CC1101']]],
-  ['spistrobe_262',['spiStrobe',['../class_ardu_forge_1_1_c_c1101.html#acfc72b7381d7cb45cf770c9495e16506',1,'ArduForge::CC1101']]],
-  ['spitransfer_263',['spiTransfer',['../class_ardu_forge_1_1_c_c1101.html#a142f7afc72764d11231f9efc47ed9a6f',1,'ArduForge::CC1101']]],
-  ['spiwritereg_264',['spiWriteReg',['../class_ardu_forge_1_1_c_c1101.html#a88299899660e797630809e283924b2b2',1,'ArduForge::CC1101']]],
-  ['spiwriteregburst_265',['spiWriteRegBurst',['../class_ardu_forge_1_1_c_c1101.html#a3ee9277355128fb6854d208a230caf60',1,'ArduForge::CC1101']]],
-  ['sutilities_266',['SUtilities',['../class_ardu_forge_1_1_s_utilities.html#a0bd6ad91db37a0062a50dc55d658f4cb',1,'ArduForge::SUtilities']]],
-  ['switchstate_267',['switchState',['../class_ardu_forge_1_1_rotary_encoder.html#ae20001430dcc8b213a0599406370085d',1,'ArduForge::RotaryEncoder']]]
+  ['read_290',['read',['../class_ardu_forge_1_1_binary_sensor.html#a6def4045b79b8b809289ba004f059b6b',1,'ArduForge::BinarySensor::read()'],['../class_ardu_forge_1_1_m_f52.html#a3a3cd3e066c9c303f46eb5a20e206e5a',1,'ArduForge::MF52::read()'],['../class_ardu_forge_1_1_m_p_u6050.html#a4b918087c97de63843ed07874a5cc15d',1,'ArduForge::MPU6050::read()']]],
+  ['readraw_291',['readRaw',['../class_ardu_forge_1_1_m_p_u6050.html#a751394ea491009f814e46d8c1275137e',1,'ArduForge::MPU6050']]],
+  ['readregister_292',['readRegister',['../class_ardu_forge_1_1_m_p_u6050.html#aefc43f9210ac17554e19b9737c521598',1,'ArduForge::MPU6050']]],
+  ['receivedata_293',['receiveData',['../class_ardu_forge_1_1_c_c1101.html#ad38dd9319f4deb39f85c886307a4cc90',1,'ArduForge::CC1101']]],
+  ['receivemode_294',['receiveMode',['../class_ardu_forge_1_1_c_c1101.html#a095b1a542ae0969442f384dc7b9c37b2',1,'ArduForge::CC1101']]],
+  ['regconfigsettings_295',['regConfigSettings',['../class_ardu_forge_1_1_c_c1101.html#a318d86b4c56d4604bcd55a4abbf6083a',1,'ArduForge::CC1101']]],
+  ['reset_296',['reset',['../class_ardu_forge_1_1_c_c1101.html#a80c0e929d2ab9b83f9c4ab8b00e4269c',1,'ArduForge::CC1101']]],
+  ['resetposition_297',['resetPosition',['../class_ardu_forge_1_1_rotary_encoder.html#a6690acc275edf36b6c61d0b42afcc2aa',1,'ArduForge::RotaryEncoder']]],
+  ['resize_298',['resize',['../class_ardu_forge_1_1_t_array.html#aa139cb8aa78338a816db986eddb7eb0f',1,'ArduForge::TArray']]],
+  ['rotaryencoder_299',['RotaryEncoder',['../class_ardu_forge_1_1_rotary_encoder.html#adab116ea00cdfccc595e8531a00840a2',1,'ArduForge::RotaryEncoder']]],
+  ['rssi_300',['rssi',['../class_ardu_forge_1_1_c_c1101.html#ab11e2140ef4107a477fdc405b1cf7d93',1,'ArduForge::CC1101']]],
+  ['rssiconvert_301',['rssiConvert',['../class_ardu_forge_1_1_c_c1101.html#ac9a43736d4f21ed0b577e7acd43478f0',1,'ArduForge::CC1101']]]
 ];

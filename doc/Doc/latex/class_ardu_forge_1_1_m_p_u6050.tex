@@ -1,0 +1,315 @@
+\hypertarget{class_ardu_forge_1_1_m_p_u6050}{}\doxysection{Ardu\+Forge\+::M\+P\+U6050 Class Reference}
+\label{class_ardu_forge_1_1_m_p_u6050}\index{ArduForge::MPU6050@{ArduForge::MPU6050}}
+
+
+Class that handles communication with an \mbox{\hyperlink{class_ardu_forge_1_1_m_p_u6050}{M\+P\+U6050}} inertial measuring unit chip. It also converts the raw data to interpretable values.  
+
+
+
+
+{\ttfamily \#include $<$M\+P\+U6050.\+h$>$}
+
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_ardu_forge_1_1_m_p_u6050_1_1_raw_sensor_data}{Raw\+Sensor\+Data}}
+\begin{DoxyCompactList}\small\item\em Struct to store the raw sensor values. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_ardu_forge_1_1_m_p_u6050_1_1_sensor_data}{Sensor\+Data}}
+\begin{DoxyCompactList}\small\item\em Struct to store interpreted sensor values. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{class_ardu_forge_1_1_m_p_u6050_a0a98c2db9d2aa97b709289b4a5ccad90}{Gyro\+Config}} \+: int8\+\_\+t \{ \mbox{\hyperlink{class_ardu_forge_1_1_m_p_u6050_a0a98c2db9d2aa97b709289b4a5ccad90a19fa8f8c70500168c369946e38343f63}{Gyro\+Config\+::\+S\+C\+A\+L\+E\+\_\+250}} = 0, 
+\mbox{\hyperlink{class_ardu_forge_1_1_m_p_u6050_a0a98c2db9d2aa97b709289b4a5ccad90a8624a2ab6a0e39eed8c54871908fc9c9}{Gyro\+Config\+::\+S\+C\+A\+L\+E\+\_\+500}}, 
+\mbox{\hyperlink{class_ardu_forge_1_1_m_p_u6050_a0a98c2db9d2aa97b709289b4a5ccad90a45ade5cf371c6a419eabba19cd0e315a}{Gyro\+Config\+::\+S\+C\+A\+L\+E\+\_\+1000}}, 
+\mbox{\hyperlink{class_ardu_forge_1_1_m_p_u6050_a0a98c2db9d2aa97b709289b4a5ccad90a499ed9924d4025fe6c766aa35eea1251}{Gyro\+Config\+::\+S\+C\+A\+L\+E\+\_\+2000}}
+ \}
+\begin{DoxyCompactList}\small\item\em Gyroscope sensitivity configuration values. Values are in $ \pm $ degree per second. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{class_ardu_forge_1_1_m_p_u6050_aec48b2358ebb7d294a421e5fa4541e9c}{Accel\+Config}} \+: int8\+\_\+t \{ \mbox{\hyperlink{class_ardu_forge_1_1_m_p_u6050_aec48b2358ebb7d294a421e5fa4541e9cad137620bc3191ac6508ffd0eff318042}{Accel\+Config\+::\+S\+C\+A\+L\+E\+\_\+2G}} = 0, 
+\mbox{\hyperlink{class_ardu_forge_1_1_m_p_u6050_aec48b2358ebb7d294a421e5fa4541e9ca92f5d55b85382bcf87a727da10e28def}{Accel\+Config\+::\+S\+C\+A\+L\+E\+\_\+4G}}, 
+\mbox{\hyperlink{class_ardu_forge_1_1_m_p_u6050_aec48b2358ebb7d294a421e5fa4541e9cad0527052a76e5f258c068a4691bd1ce8}{Accel\+Config\+::\+S\+C\+A\+L\+E\+\_\+8G}}, 
+\mbox{\hyperlink{class_ardu_forge_1_1_m_p_u6050_aec48b2358ebb7d294a421e5fa4541e9cabf69f2a7541a5bfeba9f838e9eb849cd}{Accel\+Config\+::\+S\+C\+A\+L\+E\+\_\+16G}}
+ \}
+\begin{DoxyCompactList}\small\item\em Accelerometer sensitivity configuration values. Values is L\+SB per g. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ardu_forge_1_1_m_p_u6050_a41a8da8ab43c9d2a818c5f1490469d72}\label{class_ardu_forge_1_1_m_p_u6050_a41a8da8ab43c9d2a818c5f1490469d72}} 
+\mbox{\hyperlink{class_ardu_forge_1_1_m_p_u6050_a41a8da8ab43c9d2a818c5f1490469d72}{M\+P\+U6050}} (void)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ardu_forge_1_1_m_p_u6050_a3d6c50f12b9dac9fa8d71932bf5c0150}\label{class_ardu_forge_1_1_m_p_u6050_a3d6c50f12b9dac9fa8d71932bf5c0150}} 
+\mbox{\hyperlink{class_ardu_forge_1_1_m_p_u6050_a3d6c50f12b9dac9fa8d71932bf5c0150}{$\sim$\+M\+P\+U6050}} (void)
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ardu_forge_1_1_m_p_u6050_a9d7aa8d8c5fc9ca62a199936b0224500}{begin}} (Two\+Wire $\ast$p\+Wire=\&Wire, uint8\+\_\+t Addr=0x68, \mbox{\hyperlink{class_ardu_forge_1_1_m_p_u6050_aec48b2358ebb7d294a421e5fa4541e9c}{Accel\+Config}} AC=\mbox{\hyperlink{class_ardu_forge_1_1_m_p_u6050_aec48b2358ebb7d294a421e5fa4541e9ca92f5d55b85382bcf87a727da10e28def}{Accel\+Config\+::\+S\+C\+A\+L\+E\+\_\+4G}}, \mbox{\hyperlink{class_ardu_forge_1_1_m_p_u6050_a0a98c2db9d2aa97b709289b4a5ccad90}{Gyro\+Config}} GC=\mbox{\hyperlink{class_ardu_forge_1_1_m_p_u6050_a0a98c2db9d2aa97b709289b4a5ccad90a8624a2ab6a0e39eed8c54871908fc9c9}{Gyro\+Config\+::\+S\+C\+A\+L\+E\+\_\+500}})
+\begin{DoxyCompactList}\small\item\em Initializes communication with the \mbox{\hyperlink{class_ardu_forge_1_1_m_p_u6050}{M\+P\+U6050}} device. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ardu_forge_1_1_m_p_u6050_ac5ffccbd0ffc019d610fe391a2960665}\label{class_ardu_forge_1_1_m_p_u6050_ac5ffccbd0ffc019d610fe391a2960665}} 
+void \mbox{\hyperlink{class_ardu_forge_1_1_m_p_u6050_ac5ffccbd0ffc019d610fe391a2960665}{end}} (void)
+\begin{DoxyCompactList}\small\item\em Ends communication with the device. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ardu_forge_1_1_m_p_u6050_a72ffe9c9e7f62bb2d11d3d5c335cbcf5}\label{class_ardu_forge_1_1_m_p_u6050_a72ffe9c9e7f62bb2d11d3d5c335cbcf5}} 
+void \mbox{\hyperlink{class_ardu_forge_1_1_m_p_u6050_a72ffe9c9e7f62bb2d11d3d5c335cbcf5}{sleep}} (void)
+\begin{DoxyCompactList}\small\item\em Puts device in sleep mode. Reduced energy consumption, no sensor data reading possible. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ardu_forge_1_1_m_p_u6050_a4ee5d21a378f5419bd90f233e6a1252b}\label{class_ardu_forge_1_1_m_p_u6050_a4ee5d21a378f5419bd90f233e6a1252b}} 
+void \mbox{\hyperlink{class_ardu_forge_1_1_m_p_u6050_a4ee5d21a378f5419bd90f233e6a1252b}{wake}} (void)
+\begin{DoxyCompactList}\small\item\em Wakes up the device. Reading sensor values possible again. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ardu_forge_1_1_m_p_u6050_a27d4b70fae2eb6bfc32ea99136200339}{config\+Accel}} (\mbox{\hyperlink{class_ardu_forge_1_1_m_p_u6050_aec48b2358ebb7d294a421e5fa4541e9c}{Accel\+Config}} Value)
+\begin{DoxyCompactList}\small\item\em Sets accelerometer sensitivity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ardu_forge_1_1_m_p_u6050_aa5130a293d3be490302e14ef90c4a2a5}{config\+Gyro}} (\mbox{\hyperlink{class_ardu_forge_1_1_m_p_u6050_a0a98c2db9d2aa97b709289b4a5ccad90}{Gyro\+Config}} Value)
+\begin{DoxyCompactList}\small\item\em Sets gyroscope sensitivity value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ardu_forge_1_1_m_p_u6050_aad7b5029ed4ab0d2da9fe8774c72586a}{config\+Thermistor}} (bool Enable)
+\begin{DoxyCompactList}\small\item\em Enables/disables \mbox{\hyperlink{class_ardu_forge_1_1_m_p_u6050}{M\+P\+U6050}}\textquotesingle{}s internal thermometer. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_ardu_forge_1_1_m_p_u6050_1_1_raw_sensor_data}{Raw\+Sensor\+Data}} \mbox{\hyperlink{class_ardu_forge_1_1_m_p_u6050_a751394ea491009f814e46d8c1275137e}{read\+Raw}} (void) const
+\begin{DoxyCompactList}\small\item\em Returns raw sensor reading. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_ardu_forge_1_1_m_p_u6050_1_1_sensor_data}{Sensor\+Data}} \mbox{\hyperlink{class_ardu_forge_1_1_m_p_u6050_a4b918087c97de63843ed07874a5cc15d}{read}} (void) const
+\begin{DoxyCompactList}\small\item\em Reads the sensor data and converts it to interpretable values. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ardu_forge_1_1_m_p_u6050_a329374d457ce6bd62549bfc4f766fac2}{calibrate}} (void)
+\begin{DoxyCompactList}\small\item\em Recalibrates the device. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int16\+\_\+t \mbox{\hyperlink{class_ardu_forge_1_1_m_p_u6050_a9a65a0cae99ed77c2599e39c78951963}{accel\+Sensivity}} (\mbox{\hyperlink{class_ardu_forge_1_1_m_p_u6050_aec48b2358ebb7d294a421e5fa4541e9c}{Accel\+Config}} Value) const
+\begin{DoxyCompactList}\small\item\em Returns accelerometer sensitivity scaling value. Required to interpret raw sensor readings. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_ardu_forge_1_1_m_p_u6050_a69e6c2ca41927aa439d322420ea1e7a9}{gyro\+Sensivity}} (\mbox{\hyperlink{class_ardu_forge_1_1_m_p_u6050_a0a98c2db9d2aa97b709289b4a5ccad90}{Gyro\+Config}} Value) const
+\begin{DoxyCompactList}\small\item\em Returns gyroscope sensitivity scaling value. Required to interpret raw sensor readings. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{class_ardu_forge_1_1_m_p_u6050_aefc43f9210ac17554e19b9737c521598}{read\+Register}} (uint8\+\_\+t Reg) const
+\begin{DoxyCompactList}\small\item\em Reads a register via I2C. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_ardu_forge_1_1_m_p_u6050_a95bda3c1b38e68f8ad6dce149f42e2da}\label{class_ardu_forge_1_1_m_p_u6050_a95bda3c1b38e68f8ad6dce149f42e2da}} 
+uint8\+\_\+t \mbox{\hyperlink{class_ardu_forge_1_1_m_p_u6050_a95bda3c1b38e68f8ad6dce149f42e2da}{m\+\_\+\+Sensor\+Addr}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_ardu_forge_1_1_m_p_u6050}{M\+P\+U6050}}\textquotesingle{}s I2C address. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ardu_forge_1_1_m_p_u6050_a3048fa83e19a8c5cc22cc7b351a9ec43}\label{class_ardu_forge_1_1_m_p_u6050_a3048fa83e19a8c5cc22cc7b351a9ec43}} 
+Two\+Wire $\ast$ \mbox{\hyperlink{class_ardu_forge_1_1_m_p_u6050_a3048fa83e19a8c5cc22cc7b351a9ec43}{m\+\_\+p\+Wire}}
+\begin{DoxyCompactList}\small\item\em I2C interface. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ardu_forge_1_1_m_p_u6050_ac585e6070a89b7b750aa759f3bac438c}\label{class_ardu_forge_1_1_m_p_u6050_ac585e6070a89b7b750aa759f3bac438c}} 
+\mbox{\hyperlink{class_ardu_forge_1_1_m_p_u6050_aec48b2358ebb7d294a421e5fa4541e9c}{Accel\+Config}} \mbox{\hyperlink{class_ardu_forge_1_1_m_p_u6050_ac585e6070a89b7b750aa759f3bac438c}{m\+\_\+\+Accel\+Config}}
+\begin{DoxyCompactList}\small\item\em Current accelerometer sensitivity configuration. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ardu_forge_1_1_m_p_u6050_a45ed2109138c7f07134756e14554d49c}\label{class_ardu_forge_1_1_m_p_u6050_a45ed2109138c7f07134756e14554d49c}} 
+\mbox{\hyperlink{class_ardu_forge_1_1_m_p_u6050_a0a98c2db9d2aa97b709289b4a5ccad90}{Gyro\+Config}} \mbox{\hyperlink{class_ardu_forge_1_1_m_p_u6050_a45ed2109138c7f07134756e14554d49c}{m\+\_\+\+Gyro\+Config}}
+\begin{DoxyCompactList}\small\item\em Current gyroscope sensitivity configuration. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_ardu_forge_1_1_m_p_u6050_a5fa7ddb8f29e8ceb9eeba4256ffbf0e8}\label{class_ardu_forge_1_1_m_p_u6050_a5fa7ddb8f29e8ceb9eeba4256ffbf0e8}} 
+\mbox{\hyperlink{struct_ardu_forge_1_1_m_p_u6050_1_1_raw_sensor_data}{Raw\+Sensor\+Data}} \mbox{\hyperlink{class_ardu_forge_1_1_m_p_u6050_a5fa7ddb8f29e8ceb9eeba4256ffbf0e8}{m\+\_\+\+Calibration}}
+\begin{DoxyCompactList}\small\item\em Calibration data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class that handles communication with an \mbox{\hyperlink{class_ardu_forge_1_1_m_p_u6050}{M\+P\+U6050}} inertial measuring unit chip. It also converts the raw data to interpretable values. 
+
+The \mbox{\hyperlink{class_ardu_forge_1_1_m_p_u6050}{M\+P\+U6050}} is an 6-\/Axis accelerometer and gyroscope (3-\/axis for acceleration and 3 for rotation), hence you get the acceleration (actually the orientation) and rotation values in x,y, and z direction.  
+
+\doxysubsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{class_ardu_forge_1_1_m_p_u6050_aec48b2358ebb7d294a421e5fa4541e9c}\label{class_ardu_forge_1_1_m_p_u6050_aec48b2358ebb7d294a421e5fa4541e9c}} 
+\index{ArduForge::MPU6050@{ArduForge::MPU6050}!AccelConfig@{AccelConfig}}
+\index{AccelConfig@{AccelConfig}!ArduForge::MPU6050@{ArduForge::MPU6050}}
+\doxysubsubsection{\texorpdfstring{AccelConfig}{AccelConfig}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{class_ardu_forge_1_1_m_p_u6050_aec48b2358ebb7d294a421e5fa4541e9c}{Ardu\+Forge\+::\+M\+P\+U6050\+::\+Accel\+Config}} \+: int8\+\_\+t\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Accelerometer sensitivity configuration values. Values is L\+SB per g. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SCALE\_2G@{SCALE\_2G}!ArduForge::MPU6050@{ArduForge::MPU6050}}\index{ArduForge::MPU6050@{ArduForge::MPU6050}!SCALE\_2G@{SCALE\_2G}}}\mbox{\Hypertarget{class_ardu_forge_1_1_m_p_u6050_aec48b2358ebb7d294a421e5fa4541e9cad137620bc3191ac6508ffd0eff318042}\label{class_ardu_forge_1_1_m_p_u6050_aec48b2358ebb7d294a421e5fa4541e9cad137620bc3191ac6508ffd0eff318042}} 
+S\+C\+A\+L\+E\+\_\+2G&2g sensitivity \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SCALE\_4G@{SCALE\_4G}!ArduForge::MPU6050@{ArduForge::MPU6050}}\index{ArduForge::MPU6050@{ArduForge::MPU6050}!SCALE\_4G@{SCALE\_4G}}}\mbox{\Hypertarget{class_ardu_forge_1_1_m_p_u6050_aec48b2358ebb7d294a421e5fa4541e9ca92f5d55b85382bcf87a727da10e28def}\label{class_ardu_forge_1_1_m_p_u6050_aec48b2358ebb7d294a421e5fa4541e9ca92f5d55b85382bcf87a727da10e28def}} 
+S\+C\+A\+L\+E\+\_\+4G&4g sensitivity \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SCALE\_8G@{SCALE\_8G}!ArduForge::MPU6050@{ArduForge::MPU6050}}\index{ArduForge::MPU6050@{ArduForge::MPU6050}!SCALE\_8G@{SCALE\_8G}}}\mbox{\Hypertarget{class_ardu_forge_1_1_m_p_u6050_aec48b2358ebb7d294a421e5fa4541e9cad0527052a76e5f258c068a4691bd1ce8}\label{class_ardu_forge_1_1_m_p_u6050_aec48b2358ebb7d294a421e5fa4541e9cad0527052a76e5f258c068a4691bd1ce8}} 
+S\+C\+A\+L\+E\+\_\+8G&8g sensitivity \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SCALE\_16G@{SCALE\_16G}!ArduForge::MPU6050@{ArduForge::MPU6050}}\index{ArduForge::MPU6050@{ArduForge::MPU6050}!SCALE\_16G@{SCALE\_16G}}}\mbox{\Hypertarget{class_ardu_forge_1_1_m_p_u6050_aec48b2358ebb7d294a421e5fa4541e9cabf69f2a7541a5bfeba9f838e9eb849cd}\label{class_ardu_forge_1_1_m_p_u6050_aec48b2358ebb7d294a421e5fa4541e9cabf69f2a7541a5bfeba9f838e9eb849cd}} 
+S\+C\+A\+L\+E\+\_\+16G&16g sensitivity \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{class_ardu_forge_1_1_m_p_u6050_a0a98c2db9d2aa97b709289b4a5ccad90}\label{class_ardu_forge_1_1_m_p_u6050_a0a98c2db9d2aa97b709289b4a5ccad90}} 
+\index{ArduForge::MPU6050@{ArduForge::MPU6050}!GyroConfig@{GyroConfig}}
+\index{GyroConfig@{GyroConfig}!ArduForge::MPU6050@{ArduForge::MPU6050}}
+\doxysubsubsection{\texorpdfstring{GyroConfig}{GyroConfig}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{class_ardu_forge_1_1_m_p_u6050_a0a98c2db9d2aa97b709289b4a5ccad90}{Ardu\+Forge\+::\+M\+P\+U6050\+::\+Gyro\+Config}} \+: int8\+\_\+t\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Gyroscope sensitivity configuration values. Values are in $ \pm $ degree per second. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SCALE\_250@{SCALE\_250}!ArduForge::MPU6050@{ArduForge::MPU6050}}\index{ArduForge::MPU6050@{ArduForge::MPU6050}!SCALE\_250@{SCALE\_250}}}\mbox{\Hypertarget{class_ardu_forge_1_1_m_p_u6050_a0a98c2db9d2aa97b709289b4a5ccad90a19fa8f8c70500168c369946e38343f63}\label{class_ardu_forge_1_1_m_p_u6050_a0a98c2db9d2aa97b709289b4a5ccad90a19fa8f8c70500168c369946e38343f63}} 
+S\+C\+A\+L\+E\+\_\+250&Scale 250. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SCALE\_500@{SCALE\_500}!ArduForge::MPU6050@{ArduForge::MPU6050}}\index{ArduForge::MPU6050@{ArduForge::MPU6050}!SCALE\_500@{SCALE\_500}}}\mbox{\Hypertarget{class_ardu_forge_1_1_m_p_u6050_a0a98c2db9d2aa97b709289b4a5ccad90a8624a2ab6a0e39eed8c54871908fc9c9}\label{class_ardu_forge_1_1_m_p_u6050_a0a98c2db9d2aa97b709289b4a5ccad90a8624a2ab6a0e39eed8c54871908fc9c9}} 
+S\+C\+A\+L\+E\+\_\+500&Scale 500. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SCALE\_1000@{SCALE\_1000}!ArduForge::MPU6050@{ArduForge::MPU6050}}\index{ArduForge::MPU6050@{ArduForge::MPU6050}!SCALE\_1000@{SCALE\_1000}}}\mbox{\Hypertarget{class_ardu_forge_1_1_m_p_u6050_a0a98c2db9d2aa97b709289b4a5ccad90a45ade5cf371c6a419eabba19cd0e315a}\label{class_ardu_forge_1_1_m_p_u6050_a0a98c2db9d2aa97b709289b4a5ccad90a45ade5cf371c6a419eabba19cd0e315a}} 
+S\+C\+A\+L\+E\+\_\+1000&Scale 1000. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SCALE\_2000@{SCALE\_2000}!ArduForge::MPU6050@{ArduForge::MPU6050}}\index{ArduForge::MPU6050@{ArduForge::MPU6050}!SCALE\_2000@{SCALE\_2000}}}\mbox{\Hypertarget{class_ardu_forge_1_1_m_p_u6050_a0a98c2db9d2aa97b709289b4a5ccad90a499ed9924d4025fe6c766aa35eea1251}\label{class_ardu_forge_1_1_m_p_u6050_a0a98c2db9d2aa97b709289b4a5ccad90a499ed9924d4025fe6c766aa35eea1251}} 
+S\+C\+A\+L\+E\+\_\+2000&Scale 2000. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_ardu_forge_1_1_m_p_u6050_a9a65a0cae99ed77c2599e39c78951963}\label{class_ardu_forge_1_1_m_p_u6050_a9a65a0cae99ed77c2599e39c78951963}} 
+\index{ArduForge::MPU6050@{ArduForge::MPU6050}!accelSensivity@{accelSensivity}}
+\index{accelSensivity@{accelSensivity}!ArduForge::MPU6050@{ArduForge::MPU6050}}
+\doxysubsubsection{\texorpdfstring{accelSensivity()}{accelSensivity()}}
+{\footnotesize\ttfamily int16\+\_\+t Ardu\+Forge\+::\+M\+P\+U6050\+::accel\+Sensivity (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_ardu_forge_1_1_m_p_u6050_aec48b2358ebb7d294a421e5fa4541e9c}{Accel\+Config}}}]{Value }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Returns accelerometer sensitivity scaling value. Required to interpret raw sensor readings. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Value} & Configuration value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Accelerometer sensitivity scaling value. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_ardu_forge_1_1_m_p_u6050_a9d7aa8d8c5fc9ca62a199936b0224500}\label{class_ardu_forge_1_1_m_p_u6050_a9d7aa8d8c5fc9ca62a199936b0224500}} 
+\index{ArduForge::MPU6050@{ArduForge::MPU6050}!begin@{begin}}
+\index{begin@{begin}!ArduForge::MPU6050@{ArduForge::MPU6050}}
+\doxysubsubsection{\texorpdfstring{begin()}{begin()}}
+{\footnotesize\ttfamily void Ardu\+Forge\+::\+M\+P\+U6050\+::begin (\begin{DoxyParamCaption}\item[{Two\+Wire $\ast$}]{p\+Wire = {\ttfamily \&Wire},  }\item[{uint8\+\_\+t}]{Addr = {\ttfamily 0x68},  }\item[{\mbox{\hyperlink{class_ardu_forge_1_1_m_p_u6050_aec48b2358ebb7d294a421e5fa4541e9c}{Accel\+Config}}}]{AC = {\ttfamily \mbox{\hyperlink{class_ardu_forge_1_1_m_p_u6050_aec48b2358ebb7d294a421e5fa4541e9ca92f5d55b85382bcf87a727da10e28def}{Accel\+Config\+::\+S\+C\+A\+L\+E\+\_\+4G}}},  }\item[{\mbox{\hyperlink{class_ardu_forge_1_1_m_p_u6050_a0a98c2db9d2aa97b709289b4a5ccad90}{Gyro\+Config}}}]{GC = {\ttfamily \mbox{\hyperlink{class_ardu_forge_1_1_m_p_u6050_a0a98c2db9d2aa97b709289b4a5ccad90a8624a2ab6a0e39eed8c54871908fc9c9}{Gyro\+Config\+::\+S\+C\+A\+L\+E\+\_\+500}}} }\end{DoxyParamCaption})}
+
+
+
+Initializes communication with the \mbox{\hyperlink{class_ardu_forge_1_1_m_p_u6050}{M\+P\+U6050}} device. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em p\+Wire} & I2C interface. By default it uses the default I2C that is defined by Arduino. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Addr} & I2C address of the device. Usually 0x68 or 0x69 if A\+D0 is H\+I\+GH. \\
+\hline
+\mbox{\texttt{ in}}  & {\em AC} & Accelerometer sensitivity. \\
+\hline
+\mbox{\texttt{ in}}  & {\em GC} & Gyroscope sensitivity. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_ardu_forge_1_1_m_p_u6050_a329374d457ce6bd62549bfc4f766fac2}\label{class_ardu_forge_1_1_m_p_u6050_a329374d457ce6bd62549bfc4f766fac2}} 
+\index{ArduForge::MPU6050@{ArduForge::MPU6050}!calibrate@{calibrate}}
+\index{calibrate@{calibrate}!ArduForge::MPU6050@{ArduForge::MPU6050}}
+\doxysubsubsection{\texorpdfstring{calibrate()}{calibrate()}}
+{\footnotesize\ttfamily void Ardu\+Forge\+::\+M\+P\+U6050\+::calibrate (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Recalibrates the device. 
+
+This method will read and store the current data registers and all following readings will the relative to most recent calibration data. \mbox{\Hypertarget{class_ardu_forge_1_1_m_p_u6050_a27d4b70fae2eb6bfc32ea99136200339}\label{class_ardu_forge_1_1_m_p_u6050_a27d4b70fae2eb6bfc32ea99136200339}} 
+\index{ArduForge::MPU6050@{ArduForge::MPU6050}!configAccel@{configAccel}}
+\index{configAccel@{configAccel}!ArduForge::MPU6050@{ArduForge::MPU6050}}
+\doxysubsubsection{\texorpdfstring{configAccel()}{configAccel()}}
+{\footnotesize\ttfamily void Ardu\+Forge\+::\+M\+P\+U6050\+::config\+Accel (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_ardu_forge_1_1_m_p_u6050_aec48b2358ebb7d294a421e5fa4541e9c}{Accel\+Config}}}]{Value }\end{DoxyParamCaption})}
+
+
+
+Sets accelerometer sensitivity. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Value} & Configuration value \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_ardu_forge_1_1_m_p_u6050_aa5130a293d3be490302e14ef90c4a2a5}\label{class_ardu_forge_1_1_m_p_u6050_aa5130a293d3be490302e14ef90c4a2a5}} 
+\index{ArduForge::MPU6050@{ArduForge::MPU6050}!configGyro@{configGyro}}
+\index{configGyro@{configGyro}!ArduForge::MPU6050@{ArduForge::MPU6050}}
+\doxysubsubsection{\texorpdfstring{configGyro()}{configGyro()}}
+{\footnotesize\ttfamily void Ardu\+Forge\+::\+M\+P\+U6050\+::config\+Gyro (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_ardu_forge_1_1_m_p_u6050_a0a98c2db9d2aa97b709289b4a5ccad90}{Gyro\+Config}}}]{Value }\end{DoxyParamCaption})}
+
+
+
+Sets gyroscope sensitivity value. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Value} & Configuration value \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_ardu_forge_1_1_m_p_u6050_aad7b5029ed4ab0d2da9fe8774c72586a}\label{class_ardu_forge_1_1_m_p_u6050_aad7b5029ed4ab0d2da9fe8774c72586a}} 
+\index{ArduForge::MPU6050@{ArduForge::MPU6050}!configThermistor@{configThermistor}}
+\index{configThermistor@{configThermistor}!ArduForge::MPU6050@{ArduForge::MPU6050}}
+\doxysubsubsection{\texorpdfstring{configThermistor()}{configThermistor()}}
+{\footnotesize\ttfamily void Ardu\+Forge\+::\+M\+P\+U6050\+::config\+Thermistor (\begin{DoxyParamCaption}\item[{bool}]{Enable }\end{DoxyParamCaption})}
+
+
+
+Enables/disables \mbox{\hyperlink{class_ardu_forge_1_1_m_p_u6050}{M\+P\+U6050}}\textquotesingle{}s internal thermometer. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Enable} & True to enable and false to disable thermometer. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_ardu_forge_1_1_m_p_u6050_a69e6c2ca41927aa439d322420ea1e7a9}\label{class_ardu_forge_1_1_m_p_u6050_a69e6c2ca41927aa439d322420ea1e7a9}} 
+\index{ArduForge::MPU6050@{ArduForge::MPU6050}!gyroSensivity@{gyroSensivity}}
+\index{gyroSensivity@{gyroSensivity}!ArduForge::MPU6050@{ArduForge::MPU6050}}
+\doxysubsubsection{\texorpdfstring{gyroSensivity()}{gyroSensivity()}}
+{\footnotesize\ttfamily float Ardu\+Forge\+::\+M\+P\+U6050\+::gyro\+Sensivity (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_ardu_forge_1_1_m_p_u6050_a0a98c2db9d2aa97b709289b4a5ccad90}{Gyro\+Config}}}]{Value }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Returns gyroscope sensitivity scaling value. Required to interpret raw sensor readings. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Value} & Configuration value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Gyroscope sensitivity scaling value. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_ardu_forge_1_1_m_p_u6050_a4b918087c97de63843ed07874a5cc15d}\label{class_ardu_forge_1_1_m_p_u6050_a4b918087c97de63843ed07874a5cc15d}} 
+\index{ArduForge::MPU6050@{ArduForge::MPU6050}!read@{read}}
+\index{read@{read}!ArduForge::MPU6050@{ArduForge::MPU6050}}
+\doxysubsubsection{\texorpdfstring{read()}{read()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_ardu_forge_1_1_m_p_u6050_1_1_sensor_data}{M\+P\+U6050\+::\+Sensor\+Data}} Ardu\+Forge\+::\+M\+P\+U6050\+::read (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Reads the sensor data and converts it to interpretable values. 
+
+\begin{DoxyReturn}{Returns}
+Interpreted sensor data values. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_ardu_forge_1_1_m_p_u6050_a751394ea491009f814e46d8c1275137e}\label{class_ardu_forge_1_1_m_p_u6050_a751394ea491009f814e46d8c1275137e}} 
+\index{ArduForge::MPU6050@{ArduForge::MPU6050}!readRaw@{readRaw}}
+\index{readRaw@{readRaw}!ArduForge::MPU6050@{ArduForge::MPU6050}}
+\doxysubsubsection{\texorpdfstring{readRaw()}{readRaw()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_ardu_forge_1_1_m_p_u6050_1_1_raw_sensor_data}{M\+P\+U6050\+::\+Raw\+Sensor\+Data}} Ardu\+Forge\+::\+M\+P\+U6050\+::read\+Raw (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns raw sensor reading. 
+
+\begin{DoxyReturn}{Returns}
+Raw sensor readings. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_ardu_forge_1_1_m_p_u6050_aefc43f9210ac17554e19b9737c521598}\label{class_ardu_forge_1_1_m_p_u6050_aefc43f9210ac17554e19b9737c521598}} 
+\index{ArduForge::MPU6050@{ArduForge::MPU6050}!readRegister@{readRegister}}
+\index{readRegister@{readRegister}!ArduForge::MPU6050@{ArduForge::MPU6050}}
+\doxysubsubsection{\texorpdfstring{readRegister()}{readRegister()}}
+{\footnotesize\ttfamily uint8\+\_\+t Ardu\+Forge\+::\+M\+P\+U6050\+::read\+Register (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{Reg }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Reads a register via I2C. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em Reg} & Register address \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Register value 
+\end{DoxyReturn}

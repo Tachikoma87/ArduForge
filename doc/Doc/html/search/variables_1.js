@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['dir_5fccw_282',['DIR_CCW',['../class_ardu_forge_1_1_rotary_encoder.html#a406bc44e2a60405f89d7e048d177bb8c',1,'ArduForge::RotaryEncoder']]],
-  ['dir_5fcw_283',['DIR_CW',['../class_ardu_forge_1_1_rotary_encoder.html#a23581372c0491099ae45d216a813b6e9',1,'ArduForge::RotaryEncoder']]]
+  ['braodcastadralt_334',['BraodcastAdrAlt',['../class_ardu_forge_1_1_c_c1101.html#a9690158b0d413816eaffbd61edd47391',1,'ArduForge::CC1101']]],
+  ['broadcastadr_335',['BroadcastAdr',['../class_ardu_forge_1_1_c_c1101.html#a18cc5f3bbd1517e5f464a8d457b4c813',1,'ArduForge::CC1101']]]
 ];

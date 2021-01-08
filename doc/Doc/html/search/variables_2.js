@@ -1,28 +1,5 @@
 var searchData=
 [
-  ['m_5favailabledata_284',['m_AvailableData',['../class_ardu_forge_1_1_c_c1101.html#abb8a764fa6398e2b99691fd4ff25a1e3',1,'ArduForge::CC1101']]],
-  ['m_5fbeta_285',['m_Beta',['../class_ardu_forge_1_1_m_f52.html#af675789ee3f6473591b6d274a5007646',1,'ArduForge::MF52']]],
-  ['m_5fcalibrationoffset_286',['m_CalibrationOffset',['../class_ardu_forge_1_1_m_f52.html#a774c110c4768dec26433c1318d911e3b',1,'ArduForge::MF52']]],
-  ['m_5fclk_287',['m_Clk',['../class_ardu_forge_1_1_rotary_encoder.html#a5b897c24d0231599ed3163f43c09cdd2',1,'ArduForge::RotaryEncoder']]],
-  ['m_5fcsn_288',['m_Csn',['../class_ardu_forge_1_1_c_c1101.html#a896ffe5c9d69f809b35c8a87117c3a33',1,'ArduForge::CC1101']]],
-  ['m_5fdata_289',['m_Data',['../class_ardu_forge_1_1_t_vector.html#ae5bc5fd299979434f621d1ff8edf25ce',1,'ArduForge::TVector']]],
-  ['m_5fdir_290',['m_Dir',['../class_ardu_forge_1_1_rotary_encoder.html#a3ea818e0901cd2a8d5d6223a2af76597',1,'ArduForge::RotaryEncoder']]],
-  ['m_5fdt_291',['m_Dt',['../class_ardu_forge_1_1_rotary_encoder.html#a86594e601b12d288a7884092b66e4a27',1,'ArduForge::RotaryEncoder']]],
-  ['m_5felementcount_292',['m_ElementCount',['../class_ardu_forge_1_1_t_array.html#a2f0eb28020788ab5a3dd64f7cf602a1f',1,'ArduForge::TArray']]],
-  ['m_5fgdo0_293',['m_Gdo0',['../class_ardu_forge_1_1_c_c1101.html#ab1fbcd7eb39ee113604f37d371caf90a',1,'ArduForge::CC1101']]],
-  ['m_5fgdo2_294',['m_Gdo2',['../class_ardu_forge_1_1_c_c1101.html#a913d145ec5b5ddd8f059b396dab7ff3a',1,'ArduForge::CC1101']]],
-  ['m_5flasterror_295',['m_LastError',['../class_ardu_forge_1_1_c_c1101.html#a889ad05aec89651f75d79cb93e6b6474',1,'ArduForge::CC1101']]],
-  ['m_5flaststate_296',['m_LastState',['../class_ardu_forge_1_1_rotary_encoder.html#af12a51ee0ee2182ac2d69772d1785c18',1,'ArduForge::RotaryEncoder']]],
-  ['m_5fmiso_297',['m_Miso',['../class_ardu_forge_1_1_c_c1101.html#ad2011eef1625c952945ccf306cb17e04',1,'ArduForge::CC1101']]],
-  ['m_5fmosi_298',['m_Mosi',['../class_ardu_forge_1_1_c_c1101.html#af5228559be916e7dcd97136432d7fcd2',1,'ArduForge::CC1101']]],
-  ['m_5fpdata_299',['m_pData',['../class_ardu_forge_1_1_t_array.html#a76e5750cdea4f2371f7bf10202b864c7',1,'ArduForge::TArray']]],
-  ['m_5fr2_300',['m_R2',['../class_ardu_forge_1_1_m_f52.html#a0f2a3c09f01370754cb9de0369324782',1,'ArduForge::MF52']]],
-  ['m_5fr25_301',['m_R25',['../class_ardu_forge_1_1_m_f52.html#a06d4fadd75ae9ac9d78fd4b6bd7c0d06',1,'ArduForge::MF52']]],
-  ['m_5freadpin_302',['m_ReadPin',['../class_ardu_forge_1_1_m_f52.html#a31919521531fcd812f7f1e1e91a7bfb1',1,'ArduForge::MF52']]],
-  ['m_5frotaryposition_303',['m_RotaryPosition',['../class_ardu_forge_1_1_rotary_encoder.html#a0cd54b101df6f15e64b73b0cfd6492b3',1,'ArduForge::RotaryEncoder']]],
-  ['m_5fsck_304',['m_Sck',['../class_ardu_forge_1_1_c_c1101.html#a5e0c06ebe184ecef738a574bdd73244f',1,'ArduForge::CC1101']]],
-  ['m_5fsensorpin_305',['m_SensorPin',['../class_ardu_forge_1_1_binary_sensor.html#a6977b665a0a7fa47135c79191027a259',1,'ArduForge::BinarySensor']]],
-  ['m_5fstablereadingthreshold_306',['m_StableReadingThreshold',['../class_ardu_forge_1_1_binary_sensor.html#a0ecb40ac3723cc8541829c954905060a',1,'ArduForge::BinarySensor']]],
-  ['m_5fswitch_307',['m_Switch',['../class_ardu_forge_1_1_rotary_encoder.html#a65487410556b76e6697a6598b5221671',1,'ArduForge::RotaryEncoder']]],
-  ['m_5fswitchstate_308',['m_SwitchState',['../class_ardu_forge_1_1_rotary_encoder.html#a4a6bac69969fcc46b20549173fb75b3b',1,'ArduForge::RotaryEncoder']]]
+  ['dir_5fccw_336',['DIR_CCW',['../class_ardu_forge_1_1_rotary_encoder.html#a406bc44e2a60405f89d7e048d177bb8c',1,'ArduForge::RotaryEncoder']]],
+  ['dir_5fcw_337',['DIR_CW',['../class_ardu_forge_1_1_rotary_encoder.html#a23581372c0491099ae45d216a813b6e9',1,'ArduForge::RotaryEncoder']]]
 ];

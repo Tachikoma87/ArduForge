@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['fifo_312',['Fifo',['../class_ardu_forge_1_1_c_c1101.html#af926039bbcd26b1e138a147ff73ab4e3',1,'ArduForge::CC1101']]],
-  ['frequency_313',['Frequency',['../class_ardu_forge_1_1_c_c1101.html#aea807d714536af0eec312a20ced3bd64',1,'ArduForge::CC1101']]]
+  ['error_375',['Error',['../class_ardu_forge_1_1_c_c1101.html#a0a53f2f1e66fbe0736706749aeb1fc6a',1,'ArduForge::CC1101']]]
 ];

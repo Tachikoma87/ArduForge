@@ -1,9 +1,9 @@
 /*****************************************************************************\
 *                                                                           *
-* File(s):                                               *
+* File(s):                            *
 *                                                                           *
-* Content:      *
-*                         *
+* Content:       *
+*                                                         *
 *                                                                           *
 *                                                                           *
 * Author(s): Tom Uhlmann                                                    *
@@ -20,20 +20,17 @@
 
 
 /**
- * This example sketch shows how to use the rotary encoder class using an interrupt attached to the clock signal.
+ * The example sketch shows how to read data from an IMU which is driven by an MPU6050 chip. The data will be written to the serial port.
  */
 
-
-
 void setup() {
-  // put your setup codes here, to run once
-  Serial.begin(115200);
+    // put your setup codes here, to run once
+    Serial.begin(115200);
 
-
+    
 }
 
 void loop() {
- 
-  // In this example we can use delay since the interrupt will ensure that we don't miss a signal from the encoder.
-  delay(1000);
+
+    delay(500);
 }//loop
