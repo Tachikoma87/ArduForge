@@ -11,7 +11,7 @@ ArduForge is a collection of C++ classes for various common, popular devices use
 * RotaryEncoder - tracks the rotation of a shaft and usually comes with a switch
 
 # Documentation
-The online documentation can be accessed at https://crossforge.github.io/ArduForge/html/index.html
+The online documentation can be accessed at https://crossforge.github.io/ArduForge/doc/html/index.html
 
 # Examples
 All examples use the serial port with a speed setting of 115200 baud.
