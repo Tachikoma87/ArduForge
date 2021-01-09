@@ -26,8 +26,8 @@ namespace ArduForge{
      * 
      * Handles "communication" with an MF52 thermistor by using a basic voltage divider. You only need the thermistor's beta value
      * and the resistance at room temperature (R25). Use the part number or the datasheet 
-     * (http://radio-hobby.org/uploads/datasheets/mf/mf52[1].pdf) to acquire the necessary information.
-     * It is assumed that supply and reference voltage are the same.
+     * (<a HREF="http://radio-hobby.org/uploads/datasheets/mf/mf52[1].pdf">http://radio-hobby.org/uploads/datasheets/mf/mf52[1].pdf</a>) to acquire the necessary information.
+     * It is assumed that supply and reference voltage are the same. Value of the second resistor determines accuracy of the readings.
      * \image html MF52Wiring.png
     */
     class MF52{
@@ -76,7 +76,7 @@ namespace ArduForge{
              * \param[in] Beta MF52's \f$\beta\f$ value. See datasheet of your thermistor.
              * \param[in] R25 MF52's resistance at room temperature (25°C)
             */
-            void begin(int8_t ReadPin, int32_t R2 = 10000, int16_t Beta = 3435, int32_t R25 = 10000); 
+            void begin(uint8_t ReadPin, int32_t R2 = 10000, int16_t Beta = 3435, int32_t R25 = 10000); 
 
             /**
              * \brief Ends "communication" with the device. Resets to default values. 
@@ -107,7 +107,7 @@ namespace ArduForge{
             */
             void calibrationOffset(int16_t Offset);
         private:
-            int8_t m_ReadPin; ///< Analog Pin to read value V0 from.
+            uint8_t m_ReadPin; ///< Analog Pin to read value V0 from.
             int32_t m_R2; ///< Second resistor of the voltage divider.
             int16_t m_Beta; ///< Beta value of the Thermistor.
             int32_t m_R25; ///< Resistance of the Thermistor at Room Temperature (25°C).

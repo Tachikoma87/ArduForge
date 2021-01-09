@@ -1,9 +1,9 @@
 /*****************************************************************************\
 *                                                                           *
-* File(s):                            *
+* File(s):                                              *
 *                                                                           *
-* Content:       *
-*                                                         *
+* Content:     *
+*                         *
 *                                                                           *
 *                                                                           *
 * Author(s): Tom Uhlmann                                                    *
@@ -18,19 +18,18 @@
 #include <Arduino.h>
 
 
-
 /**
- * The example sketch shows how to read data from an IMU which is driven by an MPU6050 chip. The data will be written to the serial port.
+ * The example sketch shows 
  */
 
 void setup() {
-    // put your setup codes here, to run once
+    // initialize serial connection
     Serial.begin(115200);
 
-    
+
 }
 
 void loop() {
-
-    delay(500);
+    
+    delay(1000);
 }//loop

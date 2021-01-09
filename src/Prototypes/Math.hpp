@@ -1,8 +1,9 @@
 /*****************************************************************************\
 *                                                                           *
-* File(s): HCSR04.h and HCSR04.cpp                                          *
+* File(s): Math.hpp                                                         *
 *                                                                           *
-* Content: Class to use HC-SR04 ultrasonic sensor to measure distance.      *
+* Content: Various math implementations.     *
+*                                                                           *
 *                                                                           *
 *                                                                           *
 *                                                                           *
@@ -16,25 +17,18 @@
 *                                                                           *
 \****************************************************************************/
 
-#ifndef ARDUFORGE_HCSR04_H
-#define ARDUFORGE_HCSR04_H 
+#ifndef ARDUFORGE_MATH_HPP
+#define ARDUFORGE_MATH_HPP 
+
+#include <inttypes.h>
 
 namespace ArduForge{
-    class HCSR04{
-    public:
-        HCSR04(void);
-        ~HCSR04(void);
+    class Math{
+        
 
-        void begin(int8_t TriggerPin, int8_t EchoPin);
-        void end(void);
 
-        float read(void);
-    protected:
-        int8_t m_Trigger;
-        int8_t m_Echo;
-    };//HCSR04
+    };//Math
 
 }//name space
-
 
 #endif

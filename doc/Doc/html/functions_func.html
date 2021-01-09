@@ -69,7 +69,7 @@ $(function() {
 : <a class="el" href="class_ardu_forge_1_1_m_p_u6050.html#a9a65a0cae99ed77c2599e39c78951963">ArduForge::MPU6050</a>
 </li>
 <li>at()
-: <a class="el" href="class_ardu_forge_1_1_t_array.html#ac4dee225845ef6a0ea6446fa77a8bc08">ArduForge::TArray&lt; T &gt;</a>
+: <a class="el" href="class_ardu_forge_1_1_t_array.html#a71860a5016eb0b80492bfe087951941c">ArduForge::TArray&lt; T &gt;</a>
 </li>
 </ul>
 
@@ -78,7 +78,8 @@ $(function() {
 <li>begin()
 : <a class="el" href="class_ardu_forge_1_1_binary_sensor.html#a1ae23053209e02f4df0e7cc3af2bf7c6">ArduForge::BinarySensor</a>
 , <a class="el" href="class_ardu_forge_1_1_c_c1101.html#a2816afc3b1ec4d3b2c9ef2afa6ce5968">ArduForge::CC1101</a>
-, <a class="el" href="class_ardu_forge_1_1_m_f52.html#a03f622271b34cb6187db3f2b275d2aa2">ArduForge::MF52</a>
+, <a class="el" href="class_ardu_forge_1_1_h_c_s_r04.html#a0565e91b23d4448ce719766e0b9fb6d2">ArduForge::HCSR04</a>
+, <a class="el" href="class_ardu_forge_1_1_m_f52.html#a761c6e88f1c4a1d38a9b505aaf18cf89">ArduForge::MF52</a>
 , <a class="el" href="class_ardu_forge_1_1_m_p_u6050.html#a9d7aa8d8c5fc9ca62a199936b0224500">ArduForge::MPU6050</a>
 , <a class="el" href="class_ardu_forge_1_1_rotary_encoder.html#a6134aa7d366dc10ee15db5e84a152f51">ArduForge::RotaryEncoder</a>
 </li>
@@ -107,8 +108,11 @@ $(function() {
 <li>celsiusToKelvin()
 : <a class="el" href="class_ardu_forge_1_1_m_f52.html#a7c626bbbd2d25ed1f614c14e3308dedf">ArduForge::MF52</a>
 </li>
+<li>centimeterToInch()
+: <a class="el" href="class_ardu_forge_1_1_h_c_s_r04.html#a6b75469a4f4475ea458b6bc7537e74a8">ArduForge::HCSR04</a>
+</li>
 <li>channel()
-: <a class="el" href="class_ardu_forge_1_1_c_c1101.html#a4e5106925723cdef083ca584554b549c">ArduForge::CC1101</a>
+: <a class="el" href="class_ardu_forge_1_1_c_c1101.html#aa094653ec9ab506791cc9cebcbc2a4aa">ArduForge::CC1101</a>
 </li>
 <li>clear()
 : <a class="el" href="class_ardu_forge_1_1_t_array.html#a6be6c39b4b9c84e3936e5b6fb81f1856">ArduForge::TArray&lt; T &gt;</a>
@@ -149,6 +153,7 @@ $(function() {
 <li>end()
 : <a class="el" href="class_ardu_forge_1_1_binary_sensor.html#ad085b18a79e17ed6e4bcff2f3ed13db6">ArduForge::BinarySensor</a>
 , <a class="el" href="class_ardu_forge_1_1_c_c1101.html#aa7f204505bcd8b1f33d9ba1c7c803a85">ArduForge::CC1101</a>
+, <a class="el" href="class_ardu_forge_1_1_h_c_s_r04.html#a3740161cd27c811cfe648d58abd5e0ad">ArduForge::HCSR04</a>
 , <a class="el" href="class_ardu_forge_1_1_m_f52.html#a8f049582553ec007b140348bb3ada22f">ArduForge::MF52</a>
 , <a class="el" href="class_ardu_forge_1_1_m_p_u6050.html#ac5ffccbd0ffc019d610fe391a2960665">ArduForge::MPU6050</a>
 , <a class="el" href="class_ardu_forge_1_1_rotary_encoder.html#a386191ca0608a701f6cd540a58172f6c">ArduForge::RotaryEncoder</a>
@@ -173,7 +178,17 @@ $(function() {
 </ul>
 
 
+<h3><a id="index_h"></a>- h -</h3><ul>
+<li>HCSR04()
+: <a class="el" href="class_ardu_forge_1_1_h_c_s_r04.html#a82ddbf97b4c9b71ec4a76ff1f1165ea2">ArduForge::HCSR04</a>
+</li>
+</ul>
+
+
 <h3><a id="index_i"></a>- i -</h3><ul>
+<li>inchToCentimeter()
+: <a class="el" href="class_ardu_forge_1_1_h_c_s_r04.html#a0b3b7f17febd44b075b1a2edebe99c4f">ArduForge::HCSR04</a>
+</li>
 <li>init()
 : <a class="el" href="class_ardu_forge_1_1_t_array.html#aaf3736016edd3d01e05933948e7fa2b4">ArduForge::TArray&lt; T &gt;</a>
 , <a class="el" href="class_ardu_forge_1_1_t_vector.html#ae13903f1dbacec4a4c7269886312c5c1">ArduForge::TVector&lt; T, Dim &gt;</a>
@@ -233,10 +248,10 @@ $(function() {
 </li>
 <li>operator[]()
 : <a class="el" href="class_ardu_forge_1_1_t_array.html#ab4aec0202cc26513112deb3c2b7eff91">ArduForge::TArray&lt; T &gt;</a>
-, <a class="el" href="class_ardu_forge_1_1_t_vector.html#adf92918fb6661eb0260272eca8e691e3">ArduForge::TVector&lt; T, Dim &gt;</a>
+, <a class="el" href="class_ardu_forge_1_1_t_vector.html#a3ce370cb1df540692d2ea906160920d1">ArduForge::TVector&lt; T, Dim &gt;</a>
 </li>
 <li>outputPowerLevel()
-: <a class="el" href="class_ardu_forge_1_1_c_c1101.html#a2cd3a0af5ea0b3ae6cc42f3896c2cbaa">ArduForge::CC1101</a>
+: <a class="el" href="class_ardu_forge_1_1_c_c1101.html#adb3d31304ab45b9f0b71a96996c9e955">ArduForge::CC1101</a>
 </li>
 </ul>
 
@@ -257,6 +272,7 @@ $(function() {
 <h3><a id="index_r"></a>- r -</h3><ul>
 <li>read()
 : <a class="el" href="class_ardu_forge_1_1_binary_sensor.html#a6def4045b79b8b809289ba004f059b6b">ArduForge::BinarySensor</a>
+, <a class="el" href="class_ardu_forge_1_1_h_c_s_r04.html#a6231b12d14f7c4cce4084cff003b84ca">ArduForge::HCSR04</a>
 , <a class="el" href="class_ardu_forge_1_1_m_f52.html#a3a3cd3e066c9c303f46eb5a20e206e5a">ArduForge::MF52</a>
 , <a class="el" href="class_ardu_forge_1_1_m_p_u6050.html#a4b918087c97de63843ed07874a5cc15d">ArduForge::MPU6050</a>
 </li>
@@ -385,6 +401,9 @@ $(function() {
 </li>
 <li>~CC1101()
 : <a class="el" href="class_ardu_forge_1_1_c_c1101.html#ab609e8777247c952359cc51e5e838fe6">ArduForge::CC1101</a>
+</li>
+<li>~HCSR04()
+: <a class="el" href="class_ardu_forge_1_1_h_c_s_r04.html#aa53537efc85bb7cb496306509f4792d4">ArduForge::HCSR04</a>
 </li>
 <li>~MF52()
 : <a class="el" href="class_ardu_forge_1_1_m_f52.html#a5fa6b5c2e1ac81d29ff40abde584245e">ArduForge::MF52</a>

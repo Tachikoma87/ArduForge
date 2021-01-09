@@ -18,7 +18,7 @@ Class to interface an \mbox{\hyperlink{class_ardu_forge_1_1_m_f52}{M\+F52}} ther
 \mbox{\Hypertarget{class_ardu_forge_1_1_m_f52_a5fa6b5c2e1ac81d29ff40abde584245e}\label{class_ardu_forge_1_1_m_f52_a5fa6b5c2e1ac81d29ff40abde584245e}} 
 \mbox{\hyperlink{class_ardu_forge_1_1_m_f52_a5fa6b5c2e1ac81d29ff40abde584245e}{$\sim$\+M\+F52}} (void)
 \begin{DoxyCompactList}\small\item\em Destructor. Calls \mbox{\hyperlink{class_ardu_forge_1_1_m_f52_a8f049582553ec007b140348bb3ada22f}{end()}}. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_ardu_forge_1_1_m_f52_a03f622271b34cb6187db3f2b275d2aa2}{begin}} (int8\+\_\+t Read\+Pin, int32\+\_\+t R2=10000, int16\+\_\+t Beta=3435, int32\+\_\+t R25=10000)
+void \mbox{\hyperlink{class_ardu_forge_1_1_m_f52_a761c6e88f1c4a1d38a9b505aaf18cf89}{begin}} (uint8\+\_\+t Read\+Pin, int32\+\_\+t R2=10000, int16\+\_\+t Beta=3435, int32\+\_\+t R25=10000)
 \begin{DoxyCompactList}\small\item\em Initializes the thermistor by defining the circuit and device properties. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_ardu_forge_1_1_m_f52_a8f049582553ec007b140348bb3ada22f}\label{class_ardu_forge_1_1_m_f52_a8f049582553ec007b140348bb3ada22f}} 
 void \mbox{\hyperlink{class_ardu_forge_1_1_m_f52_a8f049582553ec007b140348bb3ada22f}{end}} (void)
@@ -43,8 +43,8 @@ static float \mbox{\hyperlink{class_ardu_forge_1_1_m_f52_a9c29049753ce3f629c30c9
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_ardu_forge_1_1_m_f52_a31919521531fcd812f7f1e1e91a7bfb1}\label{class_ardu_forge_1_1_m_f52_a31919521531fcd812f7f1e1e91a7bfb1}} 
-int8\+\_\+t \mbox{\hyperlink{class_ardu_forge_1_1_m_f52_a31919521531fcd812f7f1e1e91a7bfb1}{m\+\_\+\+Read\+Pin}}
+\mbox{\Hypertarget{class_ardu_forge_1_1_m_f52_aaa9a23ccae9bcc9d70dae341aae28fe4}\label{class_ardu_forge_1_1_m_f52_aaa9a23ccae9bcc9d70dae341aae28fe4}} 
+uint8\+\_\+t \mbox{\hyperlink{class_ardu_forge_1_1_m_f52_aaa9a23ccae9bcc9d70dae341aae28fe4}{m\+\_\+\+Read\+Pin}}
 \begin{DoxyCompactList}\small\item\em Analog Pin to read value V0 from. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_ardu_forge_1_1_m_f52_a0f2a3c09f01370754cb9de0369324782}\label{class_ardu_forge_1_1_m_f52_a0f2a3c09f01370754cb9de0369324782}} 
 int32\+\_\+t \mbox{\hyperlink{class_ardu_forge_1_1_m_f52_a0f2a3c09f01370754cb9de0369324782}{m\+\_\+\+R2}}
@@ -63,14 +63,14 @@ int16\+\_\+t \mbox{\hyperlink{class_ardu_forge_1_1_m_f52_a774c110c4768dec26433c1
 \doxysubsection{Detailed Description}
 Class to interface an \mbox{\hyperlink{class_ardu_forge_1_1_m_f52}{M\+F52}} thermistor device in a voltage divider circuit. 
 
-Handles \char`\"{}communication\char`\"{} with an \mbox{\hyperlink{class_ardu_forge_1_1_m_f52}{M\+F52}} thermistor by using a basic voltage divider. You only need the thermistor\textquotesingle{}s beta value and the resistance at room temperature (R25). Use the part number or the datasheet (\href{http://radio-hobby.org/uploads/datasheets/mf/mf52}{\texttt{ http\+://radio-\/hobby.\+org/uploads/datasheets/mf/mf52}}\mbox{[}1\mbox{]}.pdf) to acquire the necessary information. It is assumed that supply and reference voltage are the same.  
+Handles \char`\"{}communication\char`\"{} with an \mbox{\hyperlink{class_ardu_forge_1_1_m_f52}{M\+F52}} thermistor by using a basic voltage divider. You only need the thermistor\textquotesingle{}s beta value and the resistance at room temperature (R25). Use the part number or the datasheet (\href{http://radio-hobby.org/uploads/datasheets/mf/mf52[1].pdf}{\texttt{ http\+://radio-\/hobby.\+org/uploads/datasheets/mf/mf52\mbox{[}1\mbox{]}.pdf}}) to acquire the necessary information. It is assumed that supply and reference voltage are the same. Value of the second resistor determines accuracy of the readings.  
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_ardu_forge_1_1_m_f52_a03f622271b34cb6187db3f2b275d2aa2}\label{class_ardu_forge_1_1_m_f52_a03f622271b34cb6187db3f2b275d2aa2}} 
+\mbox{\Hypertarget{class_ardu_forge_1_1_m_f52_a761c6e88f1c4a1d38a9b505aaf18cf89}\label{class_ardu_forge_1_1_m_f52_a761c6e88f1c4a1d38a9b505aaf18cf89}} 
 \index{ArduForge::MF52@{ArduForge::MF52}!begin@{begin}}
 \index{begin@{begin}!ArduForge::MF52@{ArduForge::MF52}}
 \doxysubsubsection{\texorpdfstring{begin()}{begin()}}
-{\footnotesize\ttfamily void Ardu\+Forge\+::\+M\+F52\+::begin (\begin{DoxyParamCaption}\item[{int8\+\_\+t}]{Read\+Pin,  }\item[{int32\+\_\+t}]{R2 = {\ttfamily 10000},  }\item[{int16\+\_\+t}]{Beta = {\ttfamily 3435},  }\item[{int32\+\_\+t}]{R25 = {\ttfamily 10000} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Ardu\+Forge\+::\+M\+F52\+::begin (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{Read\+Pin,  }\item[{int32\+\_\+t}]{R2 = {\ttfamily 10000},  }\item[{int16\+\_\+t}]{Beta = {\ttfamily 3435},  }\item[{int32\+\_\+t}]{R25 = {\ttfamily 10000} }\end{DoxyParamCaption})}
 
 
 

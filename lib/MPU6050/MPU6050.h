@@ -41,7 +41,7 @@ namespace ArduForge{
             int16_t GyroX; ///< Rotation x axis
             int16_t GyroY; ///< Rotation y axis
             int16_t GyroZ; ///< Rotation z axis
-            float Temperature;
+            int16_t Temperature; ///< Raw temperature reading
 
             RawSensorData(void){
                 AccelX = AccelY = AccelZ = 0;

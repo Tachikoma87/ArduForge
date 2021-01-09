@@ -17,8 +17,8 @@
 *                                                                           *
 \****************************************************************************/
 
-#ifndef ARDUFORGE_TVECTOR_H
-#define ARDUFORGE_TVECTOR_H 
+#ifndef ARDUFORGE_TVECTOR_HPP
+#define ARDUFORGE_TVECTOR_HPP
 
 #include <inttypes.h>
 
@@ -133,7 +133,7 @@ namespace ArduForge{
 
         /**
          * \brief Addition-assign operator.
-         * \param[in] Second operand.
+         * \param[in] Right Second operand.
          */
         void operator+=(const TVector<T, Dim> &Right){
             for(uint16_t i=0; i < Dim; ++i) m_Data[i] += Right[i];

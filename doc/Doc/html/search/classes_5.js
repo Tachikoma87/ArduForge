@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['tarray_246',['TArray',['../class_ardu_forge_1_1_t_array.html',1,'ArduForge']]],
-  ['tvector_247',['TVector',['../class_ardu_forge_1_1_t_vector.html',1,'ArduForge']]]
+  ['sensordata_251',['SensorData',['../struct_ardu_forge_1_1_m_p_u6050_1_1_sensor_data.html',1,'ArduForge::MPU6050']]],
+  ['sutilities_252',['SUtilities',['../class_ardu_forge_1_1_s_utilities.html',1,'ArduForge']]]
 ];

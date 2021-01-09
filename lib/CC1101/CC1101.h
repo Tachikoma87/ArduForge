@@ -107,6 +107,9 @@ namespace ArduForge{
             F0_433 = 0x62 ////< f0 config for 433 MHz
         };//Modulation 
 
+        /**
+         * \brief Commando strobes definitions
+         */
         enum CmdStrobes: uint8_t{
             SRES = 0x30, ///< Reset chip
             SFSTXON = 0x31, ///< Enable and calibrate frequency synthesizer (if MCSM0.FS_AUTOCAL=1).

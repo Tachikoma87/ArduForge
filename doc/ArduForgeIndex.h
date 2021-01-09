@@ -5,9 +5,15 @@
  * \section Introduction
  * 
  * 
- * \section ToDo List
- * \todo add classes for devices: ESP32 Cam/BTLE/Stepper Motor/Linear Motor (PWM) with transistor
- * \todo Try crypto library
+ * \section Upcoming features and classes
+ * \todo ESP32 Cam module
+ * \todo BTLE (HC05)
+ * \todo Stepper motor
+ * \todo Linear motor (PWM-based)
+ * \todo PIR sensor
+ * \todo NFC
+ * \todo 16 channel Touch sensor
+ * \todo BME280 (Barometer module)
  * 
  */
 

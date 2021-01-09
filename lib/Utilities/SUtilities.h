@@ -34,6 +34,8 @@ namespace ArduForge{
          */
         static int16_t freeMemory(void);
 
+       
+
     protected:
         /**
          * \brief Constructor

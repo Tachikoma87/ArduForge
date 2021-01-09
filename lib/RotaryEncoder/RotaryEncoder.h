@@ -49,7 +49,7 @@ namespace ArduForge{
         /**
          * \brief Starts communication with the rotary encoder.
          * \param[in] ClkPin Clock pin
-         * \param]in] DtPin DtPin
+         * \param[in] DtPin DtPin
          * \param[in] SwitchPin Switch pin.
          * \param[in] Pullup Specify whether to use a pullup input for the switch.
          */
