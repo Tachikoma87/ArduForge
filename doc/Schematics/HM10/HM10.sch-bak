@@ -1,0 +1,102 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr User 5197 4921
+encoding utf-8
+Sheet 1 1
+Title "HM-10 Wiring Schematic"
+Date "2021-01-11"
+Rev ""
+Comp "ArduForge"
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L MCU_Module:Arduino_Nano_v3.x A?
+U 1 1 5FFC3671
+P 3600 1750
+F 0 "A?" H 3600 661 50  0001 C CNN
+F 1 "Arduino Nano" H 3600 661 50  0000 C CNN
+F 2 "Module:Arduino_Nano" H 3600 1750 50  0001 C CIN
+F 3 "http://www.mouser.com/pdfdocs/Gravitech_Arduino_Nano3_0.pdf" H 3600 1750 50  0001 C CNN
+	1    3600 1750
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:HM-10 U?
+U 1 1 5FFCB57A
+P 1600 1950
+F 0 "U?" H 1625 2315 50  0001 C CNN
+F 1 "HM-10" H 1625 2223 50  0000 C CNN
+F 2 "" H 1600 2200 50  0001 C CNN
+F 3 "" H 1600 2200 50  0001 C CNN
+	1    1600 1950
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 5FFCEA47
+P 2700 1350
+F 0 "R?" V 2493 1350 50  0001 C CNN
+F 1 "220" V 2585 1350 50  0000 C CNN
+F 2 "" V 2630 1350 50  0001 C CNN
+F 3 "~" H 2700 1350 50  0001 C CNN
+	1    2700 1350
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 5FFCF543
+P 2250 1350
+F 0 "R?" V 2043 1350 50  0001 C CNN
+F 1 "470" V 2135 1350 50  0000 C CNN
+F 2 "" V 2180 1350 50  0001 C CNN
+F 3 "~" H 2250 1350 50  0001 C CNN
+	1    2250 1350
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	1950 1950 2450 1950
+Wire Wire Line
+	2450 1950 2450 1350
+Wire Wire Line
+	2400 1350 2450 1350
+Connection ~ 2450 1350
+Wire Wire Line
+	2450 1350 2550 1350
+Wire Wire Line
+	1950 2050 2550 2050
+Wire Wire Line
+	3600 2750 1150 2750
+Wire Wire Line
+	2100 1350 1150 1350
+Wire Wire Line
+	1000 700  3800 700 
+Wire Wire Line
+	3800 700  3800 750 
+Wire Wire Line
+	1300 1850 1150 1850
+Connection ~ 1150 1850
+Wire Wire Line
+	1150 1850 1150 2750
+Wire Wire Line
+	1300 1950 1000 1950
+Wire Wire Line
+	1000 1950 1000 700 
+Wire Wire Line
+	2850 1350 3100 1350
+Wire Wire Line
+	3100 1450 2550 1450
+Wire Wire Line
+	2550 1450 2550 2050
+Wire Wire Line
+	1950 1850 3000 1850
+Wire Wire Line
+	3000 1850 3000 1550
+Wire Wire Line
+	3000 1550 3100 1550
+Wire Wire Line
+	1150 1350 1150 1850
+$EndSCHEMATC

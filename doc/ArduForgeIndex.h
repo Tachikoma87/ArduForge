@@ -9,7 +9,6 @@
  * 
  * \section NextFeatures Upcoming features and classes
  * \todo ESP32 Cam module
- * \todo BTLE (HC05)
  * \todo Stepper motor
  * \todo Linear motor (PWM-based)
  * \todo PIR sensor

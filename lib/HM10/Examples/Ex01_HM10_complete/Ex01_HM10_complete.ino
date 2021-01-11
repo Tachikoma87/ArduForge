@@ -27,8 +27,8 @@ ArduForge::HM10 BTLE;
 // if 0 auto detect is started
 // once you know your device's baudrate you should define it here to accelerate startup
 uint32_t Baudrate = 0; 
-const uint8_t RXPin = 2; // RX pin on the receiving device (connected to TX pin on HM10 module)
-const uint8_t TXPin = 3; // TX pin on the receiving device (Connected to RX pin on HM10 module)
+const uint8_t TXPin = 2; // TX pin on the receiving device (Connected to RX pin on HM10 module)
+const uint8_t RXPin = 3; // RX pin on the receiving device (connected to TX pin on HM10 module)
 const uint8_t StatePin = 4; // state pin is used to check bluetooth connection status
 const char DeviceName[] = "ArduForgeBTLE";
 // last action in startup routine is printing the help page of the HM10 module if this flag is set
@@ -111,7 +111,7 @@ void loop() {
         sscanf((char*)Buffer, "%ld", &Value);
         Serial.print("Received number: "); Serial.print(Value); Serial.println();
         if(Value != 0){
-            sprintf((char*)Buffer, "%ld + %ld = %ld\n", Value, Value, Value*Value);
+            sprintf((char*)Buffer, "%ld * %ld = %ld\n", Value, Value, Value*Value);
             BTLE.print((char*)Buffer);
         }
     }

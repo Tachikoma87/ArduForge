@@ -38,7 +38,7 @@ namespace ArduForge{
         m_State = StatePin;
        
         // create software serial and start communication with specified baud rate
-        m_pCom = new SoftwareSerial(m_RX, m_TX);
+        if(nullptr == m_pCom) m_pCom = new SoftwareSerial(m_RX, m_TX);
         m_pCom->begin(Baud);
         // wait a little bit to establish connection
 
@@ -62,9 +62,10 @@ namespace ArduForge{
      void HM10::end(void){
         if(nullptr != m_pCom) {
             m_pCom->end();
-            delete m_pCom;
+            // deleting the object does not seem to be working
+            // compiler complains about non-virtual destructor ...
+            //delete m_pCom;
         }
-        m_pCom = nullptr; 
 
         m_RX = 0xFF;
         m_TX = 0xFF;
