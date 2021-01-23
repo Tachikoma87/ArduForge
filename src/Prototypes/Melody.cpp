@@ -20,12 +20,12 @@ namespace ArduForge{
 
     void Melody::play(Note *pNotes, int8_t *pDurations, int32_t NoteCount){
 
-        for(int i=0; i< NoteCount; ++i){
-            int16_t Duration = 1000/pDurations[i];
-            tone(m_SpeakerPin, (int16_t)pNotes[i], Duration);
-            delay(Duration + 30);
-            noTone(8);
-        }//for[notes]
+        // for(int i=0; i< NoteCount; ++i){
+        //     int16_t Duration = 1000/pDurations[i];
+        //     tone(m_SpeakerPin, (int16_t)pNotes[i], Duration);
+        //     delay(Duration + 30);
+        //     noTone(8);
+        // }//for[notes]
 
     }//play
 

@@ -12,6 +12,5 @@ arduforge.code-workspace
 .pio
 .vscode
 
-./test
-./include
+lib/3rdParty
 
