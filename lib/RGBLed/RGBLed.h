@@ -18,7 +18,6 @@
 #ifndef ARDUFORGE_RGBLED_H
 #define ARDUFORGE_RGBLED_H
 
-#include <Arduino.h>
 #include <inttypes.h>
 
 namespace ArduForge{
@@ -90,6 +89,10 @@ namespace ArduForge{
         uint8_t m_GreenPin; ///< Pin of LED's green channel
         uint8_t m_BluePin;  ///< Pin of LED's blue channel
         bool m_PWM;         ///< Pulse width modulation feature switch
+
+        static const uint8_t PWMChannelR = 0;
+        static const uint8_t PWMChannelG = 1;
+        static const uint8_t PWMChannelB = 2;
     };//RGBLed
 
 

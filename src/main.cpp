@@ -1,9 +1,9 @@
 /*****************************************************************************\
 *                                                                           *
-* File(s): Ex01_ChargeAndVoltage.ino                                        *
+* File(s): Ex01_LedControl.ino                                              *
 *                                                                           *
-* Content: This example shows how to measure the voltage and remaining      *
-*          charge in percent.                                               *
+* Content: This example shows how to use the RGBLed class to create some    *
+*          lighting effects with a common cathode RGB Led.                  *
 *                                                                           *
 *                                                                           *
 * Author(s): Tom Uhlmann                                                    *
@@ -17,37 +17,66 @@
 \****************************************************************************/
 #include <Arduino.h>
 #include <inttypes.h>
-#include <BatteryIndicatorNiMh.h>
+#include <RGBLed.h>
 /**
- * This example shows how to measure the voltage and remaining relative charge of a common NiMh rechargeable battery.
- * To test connect the anode (+) of the battery to an analog pin and the cathode (-) to ground. 
- * You can also test several batteries in series, but only up to 3 for an Arduino since 4 batteries can exceed the 5V limit and
- * may fry your board (or just trigger a fuse if you are lucky).
- * To get exact measurements you have to determine the voltage your board provides. Use a multimeter and measure voltage between 5V (or 3.3V) pin and ground.
+ * This example shows how to use the RGBLed class to create some lighting effects with a common cathode RGB Led.
+ * Use the wiring provided with the docs and the sketch will work without changes. 
  */
 
-ArduForge::BatteryIndicatorNiMh Battery;
-
-const uint8_t AnalogReadPin = 0; ///< Id of the analog pin the anode is connected to.
-const uint8_t BatteryCount = 1; ///< Number of batteries that are in series.
-const float ReferenceVoltage = 4.98; ///< Voltage that is actually provided by your board.
+ArduForge::RGBLed ColorLed;
+const uint8_t RedPin = 19; // Red channel pin
+const uint8_t GreenPin = 18; // Green channel pin
+const uint8_t BluePin = 5; // Blue channel pin
 
 void setup() {
-    // start serial communication
     Serial.begin(115200);
-    // setup battery measurements
-    Battery.begin(AnalogReadPin, BatteryCount, ReferenceVoltage);
+    // setup the pins
+    ColorLed.begin(RedPin, GreenPin, BluePin, false);
+    Serial.print("RGB Led initialized ...\n");
 }//setup
 
 
 void loop() {
-    // print status of the battery
-    // values will be erratic if no battery is connected
-    Serial.print("Battery at ");
-    Serial.print(Battery.charge());
-    Serial.print("% (");
-    Serial.print(Battery.read());
-    Serial.print("V)\n");
+    // fade from 0 to max for Red, green, blue, and white
+    Serial.print("Starting RGB-Led Test ...\n");
+    Serial.print("Red ... ");
+    for(uint8_t i=0; i < 255; ++i){
+        ColorLed.color(i, 0, 0);
+        delay(20);
+    }
+    Serial.print("Green ...");
+    for(uint8_t i=0; i < 255; ++i){
+        ColorLed.color(0, i, 0);
+        delay(20);
+    }
+    Serial.print("Blue ...");
+    for(uint8_t i=0; i < 255; ++i){
+        ColorLed.color(0, 0, i);
+        delay(20);
+    }
+    Serial.print("White");
+    for(uint8_t i=0; i < 255; ++i){
+    ColorLed.color(i,i,i);
+    delay(20); 
+    }
+    Serial.println();
 
-    delay(2000);
+    // let's make the led blink a bit in yellow and magenta
+    Serial.print("Blinking...");
+    Serial.print("Yellow ...");
+    for(uint8_t i=0; i < 20; ++i){
+        ColorLed.color(255, 200, 0);
+        delay(125);
+        ColorLed.color(0,0,0);
+        delay(125);
+    }
+    Serial.print("Magenta ...");
+    for(uint8_t i=0; i < 20; ++i){
+        ColorLed.color(255, 0, 255);
+        delay(125);
+        ColorLed.color(0,0,0);
+        delay(125);
+    }
+    Serial.println();
+ 
 }//loop
