@@ -213,7 +213,8 @@ namespace ArduForge{
         spiTransfer(CmdStrobes::SRES);
         while(digitalRead(m_Miso));
         digitalWrite(m_Csn, HIGH);
-
+        // device needs some time to reset
+        delay(100);
     }//reset 
 
     void CC1101::spiWriteReg(uint8_t Reg, uint8_t Value){
