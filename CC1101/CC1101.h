@@ -20,6 +20,10 @@
 #ifndef ARDUFORGE_CC1101_H
 #define ARDUFORGE_CC1101_H 
 
+#include <Arduino.h>
+#include <inttypes.h>
+#include <pins_arduino.h>
+
 namespace ArduForge{
 
     /**
@@ -29,6 +33,7 @@ namespace ArduForge{
      * The implementation has been inspired by SpaceTeddy's (https://github.com/SpaceTeddy/CC1101) and simonmonk's (https://github.com/simonmonk/CC1101_arduino) CC1101 implementations. They where a great help so thanks for sharing.
      * \warning Don't forget that the CC1101 requires 3.3V input and you will nee a a logic converter or voltage dividers in case you connect from a higher voltage device such as the Arduino. There are tutorials mentioning that it is possible to connect directly, but I fried one breakout board with direct connection, so better be save than sorry. You can use 220ohm/470ohm voltage dividers to connect from a 5V device. 
      * \remarks The class was mainly tested using 433 MHz. Only small package sizes are allowed since larger package sizes require elaborate syncing of sender and receiver. I was able to send 59 bytes of payload data in single packages without problems.
+     * \image html CC1101Wiring.png
      */
     class CC1101{
     public:
@@ -106,6 +111,9 @@ namespace ArduForge{
             F0_433 = 0x62 ////< f0 config for 433 MHz
         };//Modulation 
 
+        /**
+         * \brief Commando strobes definitions
+         */
         enum CmdStrobes: uint8_t{
             SRES = 0x30, ///< Reset chip
             SFSTXON = 0x31, ///< Enable and calibrate frequency synthesizer (if MCSM0.FS_AUTOCAL=1).
@@ -198,7 +206,7 @@ namespace ArduForge{
          * \param[in] Sck Sck (clock) pin
          * \remarks miso, mosi, sck and Csn (SS) pin are usually hardware specific. Make sure pin wiring matches your device. Default values are valid for Arduino.
          **/
-        void begin(uint8_t DeviceAddr, uint8_t Gdo0 = 2, uint8_t Freq = F_433, uint8_t Gdo2 = 0x0, uint8_t Csn = 10,  uint8_t Mosi = 11, uint8_t Miso = 12, uint8_t Sck = 13);
+        void begin(uint8_t DeviceAddr, uint8_t Gdo0, uint8_t Freq = F_433, uint8_t Gdo2 = 0xFF, uint8_t Csn = SS,  uint8_t Mosi = MOSI, uint8_t Miso = MISO, uint8_t Sck = SCK);
 
         /**
          * \brief End communication with the CC1101 device
@@ -266,7 +274,7 @@ namespace ArduForge{
          * 
          * \return Current device address
          */
-        uint8_t deviceAddress(void)const;
+        uint8_t deviceAddress(void);
 
         /**
          * \brief Set device to new Channel.
@@ -327,14 +335,14 @@ namespace ArduForge{
          * 
          * \return Chip part number
          */
-        uint8_t partNumber(void)const;
+        uint8_t partNumber(void);
 
         /**
          * \brief Returns chip version number.
          * 
          * \return Chip version number
          */
-        uint8_t version(void)const;
+        uint8_t version(void);
     private:
         /**
          * \brief Initialize SPI communication with the radio device.
@@ -347,17 +355,12 @@ namespace ArduForge{
         void spiEnd(void);
 
         /**
-         * \brief SPI mode configuration.
-         */
-        void spiMode(uint8_t Config);
-
-        /**
          * \brief Transfers a single byte via SPI and returns received byte.
          * 
          * \param[in] Value Byte to send.
          * \return Received byte 
          */
-        uint8_t spiTransfer(uint8_t Value)const;
+        uint8_t spiTransfer(uint8_t Value);
 
         /**
          * \brief Resets the device.
@@ -396,7 +399,7 @@ namespace ArduForge{
          * \param[in] Reg Register address.
          * \return Byte value of the specified register
          */
-        uint8_t spiReadReg(uint8_t Reg)const;
+        uint8_t spiReadReg(uint8_t Reg);
 
         /**
          * \brief Read values from a register in burst mode.

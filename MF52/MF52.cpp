@@ -31,7 +31,7 @@ namespace ArduForge{
         end();
     }//Destructor
 
-    void MF52::begin(int8_t ReadPin, int32_t R2, int16_t Beta, int32_t R25){
+    void MF52::begin(uint8_t ReadPin, int32_t R2, int16_t Beta, int32_t R25){
         m_ReadPin = ReadPin;
         m_R2 = R2;
         m_Beta = Beta;

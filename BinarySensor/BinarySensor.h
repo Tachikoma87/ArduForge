@@ -30,7 +30,7 @@ namespace ArduForge{
      * Therefore the signal needs to be debounced. This class debounces the signal and returns LOW or HIGH
      * only if the signal is stable (-1 in case of an unstable signal). A signal is considered stable if 
      * it does not change a certain number times with a delay between each read.
-     * 
+     * \image html BinarySensorWiring.png
      */
     class BinarySensor{
     public:

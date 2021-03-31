@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include <SPI.h>
 #include "CC1101.h"
 
 namespace ArduForge{
@@ -12,7 +13,6 @@ namespace ArduForge{
         m_Sck = 0x00;
         m_Gdo0 = 0x00;
         m_Gdo2 = 0x00;
-
     }//Constructor 
 
     CC1101::~CC1101(void){
@@ -31,6 +31,9 @@ namespace ArduForge{
         // initialize internal buffer 
         m_AvailableData = 0;
         
+        // slave select not set automatically on ESP32
+        pinMode(m_Csn, OUTPUT);
+
         spiInit();  // spi initialization
         pinMode(m_Gdo0, INPUT);
         //pinMode(m_Gdo2, INPUT); // currently unused
@@ -124,7 +127,7 @@ namespace ArduForge{
         }
     }//deviceAddress 
 
-    uint8_t CC1101::deviceAddress(void)const{
+    uint8_t CC1101::deviceAddress(void){
         return spiReadReg(Config::ADDR);
     }//deviceAddress
 
@@ -137,7 +140,7 @@ namespace ArduForge{
     }//channel
 
     void CC1101::outputPowerLevel(int8_t dBm){
-        uint8_t pa = 0xC0;
+        uint8_t pa = 0x04;
 
         if(dBm <= -30) pa = 0x00;
         else if(dBm <= -20) pa = 0x01;
@@ -147,6 +150,7 @@ namespace ArduForge{
         else if(dBm <= 5) pa = 0x05;
         else if(dBm <= 7) pa = 0x06;
         else if(dBm <= 10) pa = 0x07;
+        else pa = 0x07;
 
         spiWriteReg(Config::FREND0, pa);
     }//outputPowerLevel
@@ -182,33 +186,21 @@ namespace ArduForge{
     }//wakeUp
 
 
-    void CC1101::spiInit(void){
-        // Initializes the SPI pins 
-        pinMode(m_Sck, OUTPUT);
-        pinMode(m_Mosi, OUTPUT);
-        pinMode(m_Miso, INPUT);
-        pinMode(m_Csn, OUTPUT);
-
-        // enable SPI Master, MSB, SPI mode0, FOSC/4
-        spiMode(0);
+    void CC1101::spiInit(void){    
+        SPI.begin();
+         // enable SPI Master, MSB, SPI mode0, FOSC/4
+        SPI.setDataMode(SPI_MODE0);
+        SPI.setBitOrder(MSBFIRST);
+        // SPI.setClockDivider(SPI_CLOCK_DIV2);
     }//spiInit 
 
     void CC1101::spiEnd(void){
-        pinMode(m_Sck, INPUT);
-        pinMode(m_Mosi, INPUT);
-        pinMode(m_Csn, INPUT);
+        SPI.end();
     }//spiEnd
 
-    void CC1101::spiMode(uint8_t Config){
-        // enable SPI master with configuration specified by Config byte
-        SPCR = 0;
-        SPCR = (Config & 0x7F) | (1<<SPE) | (1<<MSTR);
-    }//spiMode 
 
-    uint8_t CC1101::spiTransfer(uint8_t Value)const{ 
-        SPDR = Value;
-        while(!(SPSR & (1<<SPIF)));
-        return SPDR;
+    uint8_t CC1101::spiTransfer(uint8_t Value){ 
+        return SPI.transfer(Value);
     }//spiTransfer 
 
     void CC1101::reset(void){
@@ -221,7 +213,8 @@ namespace ArduForge{
         spiTransfer(CmdStrobes::SRES);
         while(digitalRead(m_Miso));
         digitalWrite(m_Csn, HIGH);
-
+        // device needs some time to reset
+        delay(100);
     }//reset 
 
     void CC1101::spiWriteReg(uint8_t Reg, uint8_t Value){
@@ -250,9 +243,8 @@ namespace ArduForge{
         digitalWrite(m_Csn, HIGH);
     }//spiStrobe 
 
-    uint8_t CC1101::spiReadReg(uint8_t Reg)const{
+    uint8_t CC1101::spiReadReg(uint8_t Reg){     
         uint8_t Rval = 0;
-
         digitalWrite(m_Csn, LOW);
         while(digitalRead(m_Miso));
         spiTransfer(Reg | Fifo::READ_SINGLE);
@@ -353,11 +345,11 @@ namespace ArduForge{
         return (spiReadReg(Reg::LQI) & 0x7F);
     }//lqi
 
-    uint8_t CC1101::partNumber(void)const{
+    uint8_t CC1101::partNumber(void){
         return spiReadReg(Reg::PARTNUM);
     }//partNumber
 
-    uint8_t CC1101::version(void)const{
+    uint8_t CC1101::version(void){
         return spiReadReg(Reg::VERSION);
     }//version
 
