@@ -3,6 +3,7 @@
 # Doxygen
 doc/Doxygen.cmd
 doc/Doxywarnings.txt
+doc/html/*
 
 # Excluded main stuff
 platformio.ini
