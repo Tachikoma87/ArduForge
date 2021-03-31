@@ -8,7 +8,6 @@
  * The source code is available on github: https://github.com/CrossForge/ArduForge
  * 
  * \section NextFeatures Upcoming features and classes
- * \todo ESP32 Cam module
  * \todo Stepper motor
  * \todo Linear motor (PWM-based)
  * \todo PIR sensor

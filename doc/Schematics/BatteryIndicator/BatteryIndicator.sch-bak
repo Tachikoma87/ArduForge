@@ -1,0 +1,104 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L MCU_Module:Arduino_Nano_v3.x A?
+U 1 1 6062C0D8
+P 10450 5250
+F 0 "A?" H 10450 4069 50  0001 C CNN
+F 1 "Arduino Nano" H 10450 4161 50  0000 C CNN
+F 2 "Module:Arduino_Nano" H 10450 5250 50  0001 C CIN
+F 3 "http://www.mouser.com/pdfdocs/Gravitech_Arduino_Nano3_0.pdf" H 10450 5250 50  0001 C CNN
+	1    10450 5250
+	-1   0    0    1   
+$EndComp
+$Comp
+L RF_Module:ESP32-WROOM-32 U?
+U 1 1 6062D1F2
+P 6050 4750
+F 0 "U?" H 6050 6331 50  0000 C CNN
+F 1 "ESP32-WROOM-32" H 6050 6240 50  0000 C CNN
+F 2 "RF_Module:ESP32-WROOM-32" H 6050 3250 50  0001 C CNN
+F 3 "https://www.espressif.com/sites/default/files/documentation/esp32-wroom-32_datasheet_en.pdf" H 5750 4800 50  0001 C CNN
+	1    6050 4750
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 6062EBF5
+P 9450 5500
+F 0 "R?" H 9520 5546 50  0001 L CNN
+F 1 "47k" H 9520 5500 50  0000 L CNN
+F 2 "" V 9380 5500 50  0001 C CNN
+F 3 "~" H 9450 5500 50  0001 C CNN
+	1    9450 5500
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 6062F427
+P 9450 4950
+F 0 "R?" H 9520 4996 50  0001 L CNN
+F 1 "22k" H 9520 4950 50  0000 L CNN
+F 2 "" V 9380 4950 50  0001 C CNN
+F 3 "~" H 9450 4950 50  0001 C CNN
+	1    9450 4950
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+9V #PWR?
+U 1 1 6062FEE7
+P 8950 5300
+F 0 "#PWR?" H 8950 5150 50  0001 C CNN
+F 1 "+9V" V 8965 5428 50  0000 L CNN
+F 2 "" H 8950 5300 50  0001 C CNN
+F 3 "" H 8950 5300 50  0001 C CNN
+	1    8950 5300
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:-9V #PWR?
+U 1 1 60630C63
+P 8950 5150
+F 0 "#PWR?" H 8950 5025 50  0001 C CNN
+F 1 "-9V" V 8965 5278 50  0000 L CNN
+F 2 "" H 8950 5150 50  0001 C CNN
+F 3 "" H 8950 5150 50  0001 C CNN
+	1    8950 5150
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	8950 5150 8950 4700
+Wire Wire Line
+	8950 4700 9450 4700
+Wire Wire Line
+	9450 4700 9450 4800
+Wire Wire Line
+	8950 5300 8950 5650
+Wire Wire Line
+	8950 5650 9450 5650
+Wire Wire Line
+	9450 4250 9450 4700
+Connection ~ 9450 4700
+Wire Wire Line
+	10350 4250 9450 4250
+Wire Wire Line
+	9450 5100 9450 5250
+Wire Wire Line
+	9950 5250 9450 5250
+Connection ~ 9450 5250
+Wire Wire Line
+	9450 5250 9450 5350
+$EndSCHEMATC

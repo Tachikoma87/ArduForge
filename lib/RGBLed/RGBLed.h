@@ -29,7 +29,7 @@ namespace ArduForge{
      * varying colors. If you just want to turn each color on and off you can use any digital pin. Make sure to specify in the RGBLed::begin function,
      * that you don't want to use PWM.
      * 
-     * \figure html RGBLedWiring.png
+     * \image html RGBLedWiring.png
      */
     class RGBLed{
     public:
@@ -89,10 +89,11 @@ namespace ArduForge{
         uint8_t m_GreenPin; ///< Pin of LED's green channel
         uint8_t m_BluePin;  ///< Pin of LED's blue channel
         bool m_PWM;         ///< Pulse width modulation feature switch
-
-        static const uint8_t PWMChannelR = 0;
-        static const uint8_t PWMChannelG = 1;
-        static const uint8_t PWMChannelB = 2;
+        #ifdef ESP32
+        static const uint8_t PWMChannelR = 0; ///< PWM channel for red channel.
+        static const uint8_t PWMChannelG = 1; ///< PWM channel for green channel.
+        static const uint8_t PWMChannelB = 2; ////< PWM channel for blue channel.
+        #endif
     };//RGBLed
 
 

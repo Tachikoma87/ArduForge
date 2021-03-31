@@ -20,8 +20,6 @@ namespace ArduForge{
         m_BluePin = BluePin;
         m_PWM = PWM;
 
-       
-
         #ifdef ESP32
         if(m_RedPin < 0xFF && m_PWM){
             ledcSetup(PWMChannelR, 5000, 8);
