@@ -1,5 +1,7 @@
 #include "OpticalLightBarrierESP32.h"
 
+
+
 #ifdef ESP32
 
 #ifdef DEBUG
@@ -63,7 +65,7 @@ namespace ArduForge{
         }
 
         return (float)TotalDeviation / (float)PixelCount;
-    }//computeDeviationLienar
+    }//computeDeviationLinear
 
     float OpticalLightBarrierESP32::BarrierLine::computeDeviationQuadratic(BarrierLine *pLeft, BarrierLine *pRight){
         uint32_t TotalDeviation = 0;
@@ -75,6 +77,55 @@ namespace ArduForge{
         return (float)TotalDeviation / (float)PixelCount;
     }//computeDeviationQuadratic
 
+    void OpticalLightBarrierESP32::performCalibration(BarrierLine *pLine1, BarrierLine *pLine2){
+        m_ActiveState = STATE_CALIBRATION;
+        m_Noise = 0.0f;
+        uint8_t FrameCount = 0;
+        camera_fb_t *pFrame = nullptr;
+
+        OpticalLightBarrierESP32::cameraAutomatics(true);
+        // we ignore the first 10 images (about half a second) to let the camera calibrate itself
+        while(FrameCount < 10){
+            pFrame = esp_camera_fb_get();
+            if(nullptr != pFrame) FrameCount++;
+            esp_camera_fb_return(pFrame);
+        }
+        OpticalLightBarrierESP32::cameraAutomatics(false);
+
+        uint32_t CalibrationStart = millis();
+        FrameCount = 0;
+ 
+        pFrame = esp_camera_fb_get();
+        pLine1->extractData(pFrame);
+        esp_camera_fb_return(pFrame);
+        uint8_t LineToActualize = 1;
+
+        while(millis() - CalibrationStart < m_CalibrationDuration){
+            pFrame = esp_camera_fb_get();
+            if(nullptr == pFrame) continue;
+            (LineToActualize == 0) ? pLine1->extractData(pFrame) : pLine2->extractData(pFrame); 
+            esp_camera_fb_return(pFrame);
+            LineToActualize = (LineToActualize + 1) % 2;
+
+            float Temp = BarrierLine::computeDeviationQuadratic(pLine1, pLine2);
+            if(Temp > m_Noise) m_Noise = Temp;                  
+        }//while[calibration time]
+
+        m_Callback(BMSG_CALIBRATION_FINISHED, m_pUserCBParam);
+
+    }//performCalibration
+
+    void OpticalLightBarrierESP32::cameraAutomatics(bool Enable){
+        sensor_t *pSensor = esp_camera_sensor_get();
+        int Val = (Enable) ? 1 : 0;
+        pSensor->set_whitebal(pSensor, Val);
+        pSensor->set_awb_gain(pSensor, Val);
+        pSensor->set_aec2(pSensor, Val);
+        pSensor->set_exposure_ctrl(pSensor, Val);
+        pSensor->set_gain_ctrl(pSensor, Val);
+
+    }//cameraAutomatics
+    
     
     void OpticalLightBarrierESP32::cameraThread(void *pParam){
         if(nullptr == pParam){
@@ -85,12 +136,6 @@ namespace ArduForge{
         OpticalLightBarrierESP32 *pParent = (OpticalLightBarrierESP32*)pParam;
 
         ESP32Camera Camera;
-        if(!Camera.begin(FRAMESIZE_CIF, PIXFORMAT_GRAYSCALE)){
-            ON_DEBUG(Serial.print("Failed initializing ESP32 Camera!\n"));
-            pParent->m_Callback(BMSG_INITIALIZATION_FAILED, pParent->m_pUserCBParam);
-            return;
-        }
-
         BarrierLine Line1;
         BarrierLine Line2;
         uint8_t LineToActualize = 0;
@@ -104,80 +149,53 @@ namespace ArduForge{
 
         camera_fb_t *pFB = nullptr;
 
+        if(!Camera.begin(FRAMESIZE_CIF, PIXFORMAT_GRAYSCALE)){
+            ON_DEBUG(Serial.print("Failed initializing ESP32 Camera!\n"));
+            pParent->m_Callback(BMSG_INITIALIZATION_FAILED, pParent->m_pUserCBParam);
+            return;
+        }
+        pParent->m_ActiveState = STATE_CALIBRATION;
         pParent->m_Callback(BMSG_INITIALIZATION_FINISHED, pParent->m_pUserCBParam);
 
         while(!pParent->m_StopThread){
-
-            switch(pParent->m_ActiveState){
+            switch(pParent->m_ActiveState){   
                 case STATE_CALIBRATION:{
-                    float Noise = 0.0f;
-                    uint16_t FrameCount = 0;
-                    uint32_t CalibrationStart = millis();
-
-                    pFB = esp_camera_fb_get();
-                    Line1.extractData(pFB);
-                    esp_camera_fb_return(pFB);;
-                    LineToActualize = 1;
-
-                    while(millis() - CalibrationStart < pParent->m_CalibrationDuration){
-                        pFB = esp_camera_fb_get();
-                        (LineToActualize == 0) ? Line1.extractData(pFB) : Line2.extractData(pFB);
-                        LineToActualize = (LineToActualize + 1) % 2;
-                        esp_camera_fb_return(pFB);
-
-                        // we will ignore frames within the first 500 ms to give the sensor some time to calibrate itself
-                        if(millis() - CalibrationStart > 500){
-                            float Temp = BarrierLine::computeDeviationQuadratic(&Line1, &Line2);
-                            if(Temp > Noise) Noise = Temp;
-                            FrameCount++;
-                        }               
-                    }//while[calibration time]
-                    
-                    pParent->m_Noise = Noise;
-                    //calibration ready, enter idle state
+                    pParent->performCalibration(&Line1, &Line2);
                     pParent->m_ActiveState = STATE_NONE;
-                    pParent->m_Callback(BMSG_CALIBRATION_FINISHED, pParent->m_pUserCBParam);
-
-                    ON_DEBUG(Serial.print("Calibration finished. Noise is "););
-                    ON_DEBUG(Serial.print(pParent->m_Noise));
-                    ON_DEBUG(Serial.print("\n"));
-
                 }break;
                 case STATE_START_DETECION:{
                     // set both lines to current capture values
+                    if(pParent->m_AutoCalibration) pParent->performCalibration(&Line1, &Line2);
+
                     pFB = esp_camera_fb_get();
                     Line1.extractData(pFB);
                     Line2.extractData(pFB);
                     esp_camera_fb_return(pFB);
                     // enter detection state
                     pParent->m_ActiveState = STATE_DETECTION;
+                    pParent->m_FPS = 0;
 
-                    sensor_t *pSensor = esp_camera_sensor_get();
-                    pSensor->set_whitebal(pSensor, 0);
-                    pSensor->set_awb_gain(pSensor, 0);
-                    pSensor->set_aec2(pSensor, 0);
-                    pSensor->set_exposure_ctrl(pSensor, 0);
-                    pSensor->set_gain_ctrl(pSensor, 0);
-
+                    pParent->m_Callback(BMSG_DETECTION_STARTED, pParent->m_pUserCBParam);
+                    
                 }break;
                 case STATE_STOP_DETECTION:{
-                    sensor_t *pSensor = esp_camera_sensor_get();
-                    pSensor->set_whitebal(pSensor, 1);
-                    pSensor->set_awb_gain(pSensor, 1);
-                    pSensor->set_aec2(pSensor, 1);
-                    pSensor->set_exposure_ctrl(pSensor, 1);
-                    pSensor->set_gain_ctrl(pSensor, 1);
+                    OpticalLightBarrierESP32::cameraAutomatics(true);
                     pParent->m_ActiveState = STATE_NONE;
+                    pParent->m_FPS = 0;
+                    pParent->m_Callback(BMSG_DETECTION_STOPPED, pParent->m_pUserCBParam);
                 }break;
                 case STATE_DETECTION:{
                     // retrieve frame and update one line
                     pFB = esp_camera_fb_get();
+                    if(nullptr == pFB){
+                        ON_DEBUG(Serial.print("Failed to get frame\n"));
+                        break;
+                    }
                     (LineToActualize == 0) ? Line1.extractData(pFB) : Line2.extractData(pFB);
                     esp_camera_fb_return(pFB);
                     LineToActualize = (LineToActualize + 1) % 2;
                     
                     float Deviation = BarrierLine::computeDeviationQuadratic(&Line1, &Line2);
-                    //float Deviation = 0.0f;
                     if(Deviation > pParent->m_Noise + 10.0f * pParent->m_Sensitivity){
                         pParent->m_Callback(BMSG_BARRIER_TRIGGERED, pParent->m_pUserCBParam);
                         ON_DEBUG(Serial.print("Barrier triggered with value: "));
@@ -194,10 +212,15 @@ namespace ArduForge{
 
                 }break;
                 default:{
-                    // idle if nothing else to do
-                    delay(10);
+                    // nothing to do here
+                    pParent->m_Callback(BMSG_IDLING, pParent->m_pUserCBParam);
                 }break;
             }
+
+            if(!pParent->m_StateQueue.empty()){
+                pParent->m_ActiveState = pParent->m_StateQueue.front();
+                pParent->m_StateQueue.pop();
+            } 
         }//while[thread running]
 
         // free camera
@@ -213,7 +236,7 @@ namespace ArduForge{
         m_hCameraThread = nullptr;   
         m_StopThread = false;              
 
-        m_Sensitivity = 1.4f;           
+        m_Sensitivity = 20.0f;           
         m_Noise = 0.0f;                  
         m_CalibrationDuration = 1500; 
         m_ActiveState = STATE_NONE;     
@@ -232,6 +255,9 @@ namespace ArduForge{
 
         m_StopThread = false;
         m_LineMagnitude = 5;
+        m_AutoCalibration = true;
+        m_CalibrationDuration = 1000;
+        m_FPS = 0;
 
         // start camera capture thread
         xTaskCreatePinnedToCore(cameraThread, "Camera_Thread", 10000, this, 1, &m_hCameraThread, CameraThreadCoreID);
@@ -252,10 +278,8 @@ namespace ArduForge{
             (*pWidth) = pFB->width;
             (*pHeight) = pFB->height;
             memcpy(pImgData, pFB->buf, pFB->len);
-            //for(int i=0; i < pFB->len; ++i) pImgData[i] = pFB->buf[i];
             if(AugmentCaptureLine) BarrierLine::augmentCaptureLine(m_LineMagnitude, pFB->width, pFB->height, pImgData);
         }
-
         esp_camera_fb_return(pFB);
     }//captureImage
 
@@ -264,17 +288,16 @@ namespace ArduForge{
         m_hCameraThread = nullptr;
     }//end
 
-    void OpticalLightBarrierESP32::calibrate(uint16_t Duration){
-        m_CalibrationDuration = Duration;
-        m_ActiveState = STATE_CALIBRATION;
+    void OpticalLightBarrierESP32::calibrate(void){
+        m_StateQueue.push(STATE_CALIBRATION);
     }
 
     void OpticalLightBarrierESP32::startDetection(void){
-        m_ActiveState = STATE_START_DETECION;
+        m_StateQueue.push(STATE_START_DETECION);
     }//startDetection
 
     void OpticalLightBarrierESP32::stopDetection(void){
-        m_ActiveState = STATE_STOP_DETECTION;
+        m_StateQueue.push(STATE_STOP_DETECTION);
     }//stopDetection
 
     float OpticalLightBarrierESP32::sensitivity(void)const{
@@ -296,6 +319,16 @@ namespace ArduForge{
     float OpticalLightBarrierESP32::noise(void)const{
         return m_Noise;
     }//noise
+
+    void OpticalLightBarrierESP32::setCalibrationParams(bool AutoCalibration, uint16_t Duration){
+        m_AutoCalibration = AutoCalibration;
+        m_CalibrationDuration = Duration;
+    }//autoCalibration
+
+    void OpticalLightBarrierESP32::getCalibrationParams(bool *pAutoCalibration, uint16_t *pCalibrationDuration)const{
+        if(nullptr != pCalibrationDuration) (*pCalibrationDuration) = m_CalibrationDuration;
+        if(nullptr != pAutoCalibration) (*pAutoCalibration) = m_AutoCalibration;
+    }//autoCalibration
 
 }//name-space
 

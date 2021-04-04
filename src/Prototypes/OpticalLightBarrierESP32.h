@@ -22,6 +22,7 @@
 // works only with an ESP32
 #ifdef ESP32
 
+#include <queue>
 #include "ESP32Camera.h"
 
 namespace ArduForge{
@@ -39,6 +40,9 @@ namespace ArduForge{
             BMSG_INITIALIZATION_FAILED,     ///< Something went wrong during initialization
             BMSG_CALIBRATION_FINISHED,      ///< Sensor calibration finished
             BMSG_BARRIER_TRIGGERED,         ///< The barrier was triggered
+            BMSG_DETECTION_STARTED,         ///< Barrier entered detection mode
+            BMSG_DETECTION_STOPPED,         ///< Barrier stopped detection mode
+            BMSG_IDLING,                    ///< Barrier has nothing to do at the moment.
         };//BarrierMsg
 
         /**
@@ -48,7 +52,7 @@ namespace ArduForge{
             STATE_NONE = 0,       ///< No operation (idle)
             STATE_CALIBRATION,    ///< Calibration mode
             STATE_START_DETECION, ///< Prepare and enter detection state
-            STATE_STOP_DETECTION,
+            STATE_STOP_DETECTION, ///< Capturing stop was issued
             STATE_DETECTION,      ///< Detection mode
         };//ActiveOperation
 
@@ -74,7 +78,7 @@ namespace ArduForge{
          * @param[in] Sensitivity Barrier sensitivity relative to the camera sensor's noise level. 
          * @param[in] CameraThreadCoreID Which core to use for the camera thread.
          */
-        void begin(BarrierCallbackFunc BarrierCB, void *pUserCBParam = nullptr, float Sensitivity = 1.3f, uint8_t CmaeraThreadCoreID = 0);
+        void begin(BarrierCallbackFunc BarrierCB, void *pUserCBParam = nullptr, float Sensitivity = 25.0f, uint8_t CmaeraThreadCoreID = 0);
 
         /**
          * @brief Shut down optical light barrier. Releases camera.
@@ -85,9 +89,8 @@ namespace ArduForge{
          * @brief Calibrate sensor (estimate noise level).
          * 
          * Frames are captured for a small amount of time and the deviation between them is calculated. The average deviation over the capture time will be the sensor noise level. Noise depends significantly on the lighting condition. Low levels of light cause higher noise.
-         * @param[in] Duration Time in milliseconds for the calibration process. Should be at least 1000 to get an acceptable result.
          */
-        void calibrate(uint16_t Duration = 2000);
+        void calibrate(void);
 
         /**
          * @brief Barrier enters the detection mode. It will use the noise estimate from the last OpticalIghtBarrier::calibrate call.
@@ -125,9 +128,40 @@ namespace ArduForge{
          */
         ActiveState state(void)const;
 
+        /**
+         * @brief Returns size of captured image in bytes. Use this to allocate appropriate buffer for OpticalLightBarrierESP32::captureImage
+         * @return Size of captured image in bytes.
+         */
         uint32_t imageSize(void)const;
+
+        /**
+         * @brief Returns a single captured frame.
+         * @param[out] pWidth Width of the image in pixels will be stored here.
+         * @param[out] pHeight Height of the image in pixels will be stored here.
+         * @param[out] pImageData Actual image data (grayscale values) will be stored here.
+         * @param[in] AugmentCaptureLine If true the capturing area will be drawn into the image.
+         */
         void captureImage(uint32_t *pWidth, uint32_t *pHeight, uint8_t *pImgData, bool AugmentCaptureLine);
+
+        /**
+         * @brief Returns estimated noise level.
+         * @return Estimated noise level.
+         */
         float noise(void)const;
+
+        /**
+         * @brief Sets calibration parameters.
+         * @param[in] AutoCalibration Turn auto calibration before each capture start on and off.
+         * @param[in] Duration Sets calibration duration in milliseconds.
+         */
+        void setCalibrationParams(bool AutoCalibration, uint16_t Duration);
+
+        /**
+         * @brief Returns calibration parameters.
+         * @param[out] pAutoCalibration Whether auto calibration is turned on or off.
+         * @param[out] pCalibrationDuration Amount of time calibration has in milliseconds.
+         */
+        void getCalibrationParams(bool *pAutoCalibration, uint16_t *pCalibrationDuration)const;
 
     protected:
 
@@ -203,6 +237,20 @@ namespace ArduForge{
          */
         static void cameraThread(void *pParam);
 
+        /**
+         * @brief Turns camera automatics on or off.
+         * @param[in] Enable Turns camera automatics on if true, turns off otherwise.
+         */
+        static void cameraAutomatics(bool Enable);
+        
+        /**
+         * @brief Performs barrier calibration and determines noise level.
+         * @param[in,out] pLine1 Pre-initialized barrier line 1 to store data.
+         * @param[in,out] pLine2 Pre-initialized barrier line 2 to store data.
+         * @remarks pLien1 and pLine2 will contain image data after method is finished.
+         */
+        void performCalibration(BarrierLine *pLine1, BarrierLine *pLine2);
+
         BarrierCallbackFunc m_Callback; ///< Callback method to which messages will be delivered.
         void *m_pUserCBParam;           ///< User parameter that will be relayed to the callback function.
 
@@ -215,6 +263,8 @@ namespace ArduForge{
         ActiveState m_ActiveState;      ///< Current state of the optical light barrier.
         uint8_t m_FPS;                  ///< Current FPS value.
         uint8_t m_LineMagnitude;        ///< Line Magnitude
+        bool m_AutoCalibration;           ///< Auto calibration option to calibrate each time the detection starts
+        std::queue<ActiveState> m_StateQueue; ///< State queue to issue commands to the camera that will be executed in order.
     };//OpticalLightBarrierESP32
 
 }//name-space

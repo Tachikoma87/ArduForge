@@ -58,7 +58,7 @@ namespace ArduForge{
         Config.pin_sscb_scl = SIOC_GPIO_NUM;
         Config.pin_pwdn = PWDN_GPIO_NUM;
         Config.pin_reset = RESET_GPIO_NUM;
-        Config.xclk_freq_hz = (PixelFormat == PIXFORMAT_JPEG) ? 10000000: 20000000;
+        Config.xclk_freq_hz = (PixelFormat == PIXFORMAT_JPEG) ? 10000000 : 20000000;
         Config.pixel_format = PixelFormat;
 
         Config.frame_size = Framesize;
