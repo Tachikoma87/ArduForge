@@ -45,13 +45,21 @@ void barrierCallback(ArduForge::OpticalLightBarrierESP32::BarrierMsg Msg, void *
     switch(Msg){
         case ArduForge::OpticalLightBarrierESP32::BMSG_CALIBRATION_FINISHED:{
             Serial.print("Calibration finished with noise value: "); 
-            Serial.print(Lightbarrier.noise());
+            Serial.print(Lightbarrier.noise(0));
             Serial.print("\n");
             //Lightbarrier.startDetection();
             LastTrigger = timestamp();
         }break;
         case ArduForge::OpticalLightBarrierESP32::BMSG_BARRIER_TRIGGERED:{
-            Serial.print("Barrier triggered\n");
+            for(uint8_t i=0; i < Lightbarrier.measureLineCount(); ++i){
+                if(!Lightbarrier.isLineTriggered(i)) return;
+                else{
+                    Serial.print("Line ");
+                    Serial.print(i);
+                    Serial.print(" triggered\n");
+                }
+            }
+            Serial.print("All measure lines triggered! Stropping detection!\n");
             Lightbarrier.stopDetection();
             LastTrigger = timestamp();
             if(BT.hasClient()){
@@ -76,12 +84,20 @@ void setup() {
     Serial.begin(115200);
     //BT.begin("Barrier-Test-Device");
    
-    Serial.print("PSRam: ");
+    /*Serial.print("PSRam: ");
     Serial.print(ESP.getFreePsram());
     Serial.print(" bytes\n");
+*/
 
-    Lightbarrier.begin(barrierCallback, nullptr, 25.0f, 0);
-    Lightbarrier.setCalibrationParams(true, 1000);
+    const bool Grayscale = false;
+    const bool LinearError = false;
+    const bool Filter = false;
+    Lightbarrier.begin(barrierCallback, nullptr, 15.0, 0, Grayscale, LinearError, Filter);
+    Lightbarrier.setCalibrationParams(false, 1500);
+
+    //Lightbarrier.clearMeasureLines();
+    //Lightbarrier.addMeasureLine(0, 50);
+    //Lightbarrier.addMeasureLine(250, 300);
 }//setup
 
 

@@ -31,6 +31,8 @@ namespace ArduForge{
      * 
      * Your typical light barrier sensor (e.g. time of flight, 10€ per piece + controller) only works at a range of a few centimeters up to a few meters under optimal conditions. Sensor with larger measuring range get pretty expensive and are not consumer grade equipment anymore. With an ESP32 Camera module (about 6€ each, including Microcontroller) we can build a fully functional light barrier. Due to the comparably low FPS of a camera module the time resolution is quite limited. During tests I achieved stable 26 FPS (grayscale images) which means a reliable time resolution of 38.47 milliseconds.
      * @note This class requires exclusive access to the camera during its time of operation.
+     * 
+     * \todo Check if filter work correctly
      */
     class OpticalLightBarrierESP32{
     public:
@@ -78,7 +80,7 @@ namespace ArduForge{
          * @param[in] Sensitivity Barrier sensitivity relative to the camera sensor's noise level. 
          * @param[in] CameraThreadCoreID Which core to use for the camera thread.
          */
-        void begin(BarrierCallbackFunc BarrierCB, void *pUserCBParam = nullptr, float Sensitivity = 25.0f, uint8_t CmaeraThreadCoreID = 0);
+        void begin(BarrierCallbackFunc BarrierCB, void *pUserCBParam = nullptr, float Sensitivity = 15.0f, uint8_t CmaeraThreadCoreID = 0, bool Grayscale = true, bool LinearError = true, bool UseFilter = false);
 
         /**
          * @brief Shut down optical light barrier. Releases camera.
@@ -147,7 +149,7 @@ namespace ArduForge{
          * @brief Returns estimated noise level.
          * @return Estimated noise level.
          */
-        float noise(void)const;
+        float noise(uint8_t MeasureLineID)const;
 
         /**
          * @brief Sets calibration parameters.
@@ -163,7 +165,34 @@ namespace ArduForge{
          */
         void getCalibrationParams(bool *pAutoCalibration, uint16_t *pCalibrationDuration)const;
 
+        float maxDeviation(void)const{
+            return m_MaxDeviation;
+        }
+
+        uint8_t measureLineCount(void)const;
+        
+        bool isLineTriggered(uint8_t MeasureLineID)const;
+        void clearMeasureLines(void);
+        void addMeasureLine(uint16_t Start, uint16_t End);
+        void getMeasureLine(uint8_t ID, uint16_t *pStart, uint16_t *pEnd);
+        uint16_t frameWidth(void)const;
+
+        void update(void);
+
     protected:
+        struct MeasureLine{
+            uint16_t Start;
+            uint16_t End; 
+            float Noise;
+            bool Triggered;
+
+            MeasureLine(void);
+            ~MeasureLine(void);
+
+            void init(uint16_t Start, uint16_t End);
+            void clear(void);
+        };//MeasureLine
+
 
         /**
          * @brief Defines a single optical barrier line and its image data.
@@ -176,6 +205,7 @@ namespace ArduForge{
             uint8_t *pBuffer;   ///< Image data (RGB565 values).
             uint8_t Magnitude;  ///< Width in lines of the barrier.
             uint16_t LineSize;  ///< Size (number of pixels) of a single line.
+            bool Grayscale;
 
             /**
              * @brief Computes deviation value between two barrier lines with a linear function.
@@ -184,15 +214,14 @@ namespace ArduForge{
              * @param[in] pRight Barrier line 2.
              * @return Linear deviation value.
              */
-            static float computeDeviationLinear(BarrierLine *pLeft, BarrierLine *pRight);
+            static float computeDeviation(BarrierLine *pLeft, BarrierLine *pRight, bool UseFilter, bool LinearError);
 
-            /**
-             * @brief Computes deviation value between two barrier lines with a quadratic function. 
-             * 
-             * @param[in] pLeft Barrier line 1.
-             * @param[in] pRight Barrier line 2.
-             */
-            static float computeDeviationQuadratic(BarrierLine *pLeft, BarrierLine *pRight);
+            static float computeDeviation(uint16_t Start, uint16_t End, BarrierLine *pLeft, BarrierLine *pRight, bool UseFilter, bool LinearError);
+
+            static void splitRGB565(uint16_t PixelValue, int8_t *pRed, int8_t *pGreen, int8_t *pBlue);
+
+            uint8_t pixelValue(uint16_t x, uint16_t y);
+            void pixelValue(uint16_t x, uint16_t y, int8_t *pRed, int8_t *pGreen, int8_t *pBlue);
 
             /**
              * @brief Constructor
@@ -210,7 +239,7 @@ namespace ArduForge{
              * @param[in] Magnitude \f$\pm\f$ number of lines from the middle that should also be considered.
              * @param[in] LineSize Size (number of pixels) of a single line.
              */
-            void init(uint8_t Magnitude, uint16_t LineSize);
+            void init(uint8_t Magnitude, uint16_t LineSize, bool Grayscale);
 
             /**
              * @brief Clears data.
@@ -224,11 +253,15 @@ namespace ArduForge{
              */
             void extractData(camera_fb_t *pFB);
 
-            static void augmentCaptureLine(uint8_t Magnitude, uint32_t Width, uint32_t Height, uint8_t *pImgData);
+            static void augmentCaptureLine(uint8_t LineMagnitude, uint32_t Width, uint32_t Height, uint8_t *pImgData, bool Grayscale);
+            static void augmentMeasurementLines(uint8_t LineMagnitude, std::vector<MeasureLine*> *pMeasurementLines, uint32_t Width, uint32_t Height, uint8_t *pImgData, bool Grayscale);
 
+            float filter3x3(uint16_t x, uint16_t y);
+            void filter3x3(uint16_t x, uint16_t y, int8_t *pRed, int8_t *pGreen, int8_t *pBlue);
 
         };//BarrierLine
 
+       
 
         /**
          * @brief Camera thread function.
@@ -247,7 +280,7 @@ namespace ArduForge{
          * @brief Performs barrier calibration and determines noise level.
          * @param[in,out] pLine1 Pre-initialized barrier line 1 to store data.
          * @param[in,out] pLine2 Pre-initialized barrier line 2 to store data.
-         * @remarks pLien1 and pLine2 will contain image data after method is finished.
+         * @remarks pLine1 and pLine2 will contain image data after method is finished.
          */
         void performCalibration(BarrierLine *pLine1, BarrierLine *pLine2);
 
@@ -258,13 +291,33 @@ namespace ArduForge{
         bool m_StopThread;              ///< Kill switch for the camera thread.
 
         float m_Sensitivity;            ///< Barrier sensitivity
-        float m_Noise;                  ///< Sensor's estimated noise value.
+        //float m_Noise;                  ///< Sensor's estimated noise value.
         uint16_t m_CalibrationDuration; ////< Duration in milliseconds the calibration is allowed to take.
         ActiveState m_ActiveState;      ///< Current state of the optical light barrier.
         uint8_t m_FPS;                  ///< Current FPS value.
         uint8_t m_LineMagnitude;        ///< Line Magnitude
         bool m_AutoCalibration;           ///< Auto calibration option to calibrate each time the detection starts
-        std::queue<ActiveState> m_StateQueue; ///< State queue to issue commands to the camera that will be executed in order.
+        //std::queue<ActiveState> m_StateQueue; ///< State queue to issue commands to the camera that will be executed in order.
+        ActiveState m_NextState;
+        bool m_GrayscaleMode;           ///< Camera sees only grayscale values (allows larger images).
+        bool m_LinearError;             ///< Use linear or quadratic error computation.
+        float m_MaxDeviation;
+        bool m_UseFilter;
+        uint16_t m_FrameWidth;
+
+        std::vector<MeasureLine*> m_MeasureLines;
+
+        bool m_ClearMeasureLines;
+        
+        ESP32Camera m_Camera;
+
+        BarrierLine m_BarrierLine1;
+        BarrierLine m_BarrierLine2;
+        uint8_t m_BarrierLineToUpdate;
+
+        uint16_t m_FrameCount;
+        uint32_t m_LastFPSPrint;
+
     };//OpticalLightBarrierESP32
 
 }//name-space
